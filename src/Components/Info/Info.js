@@ -5,7 +5,7 @@ const Info = () => {
     return (
         <div className="hero mt-10 py-10 bg-base-200">
             <div className="hero-content container mx-auto flex-col-reverse  lg:flex-row-reverse ">
-            <img src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png" className=" rounded-lg shadow-2xl" />
+            <img src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png" className="rounded-lg shadow-2xl" alt="" />
             <div className='lg:pr-14 '>
               <h2 className='text-left lg:text-4xl text-3xl font-bold pb-6'>A whole world of freelance talent at your fingertips</h2>
               <div className='text-left pt-4'>

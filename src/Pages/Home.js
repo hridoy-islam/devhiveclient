@@ -5,7 +5,8 @@ import MarketPlace from '../Components/MarketPlace/MarketPlace';
 const Home = () => {
     return (
         <div>
-            
+            <Info />
+            <MarketPlace />
         </div>
     );
 };

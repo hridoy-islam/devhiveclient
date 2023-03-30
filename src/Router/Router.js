@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import StartSelling from "../Pages/StartSelling";
 
 const router = createBrowserRouter([
 
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
         {
           path: '/register',
           element: <Register />
-        }
+        },
+        {
+          path: '/start_selling',
+          element: <StartSelling />
+        },
     ],
   },
 ])
