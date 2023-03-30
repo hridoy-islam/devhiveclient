@@ -6,15 +6,10 @@ import image from '../../image/environment-earth-day-hands-trees-growing-seedlin
 const Services = () => {
     return (
         <div>
-            
-           
-            {/* end */}
             <div className='grid justify-items-stretch'>
                 <h1 className='justify-self-start text-4xl font-serif p-3 ml-60 my-4'>Popular professional services</h1>
             </div>
-
             {/* carousel */}
-
             <div className="carousel w-full">
 
                 <div id="slide1" className="carousel-item relative w-full">
