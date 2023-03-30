@@ -12,7 +12,7 @@ const Services = () => {
             {/* carousel */}
             <div className="carousel w-full">
 
-                <div id="slide1" className="carousel-item relative w-full">
+                <div id="slide11" className="carousel-item relative w-full">
                     {/* card start 1 */}
                     <div className=' ml-60'>
                         <div className='flex '>
@@ -57,12 +57,12 @@ const Services = () => {
                     </div>
                     {/* cart end */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide2" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
+                        <a href="#slide14" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
+                        <a href="#slide12" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
                     </div>
                 </div>
 
-                <div id="slide2" className="carousel-item relative w-full">
+                <div id="slide12" className="carousel-item relative w-full">
                     {/* card start 2*/}
                     <div className=' ml-60'>
                         <div className='flex '>
@@ -107,12 +107,12 @@ const Services = () => {
                     </div>
                     {/* cart end 2 */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide3" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
+                        <a href="#slide11" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
+                        <a href="#slide13" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
                     </div>
                 </div>
 
-                <div id="slide3" className="carousel-item relative w-full">
+                <div id="slide13" className="carousel-item relative w-full">
                     {/* card start 3 */}
                     <div className=' ml-60'>
                         <div className='flex '>
@@ -157,12 +157,12 @@ const Services = () => {
                     </div>
                     {/* cart end */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide4" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
+                        <a href="#slide12" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
+                        <a href="#slide14" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
                     </div>
                 </div>
 
-                <div id="slide4" className="carousel-item relative w-full">
+                <div id="slide14" className="carousel-item relative w-full">
                     {/* card start 4 */}
                     <div className=' ml-60'>
                         <div className='flex '>
@@ -207,8 +207,8 @@ const Services = () => {
                     </div>
                     {/* cart end */}
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle btn-outline border-4  bg-slate-200 ">❮</a>
-                        <a href="#slide1" className="btn btn-circle btn-outline border-4 bg-slate-200  ">❯</a>
+                        <a href="#slide13" className="btn btn-circle btn-outline border-4  bg-slate-200 ">❮</a>
+                        <a href="#slide11" className="btn btn-circle btn-outline border-4 bg-slate-200  ">❯</a>
                     </div>
                 </div>
             </div>
