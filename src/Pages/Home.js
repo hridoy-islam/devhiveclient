@@ -1,9 +1,10 @@
 import React from 'react';
+import Services from '../Components/Services/Services';
 
 const Home = () => {
     return (
         <div>
-            Home
+            <Services></Services>
         </div>
     );
 };
