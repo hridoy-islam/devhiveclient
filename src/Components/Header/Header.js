@@ -68,7 +68,7 @@ const Header = () => {
               <Link to='/' class="flex mr-1">
                 <img
                   src="https://avatars.githubusercontent.com/u/109535601?v=4"
-                  class="mr-1 h-8"
+                  class="mr-1 hidden sm:block h-8"
                   alt="paradox Logo"
                 />
                 <span class="self-center text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-white">
