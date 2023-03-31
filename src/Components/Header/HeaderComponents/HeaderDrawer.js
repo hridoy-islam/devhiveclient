@@ -18,7 +18,7 @@ const HeaderDrawer = () => {
       >
         <div class="overflow-y-auto HeaderDrawer py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <div className="sticky px-auto flex flex-col justify-center">
-            <div  class="flex sticky justify-center mr-4">
+            <div  class="flex sticky  justify-center mr-4">
                 <img
                   src="https://avatars.githubusercontent.com/u/109535601?v=4"
                   class="mr-3 h-8"
