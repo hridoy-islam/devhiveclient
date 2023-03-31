@@ -10,9 +10,9 @@ const BannerItem = ({ slide }) => {
             </div>
 
             <div className="absolute  flex justify-end transform -translate-y-1/2 left-5  top-1/3">
-                <h1 className='font-bold font-serif text-white text-5xl uppercase'>
+                <h1 className='font-bold font-serif text-white text-4xl uppercase'>
 
-                    dev hive Courier Service
+                    ...
                 </h1>
             </div>
 
