@@ -1,10 +1,19 @@
 import React from "react";
 import "./HeaderDrawer.css";
-
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+// ..
+AOS.init();
 const HeaderDrawer = () => {
   return (
     <div className="block z-50 lg:hidden">
-      <aside class="fixed  top-0 left-0 w-64 h-full" aria-label="Sidenav">
+      <aside
+        data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine"
+        class="fixed  top-0 left-0 w-64 h-full"
+        aria-label="Sidenav"
+      >
         <div class="overflow-y-auto HeaderDrawer py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <div>
             <div className="avatar mt-5">
