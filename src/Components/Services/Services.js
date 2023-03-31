@@ -1,222 +1,74 @@
 import React from 'react';
-import image1 from '../../image/istockphoto-1322277517-612x612.jpg'
-import image from '../../image/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+import slide_image_1 from '../../image/service-image/pexels-1.jpg'
+import slide_image_2 from '../../image/service-image/pexels-2.jpg'
+import slide_image_3 from '../../image/service-image/pexels-3.jpg'
+import slide_image_4 from '../../image/service-image/pexels-4.jpg'
+import slide_image_5 from '../../image/service-image/pexels-5.jpg'
+import slide_image_6 from '../../image/service-image/pexels-6.jpg'
+import slide_image_7 from '../../image/service-image/pexels-7.jpg'
+import slide_image_8 from '../../image/service-image/pexels-8.jpg'
 
 
 const Services = () => {
     return (
-        <div>
+        <div className='px-20'>
             <div className='grid justify-items-stretch'>
-                <h1 className='justify-self-start text-4xl font-serif p-3 ml-60 my-4'>Popular professional services</h1>
+                <h1 className='justify-self-start text-4xl ml-10 font-serif p-3 my-4'>Popular professional services</h1>
             </div>
             {/* carousel */}
-            <div className="carousel w-full">
 
-                <div id="slide11" className="carousel-item relative w-full">
-                    {/* card start 1 */}
-                    <div className=' ml-60'>
-                        <div className='flex '>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
+            <Swiper
+                
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                spaceBetween={10}
+                slidesPerView={4}
+                navigation
+                // pagination={{ clickable: true }}
+                // scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_1} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_2} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_3} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_4} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_5} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_6} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_7} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_8} alt="" />
+                </SwiperSlide>
 
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* cart end */}
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide14" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide12" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
-                    </div>
-                </div>
-
-                <div id="slide12" className="carousel-item relative w-full">
-                    {/* card start 2*/}
-                    <div className=' ml-60'>
-                        <div className='flex '>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* cart end 2 */}
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide11" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide13" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
-                    </div>
-                </div>
-
-                <div id="slide13" className="carousel-item relative w-full">
-                    {/* card start 3 */}
-                    <div className=' ml-60'>
-                        <div className='flex '>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* cart end */}
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide12" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❮</a>
-                        <a href="#slide14" className="btn btn-circle btn-outline border-4 bg-slate-200 " >❯</a>
-                    </div>
-                </div>
-
-                <div id="slide14" className="carousel-item relative w-full">
-                    {/* card start 4 */}
-                    <div className=' ml-60'>
-                        <div className='flex '>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-                            <div className="card w-80 h-96 bg-base-100  shadow-xl image-full mr-16">
-                                <figure><img src={image1} alt="Shoes" /></figure>
-                                <div className="card-body">
-
-                                    <h2 className="card-title">Shoes!</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* cart end */}
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide13" className="btn btn-circle btn-outline border-4  bg-slate-200 ">❮</a>
-                        <a href="#slide11" className="btn btn-circle btn-outline border-4 bg-slate-200  ">❯</a>
-                    </div>
-                </div>
-            </div>
-
+            </Swiper>
 
         </div>
     );
 };
 
 export default Services;
+
 
