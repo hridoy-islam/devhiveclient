@@ -12,7 +12,7 @@ const NavThemeToggle = () => {
   return (
     <div>
       <ul class="menu menu-horizontal   p-0">
-        <label className="swap swap-rotate w-12  visible lg:hidden   p-5   z-50 cursor-pointer   btn-sm btn btn-ghost btn-circle">
+        <label className="swap swap-rotate w-12  visible xl:hidden   p-5   z-50 cursor-pointer   btn-sm btn btn-ghost btn-circle">
           <input type="checkbox" />
 
           <svg
@@ -36,7 +36,7 @@ const NavThemeToggle = () => {
         </label>
 
         <li
-          className="w-44 hidden lg:flex absolute right-40 top-2 z-20"
+          className="w-44 hidden xl:flex absolute right-40 top-2 z-20"
           data-choose-theme
           tabindex="0"
         >
