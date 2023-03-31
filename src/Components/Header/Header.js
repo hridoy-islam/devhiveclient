@@ -41,7 +41,9 @@ const Header = () => {
             <button className="btn btn-outline btn-primary">Join</button>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl text-center">daisyUI</a>
+        <a className="btn btn-ghost normal-case text-xl text-center">
+          DevhiveClient
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1 menu-right">
