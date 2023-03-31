@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [users, setUsers] = useState({});
+  const submitLogin = (e) => {
+    e.preventDefault();
+    console.log(users);
+  };
+  const handleEventBlur = (e) => {
+    const value = e.target.value;
+    const field = e.target.name;
+    const newUsers = { ...users };
+    newUsers[field] = value;
+    setUsers(newUsers);
+    console.log(value, field);
+  };
+  const handleForgetPassword = () => {
+    console.log("forget password");
+
+    users?.email ? console.log(users?.email) : alert("email not found");
+  };
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">
@@ -19,17 +38,19 @@ const Login = () => {
               </h1>
               <LoginProviders></LoginProviders>
               <div className="divider">OR</div>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form
+                onSubmit={submitLogin}
+                className="space-y-4 md:space-y-6"
+                action="#"
+              >
                 <div>
-                  <label
-                    for="email"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
+                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Your email
                   </label>
                   <input
                     type="email"
                     name="email"
+                    onBlur={handleEventBlur}
                     id="email"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
@@ -37,16 +58,14 @@ const Login = () => {
                   />
                 </div>
                 <div>
-                  <label
-                    for="password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
+                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Password
                   </label>
                   <input
                     type="password"
                     name="password"
                     id="password"
+                    onBlur={handleEventBlur}
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
@@ -74,6 +93,7 @@ const Login = () => {
                   </div>
                   <a
                     href="#"
+                    onClick={handleForgetPassword}
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Forgot password?
@@ -87,12 +107,12 @@ const Login = () => {
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/register"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign up
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

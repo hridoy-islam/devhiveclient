@@ -1,12 +1,55 @@
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
+import app from "../../Configs/Firebase.config";
 
 const LoginProviders = () => {
+  const googleProvider = new GoogleAuthProvider();
+  const githubprovider = new GithubAuthProvider();
+  const auth = getAuth(app);
   const handleGoogleLogin = () => {
-    console.log("google login");
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result?.user;
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
   };
   const handleGithubLogin = () => {
-    console.log("github login");
+    //create the necessaty code
+    signInWithPopup(auth, githubprovider)
+      .then((result) => {
+        const user = result?.user;
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+
+        // ...
+      });
   };
   return (
     <div className="flex flex-col gap-2">
