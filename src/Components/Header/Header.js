@@ -10,7 +10,7 @@ const Header = () => {
       {drawer && (
         <button
           onClick={() => setDrawer(false)}
-          className="fixed btn p-4 btn-circle btn-outline lg:hidden top-[50%] right-5 bg-black opacity-50"
+          className="fixed z-50 btn p-4 btn-circle btn-outline lg:hidden top-[50%] right-5 bg-black opacity-50"
         >
           Close
         </button>
