@@ -1,9 +1,8 @@
 import React from "react";
 import "./HeaderDrawer.css";
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <Link>nk> for styles
-import { Link, NavLink } from "react-router-dom";
-import DrawerBanner from './DrawerBanner'
+import "aos/dist/aos.css"; // You can also use <link> for styles
+import { Link } from "react-router-dom";
 // ..
 AOS.init();
 const HeaderDrawer = () => {
@@ -17,37 +16,41 @@ const HeaderDrawer = () => {
         aria-label="Sidenav"
       >
         <div class="overflow-y-auto HeaderDrawer py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-          <div className="sticky px-auto flex flex-col justify-center">
-            <div  class="flex sticky  justify-center mr-4">
-                <img
-                  src="https://avatars.githubusercontent.com/u/109535601?v=4"
-                  class="mr-3 h-8"
-                  alt="paradox Logo"
-                />
-                <span class="self-center text-2xl  font-semibold whitespace-nowrap dark:text-white">
-                  DevHive
-                </span>
+          <div>
+            <div className="avatar mt-5">
+              <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img alt="" src="https://avatars.githubusercontent.com/u/67302140?v=4" />
               </div>
-         <DrawerBanner></DrawerBanner>
-            <Link to="/register"><button className="btn btn-info w-full btn-md">JOIN Now</button></Link>
+            </div>
+            <div className="mt-3">
+              <div className="text-base font-medium text-gray-800 dark:text-gray-200">
+                Name
+              </div>
+            </div>
+            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+              Name.com
+            </div>
+            <div className="flex flex-row justify-evenly items-center my-3">
+              <div className="btn bg-orange-300 btn-xs btn-circle btn-outline"></div>
+              <div className="btn bg-green-300 btn-xs btn-circle btn-outline"></div>
+              <div className="btn bg-purple-300 btn-xs btn-circle btn-outline"></div>
+            </div>
           </div>
-          
-        
 
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <Link to='/' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Home</span>
-            </Link>
-            <Link to='/chat' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </li>
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Inbox</span>
-            </Link>
-            <Link to='/track-orders' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </li>
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Manage Orders</span>
-            </Link>
-            <Link to='/lists' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </li>
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Lists</span>
-            </Link>
-            <Link className="dropdown pl-3 flex justify-start items-center group dropdown-end">
+            </li>
+            <li className="dropdown pl-3 flex justify-start items-center group dropdown-end">
               <label
                 tabIndex={0}
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -70,34 +73,34 @@ const HeaderDrawer = () => {
               <ul
                 tabIndex={0}
                 id="dropdown-pages"
-                className="flex items-center absolute dropdown-content flex-col m-2 flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
+                className="flex items-center dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
               >
-                <Link className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <a className="">Categories Item 1</a>
-                </Link>
-                <Link className="flex items-center  min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <a>Categories Item 2</a>
-                </Link>
+                <li className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+                  <Link to="" className="">Item 1</Link>
+                </li>
+                <li className="flex items-center  min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+                  <Link to="">Item 2</Link>
+                </li>
               </ul>
-            </Link>
-            <Link to='/settings' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </li>
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Settings</span>
-            </Link>
+            </li>
           </ul>
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <span class="ml-3">Developer Section</span>
-            <Link to='/developer-profile' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <span class="ml-3">Manage Profile</span>
-            </Link>
-            <Link to='/my-gists' className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+              <span class="ml-3">Manage Orders</span>
+            </li>
+            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <span class="ml-3">Manage Gigs</span>
-            </Link>
+            </li>
           </ul>
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <span class="ml-3">Admin Section</span>
-            <Link to='/all-gigs'>
-              <a
-                href="#"
+            <li>
+              <Link
+                to="#"
                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -115,11 +118,11 @@ const HeaderDrawer = () => {
                   ></path>
                 </svg>
                 <span class="ml-3">Manage Gigs</span>
-              </a>
-            </Link>
-            <Link to='/all-users'>
-              <a
-                href="#"
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#"
                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -132,11 +135,11 @@ const HeaderDrawer = () => {
                   <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"></path>
                 </svg>
                 <span class="ml-3">Manage Users</span>
-              </a>
-            </Link>
-            <Link to='/issues'>
-              <a
-                href="#"
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#"
                 class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -152,11 +155,11 @@ const HeaderDrawer = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                <span class="ml-3">Issues</span>
-              </a>
-            </Link>
+                <span class="ml-3">Manage developers</span>
+              </Link>
+            </li>
           </ul>
-          </div>
+        </div>
       </aside>
     </div>
   );
