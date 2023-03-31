@@ -3,8 +3,8 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import StartSelling from "../Pages/StartSelling";
 import Services from "../Pages/Services";
+import StartSelling from "../Pages/StartSelling/StartSelling";
 
 const router = createBrowserRouter([
 
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/start_selling',
-          element: <StartSelling />
+          element: <StartSelling/>
         },
         {
           path: '/services',
