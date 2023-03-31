@@ -19,14 +19,14 @@ const Header = () => {
   return (
     <div>
       <header>
-        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav class="bg-white border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               {drawer && <HeaderDrawer></HeaderDrawer>}
               {drawer && (
                 <button
                   onClick={() => setDrawer(false)}
-                  className="fixed z-50 btn btn-lg p-4 btn-circle btn-error btn-outline lg:hidden top-[50%] right-5 "
+                  className="fixed z-50 btn btn-lg p-4 btn-circle btn-error btn-outline lg:hidden top-20 right-5 "
                 >
                   <img
                     className="w-[800px]"
@@ -152,7 +152,10 @@ const Header = () => {
                 </button>
               </Link>
               {/* developer start */}
-              <div title='developer section' className="dropdown mt-1 dropdown-end">
+              <div
+                title="developer section"
+                className="dropdown mt-1 dropdown-end"
+              >
                 <label tabIndex={0}>
                   <button
                     type="button"
@@ -184,7 +187,7 @@ const Header = () => {
               </div>
               {/* developer end  */}
               {/* admin start */}
-              <div title='admin section' className="dropdown mt-1 dropdown-end">
+              <div title="admin section" className="dropdown mt-1 dropdown-end">
                 <label tabIndex={0}>
                   <button
                     type="button"
@@ -299,7 +302,8 @@ const Header = () => {
               </>
 
               {/* <!-- Notifications --> */}
-              <button title='notifications'
+              <button
+                title="notifications"
                 type="button"
                 data-dropdown-toggle="notification-dropdown"
                 class="p-2  text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -351,7 +355,7 @@ const Header = () => {
               {/* theme */}
               <button
                 type="button"
-                title='themes'
+                title="themes"
                 data-dropdown-toggle="apps-dropdown"
                 class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-3 "
               >
@@ -362,7 +366,7 @@ const Header = () => {
               {/* <!-- Apps --> */}
 
               {/* components start */}
-              <div title='components' className="dropdown dropdown-end">
+              <div title="components" className="dropdown dropdown-end">
                 <label tabIndex={0}>
                   <button
                     type="button"
@@ -393,7 +397,10 @@ const Header = () => {
               </div>
               {/* components end  */}
 
-              <div title='profile' className="dropdown dropdown-end">
+              <div
+                title="profile"
+                className="hidden sm:block dropdown dropdown-end"
+              >
                 <label tabIndex={0}>
                   <button
                     type="button"
