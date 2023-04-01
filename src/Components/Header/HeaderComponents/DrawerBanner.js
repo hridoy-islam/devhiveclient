@@ -1,9 +1,15 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../features/api/loginSlice";
+
 const DrawerBanner = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <div className=" w-full h-[80px] bg-base-300 mt-5 rounded-lg"></div>
@@ -41,13 +47,13 @@ const DrawerBanner = () => {
             title="settings"
           />
         </Link>
-        <Link to="/logout" className="btn  btn-xs btn-circle btn-ghost">
+        <a onClick={handleLogout} className="btn  btn-xs btn-circle btn-ghost">
           <img
             src="https://cdn-icons-png.flaticon.com/512/166/166456.png"
             alt="logout"
             title="logout"
           />
-        </Link>
+        </a>
       </div>
     </>
   );

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { getAuth, signOut } from "firebase/auth";
+import app from "../../Configs/Firebase.config";
+const auth = getAuth(app);
 const loginSlice = createSlice({
   name: "login",
   initialState: {
@@ -13,9 +15,14 @@ const loginSlice = createSlice({
     setUserData: (state, action) => {
       state.userData = action.payload;
     },
+    logout: (state) => {
+      signOut(auth);
+      state.isLoggedIn = false;
+      state.userData = null;
+    },
   },
 });
 
-export const { setLoggedIn, setUserData } = loginSlice.actions;
+export const { setLoggedIn, setUserData, logout } = loginSlice.actions;
 
 export default loginSlice.reducer;
