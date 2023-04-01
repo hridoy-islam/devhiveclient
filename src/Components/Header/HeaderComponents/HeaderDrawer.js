@@ -3,38 +3,35 @@ import "./HeaderDrawer.css";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import DrawerBanner from "./DrawerBanner";
 // ..
 AOS.init();
 const HeaderDrawer = () => {
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const userData = useSelector((state) => state.login.userData);
+
   return (
     <div className="block z-50 lg:hidden">
       <aside
         data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-sine"
-        class="fixed  top-0 left-0 w-64 h-full"
+        class="fixed bg-base-200 top-0 left-0 w-64 h-full"
         aria-label="Sidenav"
       >
         <div class="overflow-y-auto HeaderDrawer py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <div>
-            <div className="avatar mt-5">
-              <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img alt="" src="https://avatars.githubusercontent.com/u/67302140?v=4" />
-              </div>
-            </div>
-            <div className="mt-3">
-              <div className="text-base font-medium text-gray-800 dark:text-gray-200">
-                Name
-              </div>
-            </div>
-            <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-              Name.com
-            </div>
-            <div className="flex flex-row justify-evenly items-center my-3">
-              <div className="btn bg-orange-300 btn-xs btn-circle btn-outline"></div>
-              <div className="btn bg-green-300 btn-xs btn-circle btn-outline"></div>
-              <div className="btn bg-purple-300 btn-xs btn-circle btn-outline"></div>
-            </div>
+            {isLoggedIn ? (
+              <DrawerBanner></DrawerBanner>
+            ) : (
+              <Link
+                to="/login"
+                className=" w-full h-[80px] bg-gray-300 mt-5 rounded-lg"
+              >
+                <button className="btn btn-info w-full">Login Now</button>
+              </Link>
+            )}
           </div>
 
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
@@ -76,7 +73,9 @@ const HeaderDrawer = () => {
                 className="flex items-center dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
               >
                 <li className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <Link to="" className="">Item 1</Link>
+                  <Link to="" className="">
+                    Item 1
+                  </Link>
                 </li>
                 <li className="flex items-center  min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
                   <Link to="">Item 2</Link>

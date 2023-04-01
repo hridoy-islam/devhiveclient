@@ -5,9 +5,15 @@ import "./Header.module.css";
 import HeaderDrawer from "./HeaderComponents/HeaderDrawer";
 import DrawerBanner from "./HeaderComponents/DrawerBanner";
 import NavThemeToggle from "../Navbar/NavThemeToggle";
+import { useSelector } from "react-redux";
+import { AiOutlineLogin } from "react-icons/ai";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const userData = useSelector((state) => state.login.userData);
+  console.log(userData);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -16,10 +22,11 @@ const Header = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div>
       <header>
-        <nav class="bg-white border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
+        <nav class="bg-base-300 border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               {drawer && <HeaderDrawer></HeaderDrawer>}
@@ -101,7 +108,7 @@ const Header = () => {
                     type="text"
                     name="search"
                     id="topbar-search"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    class="bg-transparent border border-gray-300 text-base-content sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Search Gists"
                   />
                 </div>
@@ -259,14 +266,14 @@ const Header = () => {
                   <div className="fixed z-10 inset-0 overflow-y-auto">
                     <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                       <div className="fixed inset-0 transition-opacity">
-                        <div className="absolute z-40 inset-0 bg-gray-500 opacity-75"></div>
+                        <div className="absolute z-40 inset-0 bg-base-200 opacity-75"></div>
                       </div>
                       <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
                       &#8203;
-                      <div className="inline-block align-bottom bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                      <div className="inline-block align-bottom bg-base-300 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                         <div className="sm:flex sm:items-start">
                           <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                            <h3 className="text-lg leading-6 font-medium text-gray-100">
+                            <h3 className="text-lg leading-6 font-medium text-base-content">
                               Search
                             </h3>
                             <div className="mt-2">
@@ -274,18 +281,18 @@ const Header = () => {
                                 <input
                                   type="text"
                                   placeholder="Search"
-                                  className="border-gray-200 border-2 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                  className="border-gray-200 bg-transparent border-2 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
                                 />
                                 <div className="mt-4">
                                   <button
                                     type="submit"
-                                    className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    className="bg-blue-500 btn btn-outline text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                   >
                                     Search
                                   </button>
                                   <button
                                     type="button"
-                                    className="ml-4 bg-gray-200 text-gray-600 rounded-lg px-4 py-2 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    className="ml-4 bg-gray-200 btn btn-outline text-gray-600 rounded-lg px-4 py-2 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
                                     onClick={handleCloseModal}
                                   >
                                     Cancel
@@ -397,46 +404,56 @@ const Header = () => {
               </div>
               {/* components end  */}
 
-              <div
-                title="profile"
-                className="hidden sm:block dropdown dropdown-end"
-              >
-                <label tabIndex={0}>
-                  <button
-                    type="button"
-                    class="flex mx-3  text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    id="user-menu-button"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown"
-                  >
-                    <span class="sr-only">Open user menu</span>
-                    <img
-                      class="w-8 h-8 rounded-full"
-                      src="https://avatars.githubusercontent.com/u/67302140?v=4"
-                      alt="user photo"
-                    />
-                  </button>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 py-2 px-4 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-60"
+              {userData ? (
+                <div
+                  title="profile"
+                  className="hidden sm:block dropdown dropdown-end"
                 >
-                  <DrawerBanner></DrawerBanner>
+                  <label tabIndex={0}>
+                    <button
+                      type="button"
+                      class="flex mx-3  text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                      id="user-menu-button"
+                      aria-expanded="false"
+                      data-dropdown-toggle="dropdown"
+                    >
+                      <span class="sr-only">Open user menu</span>
+                      <img
+                        class="w-8 h-8 rounded-full"
+                        src={userData?.photoURL}
+                        alt={userData?.displayName}
+                      />
+                    </button>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 py-2 px-4 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-60"
+                  >
+                    <DrawerBanner></DrawerBanner>
 
-                  <li>
-                    <Link to="/chat">Inbox</Link>
-                  </li>
-                  <li>
-                    <Link to="/track-orders">Manage Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/lists">Wishlist</Link>
-                  </li>
-                  <li>
-                    <Link to="/settings">Settings</Link>
-                  </li>
-                </ul>
-              </div>
+                    <li>
+                      <Link to="/chat">Inbox</Link>
+                    </li>
+                    <li>
+                      <Link to="/track-orders">Manage Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="/lists">Wishlist</Link>
+                    </li>
+                    <li>
+                      <Link to="/settings">Settings</Link>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <div>
+                  <button className="btn btn-ghost btn-circle">
+                    <Link to="/login">
+                      <AiOutlineLogin className="w-7 h-7" />
+                    </Link>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </nav>

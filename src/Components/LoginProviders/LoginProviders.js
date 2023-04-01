@@ -7,10 +7,13 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import app from "../../Configs/Firebase.config";
+import { useDispatch } from "react-redux";
+import { setLoggedIn, setUserData } from "../../features/api/loginSlice";
 
 const LoginProviders = () => {
   const googleProvider = new GoogleAuthProvider();
   const githubprovider = new GithubAuthProvider();
+  const dispatch = useDispatch();
   const auth = getAuth(app);
   const handleGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
@@ -21,7 +24,10 @@ const LoginProviders = () => {
         // The signed-in user info.
         const user = result?.user;
         // ...
-        console.log(user);
+
+        // Set the login data in the store
+        dispatch(setLoggedIn(true));
+        dispatch(setUserData(user));
       })
       .catch((error) => {
         // Handle Errors here.
@@ -40,7 +46,8 @@ const LoginProviders = () => {
       .then((result) => {
         const user = result?.user;
         // ...
-        console.log(user);
+        dispatch(setLoggedIn(true));
+        dispatch(setUserData(user));
       })
       .catch((error) => {
         // Handle Errors here.
