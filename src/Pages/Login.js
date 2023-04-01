@@ -49,9 +49,12 @@ const Login = () => {
     sendPasswordResetEmail(auth, forgetPass)
       .then(() => {
         console.log("reset email sent");
+        alert("reset email sent");
         // Password reset email sent!
         // ..
-        //close the modal
+        //close the modal lebelled my-modal-6
+        const modal = document.getElementById("my-modal-6");
+        modal.checked = false;
       })
       .catch((error) => {
         const errorCode = error.code;
