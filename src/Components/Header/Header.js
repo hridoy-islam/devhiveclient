@@ -404,7 +404,7 @@ const Header = () => {
               </div>
               {/* components end  */}
 
-              {userData ? (
+              {userData && isLoggedIn ? (
                 <div
                   title="profile"
                   className="hidden sm:block dropdown dropdown-end"
