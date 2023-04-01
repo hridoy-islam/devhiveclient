@@ -67,9 +67,15 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                            <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
                             <h3 className='text-2xl font-semibold'>$5</h3>
                         </div>
                     </div>
@@ -89,10 +95,16 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
-                            <h3 className='text-2xl font-semibold'>$300</h3>
+                            <h2 className='text-sm items-center font-medium pt-1 pr-1 flex ' >STARTING AT</h2>
+                            <h3 className='text-2xl font-semibold'>$30</h3>
                         </div>
                     </div>
                 </div>
@@ -111,9 +123,15 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
                             <h3 className='text-2xl font-semibold'>$50</h3>
                         </div>
                     </div>
@@ -133,10 +151,16 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
-                            <h3 className='text-2xl font-semibold'>$245</h3>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h3 className='text-2xl font-semibold'>$25</h3>
                         </div>
                     </div>
                 </div>
@@ -155,9 +179,15 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
                             <h3 className='text-2xl font-semibold'>$50</h3>
                         </div>
                     </div>
@@ -177,9 +207,15 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design modern and responsive wordpress website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
                             <h3 className='text-2xl font-semibold'>$5</h3>
                         </div>
                     </div>
@@ -199,10 +235,16 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
-                            <h3 className='text-2xl font-semibold'>$245</h3>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h3 className='text-2xl font-semibold'>$45</h3>
                         </div>
                     </div>
                 </div>
@@ -221,17 +263,23 @@ const Services = () => {
                         <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
-                        <div>Rating</div>
+                        <div>
+                        <div className="rating flex items-center">
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <h2 className='text-lg pl-1'>4.8</h2>
+                            <h3 className='text-lg pl-1'>(35)</h3>
+                            </div>
+                        </div>
                         <div className='flex'>
-                            <h2 className='text-md font-medium pt-1 pr-1' >STARTING AT</h2>
-                            <h3 className='text-2xl font-semibold'>$300</h3>
+                            <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
+                            <h3 className='text-2xl font-semibold'>$30</h3>
                         </div>
                     </div>
                 </div>
                 </div>
                 
             </div>
-            <div className="btn-group my-10 ">
+            <div className="btn-group my-10 mb-10 flex justify-center">
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1"><MdOutlineArrowBackIos/></button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1">1</button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1">2</button>
