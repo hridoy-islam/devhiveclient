@@ -1,12 +1,64 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
 import { Link } from "react-router-dom";
+import {
+  getAuth,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import app from "../Configs/Firebase.config";
+import { useDispatch } from "react-redux";
+import { setLoggedIn, setUserData } from "../features/api/loginSlice";
 
 const Login = () => {
   const [users, setUsers] = useState({});
+  const auth = getAuth(app);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const submitLogin = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(users);
+    setLoading(true);
+    const email = users.email;
+    const password = users.password;
+    const name = users.name;
+    const image =
+      users.image ||
+      "https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png";
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        dispatch(setLoggedIn(true));
+        dispatch(setUserData(user));
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
+    //send data to firebase to create user
+  };
+  const handleForgetPass = (e) => {
+    e.preventDefault();
+
+    const forgetPass = e.target.forgetpass.value;
+    console.log(forgetPass);
+    sendPasswordResetEmail(auth, forgetPass)
+      .then(() => {
+        console.log("reset email sent");
+        // Password reset email sent!
+        // ..
+        //close the modal
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        // ..
+      });
   };
   const handleEventBlur = (e) => {
     const value = e.target.value;
@@ -91,13 +143,12 @@ const Login = () => {
                       </label>
                     </div>
                   </div>
-                  <a
-                    href="#"
-                    onClick={handleForgetPassword}
-                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  <label
+                    htmlFor="my-modal-6"
+                    className="text-sm  font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
-                    Forgot password?
-                  </a>
+                    Forget Password?
+                  </label>
                 </div>
                 <button
                   type="submit"
@@ -115,6 +166,46 @@ const Login = () => {
                   </Link>
                 </p>
               </form>
+
+              <div>
+                {/* modal  */}
+
+                <input
+                  type="checkbox"
+                  id="my-modal-6"
+                  className="modal-toggle"
+                />
+                <div className="modal modal-bottom sm:modal-middle">
+                  <div className="modal-box">
+                    <form onSubmit={handleForgetPass} action="">
+                      <label
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        htmlFor=""
+                      >
+                        Enter Your Email
+                      </label>
+                      <input
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        type="email"
+                        name="forgetpass"
+                        defaultValue={users?.email}
+                        id=""
+                        // onBlur={handleEventBlur}
+                        required=""
+                      />
+
+                      <div className="modal-action">
+                        <button type="submit" className="btn">
+                          Submit
+                        </button>
+                        <label htmlFor="my-modal-6" className="btn">
+                          Cancel
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
