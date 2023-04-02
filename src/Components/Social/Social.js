@@ -5,6 +5,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const Social = () => {
   return (
     <div>
+      {/* hi  */}
       <div className="md:flex">
         <h1 className="text-2xl text-center">DevhiveClients</h1>
         <p className="text-center">
