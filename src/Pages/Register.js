@@ -1,25 +1,114 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
 import { Link } from "react-router-dom";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
+import app from "../Configs/Firebase.config";
+import { useDispatch } from "react-redux";
+import { setLoggedIn, setUserData } from "../features/api/loginSlice";
 const Register = () => {
   const [users, setUsers] = useState({});
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const [selectedImageName, setSelectedImageName] = useState("");
+  const [imgUploading, setImgUploading] = useState(false);
+  const auth = getAuth(app);
+  const handleImageChange = (e) => {
+    setImgUploading(true);
+    // disable submit button while uploading
+
+    const image = e.target.files[0];
+
+    setSelectedImageName(image.name);
+    const formData = new FormData();
+    formData.append("image", image);
+    uploadImage(formData);
+  };
+  const uploadImage = (formData) => {
+    // const apiKey = process.env.IMGBBAPI;
+    fetch(
+      `https://api.imgbb.com/1/upload?key=d1cfe20a3fbc8743b93b754fbabc2085&expiration=0`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const imageUrl = data.data.url;
+        // Do something with the imageUrl, like save it to a database
+        const newUsers = { ...users };
+        newUsers.image = imageUrl;
+        setUsers(newUsers);
+        setImgUploading(false);
+      })
+      .catch((error) => console.error(error));
+  };
   const submitLogin = (e) => {
     e.preventDefault();
-    console.log(users);
+    setLoading(true);
+    const email = users.email;
+    const password = users.password;
+    const name = users.name;
+    const image =
+      users.image ||
+      "https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png";
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        handleUpdate(name, image);
+        if (handleUpdate) {
+          const user = userCredential.user;
+          console.log(user);
+          // Set the login data in the store
+          dispatch(setLoggedIn(true));
+          dispatch(setUserData(user));
+          return;
+        }
+        console.log("unsuccessful user update");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
+    //send data to firebase to create user
+
+    //if user created then redirect to login page
   };
+  const handleUpdate = (name, image) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: image,
+    })
+      .then(() => {
+        console.log("update profile success");
+        return true;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  //create a function to update profile
   const handleEventBlur = (e) => {
     const value = e.target.value;
     const field = e.target.name;
     const newUsers = { ...users };
     newUsers[field] = value;
     setUsers(newUsers);
-    console.log(value, field);
   };
   const handleForgetPassword = () => {
     console.log("forget password");
 
     users?.email ? console.log(users?.email) : alert("email not found");
   };
+
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">
@@ -54,6 +143,21 @@ const Register = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Mr. Bean"
                     required=""
+                  />
+                </div>
+                <div>
+                  <label
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="image"
+                  >
+                    Select an image:
+                  </label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    onChange={handleImageChange}
                   />
                 </div>
                 <div>
@@ -106,10 +210,16 @@ const Register = () => {
                   </div>
                 </div>
                 <button
+                  id="submitBtn"
                   type="submit"
-                  className="w-full btn text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  // className="w-full btn text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className={
+                    imgUploading
+                      ? "btn btn-disabled w-full rounded lg"
+                      : "btn w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  }
                 >
-                  Sign up
+                  {imgUploading ? "uploading.." : "Sign up"}
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already an user?{" "}
