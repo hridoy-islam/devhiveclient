@@ -1,9 +1,10 @@
 import React from "react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content">
-      <div>
+    <footer className="container mx-auto footer p-10 text-neutral-content">
+      <div className="footer-color-text">
         <span className="footer-title">Categories</span>
         <a className="link link-hover">Graphics & Design</a>
         <a className="link link-hover">Digital Marketing</a>
@@ -17,7 +18,7 @@ const Footer = () => {
         <a className="link link-hover">Photography</a>
         <a className="link link-hover">Sitemap</a>
       </div>
-      <div>
+      <div className="footer-color-text">
         <span className="footer-title">About</span>
         <a className="link link-hover">Careers</a>
         <a className="link link-hover">Press & News</a>
@@ -27,14 +28,14 @@ const Footer = () => {
         <a className="link link-hover">Intellectual Property Claims</a>
         <a className="link link-hover">Investor Relations</a>
       </div>
-      <div>
+      <div className="footer-color-text">
         <span className="footer-title">Support</span>
         <a className="link link-hover">Help & Support</a>
         <a className="link link-hover">Trust & Safety</a>
         <a className="link link-hover">Selling on Fiverr</a>
         <a className="link link-hover">Buying on Fiver</a>
       </div>
-      <div>
+      <div className="footer-color-text">
         <span className="footer-title">Community</span>
         <a className="link link-hover">Customer Success Stories</a>
         <a className="link link-hover">Community Hub</a>
@@ -48,7 +49,7 @@ const Footer = () => {
         <a className="link link-hover">Become a Seller</a>
         <a className="link link-hover">Community Standards</a>
       </div>
-      <div>
+      <div className="footer-color-text">
         <span className="footer-title">More From Fiverr</span>
         <a className="link link-hover">Fiverr Business</a>
         <a className="link link-hover">Fiverr Pro</a>
