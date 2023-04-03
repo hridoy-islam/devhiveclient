@@ -5,35 +5,39 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Services from "../Pages/Services";
 import StartSelling from "../Pages/StartSelling/StartSelling";
+import Settings from "../Pages/Settings/Settings";
 
 const router = createBrowserRouter([
-
   {
     path: "/",
     element: <Main />,
     children: [
-        {
-            path: '/',
-            element: <Home />
-        },
-        {
-          path: '/login',
-          element: <Login />
-        },
-        {
-          path: '/register',
-          element: <Register />
-        },
-        {
-          path: '/start_selling',
-          element: <StartSelling/>
-        },
-        {
-          path: '/services',
-          element: <Services />
-        },
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/start_selling",
+        element: <StartSelling />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
     ],
   },
-])
+]);
 
 export default router;
