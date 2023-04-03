@@ -3,7 +3,7 @@ import { FaRegFile, FaRegEnvelopeOpen, FaRegCalendarCheck } from 'react-icons/fa
 
 const WorksPlan = () => {
     return (
-        <div className='bg-gray-300 mt-20 pt-10'>
+        <div className=' bg-accent mt-20 py-12'>
             <h1 className='text-center text-5xl font-bold'>How it works</h1>
             <div className='flex justify-around gap-10 mt-4'>
                 <div>
