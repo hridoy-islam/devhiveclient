@@ -22,17 +22,23 @@ const CategoriesHeader = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
 
-  const handleResize = () => {
-    const containerWidth = document.querySelector(".container").offsetWidth;
-    const categoryWidth = document.querySelector("li").offsetWidth;
-    const categoriesPerPage = Math.floor(containerWidth / categoryWidth);
-    const newEndIndex = startIndex + categoriesPerPage - 1;
-    setEndIndex(newEndIndex);
-  };
-  //   handleResize();
   useEffect(() => {
+    const handleResize = () => {
+      const container = document.querySelector(".container");
+      const category = document.querySelector("li");
+
+      if (container && category) {
+        const containerWidth = container.offsetWidth;
+        const categoryWidth = category.offsetWidth;
+        const categoriesPerPage = Math.floor(containerWidth / categoryWidth);
+        const newEndIndex = startIndex + categoriesPerPage - 1;
+        setEndIndex(newEndIndex);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -66,7 +72,7 @@ const CategoriesHeader = () => {
     <div className="bg-white py-1 hidden lg:block border-b">
       <div
         data-aos="fade-right"
-        className=" container mx-auto px-4 flex items-center justify-center"
+        className="container mx-auto px-4 flex items-center justify-center"
       >
         {showLeftArrow && (
           <button
