@@ -24,20 +24,14 @@ const DrawerBanner = () => {
         {userData?.email}
       </div>
       <div className="flex flex-row justify-evenly items-center my-3">
-        <Link
-          to="/settings/profile"
-          className="btn  btn-xs btn-circle btn-ghost"
-        >
+        <Link to="/notification" className="btn  btn-xs btn-circle btn-ghost">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/1256/1256291.png"
+            src="https://cdn-icons-png.flaticon.com/512/1246/1246378.png"
             alt="edit profile"
             title="edit profile"
           />
         </Link>
-        <Link
-          to="/settings/generel"
-          className="btn  btn-xs btn-circle btn-ghost"
-        >
+        <Link to="/user-profile" className="btn  btn-xs btn-circle btn-ghost">
           <img
             src="https://cdn-icons-png.flaticon.com/512/655/655707.png"
             alt="settings"

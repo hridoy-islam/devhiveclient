@@ -197,11 +197,13 @@ const Header = () => {
                 <button
                   type="button"
                   data-dropdown-toggle="apps-dropdown"
-                  class="flex flex-row gap-1 p-2 items-center ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                  class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                 >
                   {/* <!-- Icon --> */}
                   <FaHome className="text-2xl"></FaHome>
-                  <span className="font-semibold mt-1">HOME</span>
+                  <span className="font-semibold hidden antialiased sm:block mt-1">
+                    HOME
+                  </span>
                 </button>
               </NavLink>
               {/* developer start */}
@@ -238,6 +240,9 @@ const Header = () => {
                     </li>
                     <li>
                       <NavLink to="/my-gigs">My Gigs</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/my-orders">My Orders</NavLink>
                     </li>
                   </ul>
                 </div>
@@ -329,6 +334,9 @@ const Header = () => {
                     <li>
                       <NavLink to="/settings">Settings</NavLink>
                     </li>
+                    <li>
+                      <NavLink to="/contact">Contact Admin</NavLink>
+                    </li>
                   </ul>
                 </div>
               ) : (
@@ -343,7 +351,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <CategoriesHeader ></CategoriesHeader>
+        <CategoriesHeader></CategoriesHeader>
       </header>
     </div>
   );
