@@ -19,7 +19,7 @@ const FreelancersImage = () => {
                     Persons.map(person => <div style={{
                         backgroundImage: `url(${person.img})`,
                         backgroundPosition: 'center',
-                        height: '35vh',
+                        height: '36vh',
                         backgroundSize:'center',
                         backgroundRepeat: 'no-repeat'
 
