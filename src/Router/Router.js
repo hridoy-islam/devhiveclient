@@ -6,6 +6,8 @@ import Register from "../Pages/Register";
 import Services from "../Pages/Services";
 import StartSelling from "../Pages/StartSelling/StartSelling";
 import Settings from "../Pages/Settings/Settings";
+import Header from "../Components/Header/Header";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,15 @@ const router = createBrowserRouter([
         element: <Settings />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <div>
+        <Header></Header>
+        <NotFound></NotFound>
+      </div>
+    ),
   },
 ]);
 
