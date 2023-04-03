@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import apiSlice from './api/apislice';
+import apiSlice from './api/apiSlice';
 import loginReducer from './api/loginSlice'
 export default configureStore({
   reducer: {
