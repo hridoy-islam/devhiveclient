@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import "./Header.module.css";
 import HeaderDrawer from "./HeaderComponents/HeaderDrawer";
@@ -7,6 +7,8 @@ import DrawerBanner from "./HeaderComponents/DrawerBanner";
 import NavThemeToggle from "../Navbar/NavThemeToggle";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
+import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +28,7 @@ const Header = () => {
   return (
     <div>
       <header>
-        <nav class="bg-base-300 border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
+        <nav class="bg-base-300 lg:bg-base-100 lg:border-b border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               {drawer && <HeaderDrawer></HeaderDrawer>}
@@ -75,21 +77,23 @@ const Header = () => {
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <Link to="/" class="flex mr-1">
-                <img
-                  src="https://avatars.githubusercontent.com/u/109535601?v=4"
-                  class="mr-1 hidden sm:block h-8"
-                  alt="paradox Logo"
-                />
-                <span class="self-center text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-white">
-                  DevHive
-                </span>
+              <Link to="/" class="w-36 flex gap-2 flex-row  mr-1">
+                <div>
+                  <img
+                    src="https://i.ibb.co/DfBt020/IMG-20230403-234455-removebg-preview.png"
+                    class="  h-8  bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                    alt="paradox Logo"
+                  />
+                </div>
+                <div class=" text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-white">
+                  devHive
+                </div>
               </Link>
-              <form action="#" method="GET" class="hidden lg:block lg:pl-2">
+              <form action="#" method="GET" class="hidden lg:block lg:ml-2">
                 <label for="topbar-search" class="sr-only ">
                   Search
                 </label>
-                <div class="relative mt-1 lg:w-72">
+                <div class="relative mt-1 lg:w-[550px] flex">
                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
                       class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -113,125 +117,6 @@ const Header = () => {
                   />
                 </div>
               </form>
-              {/* home  */}
-              <Link to="/">
-                <button
-                  type="button"
-                  data-dropdown-toggle="apps-dropdown"
-                  class="flex flex-row gap-1 p-2 mt-1 ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
-                >
-                  {/* <!-- Icon --> */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
-                  <span className="hidden sm:block">HOME</span>
-                </button>
-              </Link>
-              <Link to="/contact">
-                <button
-                  type="button"
-                  data-dropdown-toggle="apps-dropdown"
-                  class="flex flex-row gap-1 p-2 mt-1 ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
-                >
-                  {/* <!-- Icon --> */}
-                  <svg
-                    aria-hidden="true"
-                    class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path>
-                    <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
-                  </svg>
-                  <span className="hidden sm:block">Contact</span>
-                </button>
-              </Link>
-              {/* developer start */}
-              <div
-                title="developer section"
-                className="dropdown mt-1 dropdown-end"
-              >
-                <label tabIndex={0}>
-                  <button
-                    type="button"
-                    data-dropdown-toggle="apps-dropdown"
-                    class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
-                    </svg>
-                  </button>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <Link to="/developer-profile">Developer Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/my-gigs">My Gigs</Link>
-                  </li>
-                </ul>
-              </div>
-              {/* developer end  */}
-              {/* admin start */}
-              <div title="admin section" className="dropdown mt-1 dropdown-end">
-                <label tabIndex={0}>
-                  <button
-                    type="button"
-                    data-dropdown-toggle="apps-dropdown"
-                    class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </button>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <Link to="/all-gigs">Manage Gigs</Link>
-                  </li>
-                  <li>
-                    <Link to="/all-users">Manage Users</Link>
-                  </li>
-                  <li>
-                    <Link to="/issues">Issues</Link>
-                  </li>
-                </ul>
-              </div>
-              {/* admin end  */}
             </div>
 
             {/* 2nd section */}
@@ -308,106 +193,107 @@ const Header = () => {
                 )}
               </>
 
-              {/* <!-- Notifications --> */}
-              <button
-                title="notifications"
-                type="button"
-                data-dropdown-toggle="notification-dropdown"
-                class="p-2  text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-              >
-                <span class="sr-only">View notifications</span>
-                {/* <!-- Bell icon --> */}
-                <svg
-                  aria-hidden="true"
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+              <NavLink to="/">
+                <button
+                  type="button"
+                  data-dropdown-toggle="apps-dropdown"
+                  class="flex flex-row gap-1 p-2 items-center ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                 >
-                  <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
-                </svg>
-              </button>
-              {/* <!-- Dropdown menu --> */}
-              <div
-                class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700"
-                id="notification-dropdown"
-              >
-                <div class="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  Notifications
-                </div>
-
-                <a
-                  href="#"
-                  class="block py-2 text-base font-normal text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline"
+                  {/* <!-- Icon --> */}
+                  <FaHome className="text-2xl"></FaHome>
+                  <span className="font-semibold mt-1">HOME</span>
+                </button>
+              </NavLink>
+              {/* developer start */}
+              {isLoggedIn && (
+                <div
+                  title="developer section"
+                  className="dropdown mt-1 dropdown-end"
                 >
-                  <div class="inline-flex items-center ">
-                    <svg
-                      aria-hidden="true"
-                      class="mr-2 w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
+                  <label tabIndex={0}>
+                    <button
+                      type="button"
+                      data-dropdown-toggle="apps-dropdown"
+                      class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                     >
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                      <path
-                        fill-rule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                    View all
-                  </div>
-                </a>
-              </div>
-              {/* theme */}
-              <button
-                type="button"
-                title="themes"
-                data-dropdown-toggle="apps-dropdown"
-                class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 focus:ring-3 "
-              >
-                {/* <!-- Icon --> */}
-                <NavThemeToggle></NavThemeToggle>
-              </button>
+                      <svg
+                        aria-hidden="true"
+                        class="w-6 h-6"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
+                      </svg>
+                    </button>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <NavLink to="/developer-profile">
+                        Developer Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/my-gigs">My Gigs</NavLink>
+                    </li>
+                  </ul>
+                </div>
+              )}
+              {/* developer end  */}
+              {/* admin start */}
+              {isLoggedIn && (
+                <div
+                  title="admin section"
+                  className="dropdown mt-1 dropdown-end"
+                >
+                  <label tabIndex={0}>
+                    <button
+                      type="button"
+                      data-dropdown-toggle="apps-dropdown"
+                      class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <NavLink to="/all-gigs">Manage Gigs</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/all-users">Manage Users</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/issues">Issues</NavLink>
+                    </li>
+                  </ul>
+                </div>
+              )}
+              {/* admin end  */}
 
               {/* <!-- Apps --> */}
-
-              {/* components start */}
-              <div title="components" className="dropdown dropdown-end">
-                <label tabIndex={0}>
-                  <button
-                    type="button"
-                    data-dropdown-toggle="apps-dropdown"
-                    class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                  >
-                    <svg
-                      class="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                    </svg>
-                  </button>
-                </label>
-                <ul
-                  tabIndex={0}
-                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <Link>List 1</Link>
-                  </li>
-                  <li>
-                    <Link>List 2</Link>
-                  </li>
-                </ul>
-              </div>
-              {/* components end  */}
 
               {userData && isLoggedIn ? (
                 <div
                   title="profile"
-                  className="hidden sm:block dropdown dropdown-end"
+                  className="hidden lg:block dropdown dropdown-end"
                 >
                   <label tabIndex={0}>
                     <button
@@ -432,31 +318,32 @@ const Header = () => {
                     <DrawerBanner></DrawerBanner>
 
                     <li>
-                      <Link to="/chat">Inbox</Link>
+                      <NavLink to="/chat">Inbox</NavLink>
                     </li>
                     <li>
-                      <Link to="/track-orders">Manage Orders</Link>
+                      <NavLink to="/track-orders">Manage Orders</NavLink>
                     </li>
                     <li>
-                      <Link to="/lists">Wishlist</Link>
+                      <NavLink to="/lists">Wishlist</NavLink>
                     </li>
                     <li>
-                      <Link to="/settings">Settings</Link>
+                      <NavLink to="/settings">Settings</NavLink>
                     </li>
                   </ul>
                 </div>
               ) : (
                 <div>
                   <button className="btn btn-ghost btn-circle">
-                    <Link to="/login">
+                    <NavLink to="/login">
                       <AiOutlineLogin className="w-7 h-7" />
-                    </Link>
+                    </NavLink>
                   </button>
                 </div>
               )}
             </div>
           </div>
         </nav>
+        <CategoriesHeader ></CategoriesHeader>
       </header>
     </div>
   );
