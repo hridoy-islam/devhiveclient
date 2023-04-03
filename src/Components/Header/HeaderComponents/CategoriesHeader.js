@@ -36,7 +36,7 @@ const CategoriesHeader = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [startIndex, categories]);
+  }, [startIndex]);
 
   useEffect(() => {
     if (startIndex === 0) {
@@ -66,7 +66,7 @@ const CategoriesHeader = () => {
     <div className="bg-white py-1 hidden lg:block border-b">
       <div
         data-aos="fade-right"
-        className="w-full  mx-auto px-4 flex items-center justify-center"
+        className=" container mx-auto px-4 flex items-center justify-center"
       >
         {showLeftArrow && (
           <button
