@@ -77,11 +77,11 @@ const Header = () => {
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <Link to="/" class="w-36 flex gap-2 flex-row  mr-1">
+              <Link to="/" class="  mr-1">
                 <img
                   src="https://i.ibb.co/FHqDjdX/IMG-20230404-110630-fotor-bg-remover-20230404111148.png"
                   class="  h-12  bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
-                  alt="paradox Logo"
+                  alt="devhive Logo"
                 />
               </Link>
               <form action="#" method="GET" class="hidden lg:block lg:ml-2">
