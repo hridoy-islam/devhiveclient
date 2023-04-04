@@ -15,9 +15,10 @@ const Profile = () => {
         className="App  flex justify-center flex-col items-center"
       >
         <h1 className="text-5xl font-bold m-5">Profile</h1>
-        <div>
-          <NavThemeToggle></NavThemeToggle>
-        </div>
+        {/* <div className="flex flex-row gap-3"> */}
+
+        <NavThemeToggle></NavThemeToggle>
+        {/* </div> */}
         <img
           className="w-20 "
           title={userData?.displayName}
