@@ -2,7 +2,7 @@ import React from "react";
 import "./HeaderDrawer.css";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DrawerBanner from "./DrawerBanner";
 // ..
@@ -35,19 +35,31 @@ const HeaderDrawer = () => {
           </div>
 
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <NavLink
+              to="/"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Home</span>
-            </li>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </NavLink>
+            <NavLink
+              to="/chat"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Inbox</span>
-            </li>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </NavLink>
+            <NavLink
+              to="/track-orders"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Manage Orders</span>
-            </li>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </NavLink>
+            <NavLink
+              to="/lists"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Lists</span>
-            </li>
-            <li className="dropdown pl-3 flex justify-start items-center group dropdown-end">
+            </NavLink>
+            <NavLink className="dropdown hover:font-bold pl-3 flex justify-start items-center group dropdown-end">
               <label
                 tabIndex={0}
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -73,56 +85,82 @@ const HeaderDrawer = () => {
                 className="flex items-center dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
               >
                 <li className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <Link to="" className="">
+                  <NavLink to="" className="hover:font-bold">
                     Item 1
-                  </Link>
+                  </NavLink>
                 </li>
-                <li className="flex items-center  min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <Link to="">Item 2</Link>
+                <li className="flex items-center hover:font-bold min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+                  <NavLink to="">Item 2</NavLink>
                 </li>
               </ul>
-            </li>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            </NavLink>
+            <NavLink
+              to="/settings"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Settings</span>
-            </li>
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <span class="ml-3">About</span>
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <span class="ml-3">Contact Admin</span>
+            </NavLink>
           </ul>
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <span class="ml-3">Developer Section</span>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <span class="ml-3">Manage Orders</span>
-            </li>
-            <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <NavLink
+              to="/developer-profile"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <span class="ml-3">Developer Profile</span>
+            </NavLink>
+            <NavLink
+              to="/my-gigs"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
               <span class="ml-3">Manage Gigs</span>
-            </li>
+            </NavLink>
+            <NavLink
+              to="/my-orders"
+              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <span class="ml-3">Manage Orders</span>
+            </NavLink>
           </ul>
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <span class="ml-3">Admin Section</span>
-            <li>
-              <Link
-                to="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+
+            <Link
+              to="/all-gigs"
+              class="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+            >
+              <svg
+                aria-hidden="true"
+                class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  aria-hidden="true"
-                  class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                  <path
-                    fill-rule="evenodd"
-                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span class="ml-3">Manage Gigs</span>
-              </Link>
-            </li>
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                <path
+                  fill-rule="evenodd"
+                  d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="ml-3">Manage Gigs</span>
+            </Link>
             <li>
               <Link
-                to="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                to="/all-users"
+                class="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
                   aria-hidden="true"
@@ -138,8 +176,8 @@ const HeaderDrawer = () => {
             </li>
             <li>
               <Link
-                to="#"
-                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                to="/issues"
+                class="flex hover:font-bold  items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
                   aria-hidden="true"
@@ -154,7 +192,7 @@ const HeaderDrawer = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                <span class="ml-3">Manage developers</span>
+                <span class="ml-3">Manage Issues</span>
               </Link>
             </li>
           </ul>
