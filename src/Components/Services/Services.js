@@ -28,9 +28,9 @@ const Services = () => {
             {/* carousel */}
 
             <Swiper
-                
+
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={10}
+                spaceBetween={2}
                 slidesPerView={4}
                 navigation
                 // pagination={{ clickable: true }}
@@ -38,29 +38,86 @@ const Services = () => {
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >
-                <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_1} alt="" />
+                <SwiperSlide >
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80  shadow-lg container bg-neutral-400 border-2 ">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl   font-serif  uppercase ">working at  home</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_1} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
+
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_2} alt="" />
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">react Developer</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_2} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_3} alt="" />
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">redux developer</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_3} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide >
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">  Graphics design </p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_4} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_4} alt="" />
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">php developer and backend</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_5} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>            
+                        </SwiperSlide>
+                <SwiperSlide>
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">full stake developer</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_6} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_5} alt="" />
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">working at  home</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_7} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_6} alt="" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_7} alt="" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img className=' border-4 border-gray-200  w-80  h-72 mx-auto border-b-indigo-500 py-3' src={slide_image_8} alt="" />
+                    <div className="flex flex-col max-w-sm h-max mx-auto w-80 shadow-lg container bg-neutral-400 border-2">
+                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 ">
+                            <p className="text-2xl font-serif  uppercase ">data entry expert</p>
+                        </div>
+                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-indigo-400 text-gray-900">
+                            <img src={slide_image_8} alt="" className="w-full h-80  -mt-16 bg-center bg-cover " />
+                        </div>
+                    </div>
                 </SwiperSlide>
 
             </Swiper>
