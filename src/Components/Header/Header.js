@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import "./Header.module.css";
 import HeaderDrawer from "./HeaderComponents/HeaderDrawer";
 import DrawerBanner from "./HeaderComponents/DrawerBanner";
-import NavThemeToggle from "../Navbar/NavThemeToggle";
+import { themeChange } from "theme-change";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
@@ -12,7 +12,10 @@ import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  useEffect(() => {
+    themeChange(false);
+    // 👆 false parameter is required for react project
+  }, []);
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   console.log(userData);
