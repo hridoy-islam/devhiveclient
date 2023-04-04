@@ -6,6 +6,8 @@ import Register from "../Pages/Register";
 import Services from "../Pages/Services";
 import StartSelling from "../Pages/StartSelling/StartSelling";
 import Settings from "../Pages/Settings/Settings";
+import Profile from "../Pages/Profile";
+import ProfileEdit from "../Pages/ProfileEdit";
 import Header from "../Components/Header/Header";
 import NotFound from "../Pages/NotFound/NotFound";
 
@@ -16,6 +18,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/home",
         element: <Home />,
       },
       {
@@ -33,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
+      },
+      {
+        path: "/user-profile",
+        element: <Profile />,
+      },
+      {
+        path: "/user-profile/edit",
+        element: <ProfileEdit />,
       },
       {
         path: "/settings",
