@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import "./Header.module.css";
 import HeaderDrawer from "./HeaderComponents/HeaderDrawer";
 import DrawerBanner from "./HeaderComponents/DrawerBanner";
-import NavThemeToggle from "../Navbar/NavThemeToggle";
+import { themeChange } from "theme-change";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
@@ -12,7 +12,10 @@ import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  useEffect(() => {
+    themeChange(false);
+    // 👆 false parameter is required for react project
+  }, []);
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   console.log(userData);
@@ -77,17 +80,12 @@ const Header = () => {
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
               </button>
-              <Link to="/" class="w-36 flex gap-2 flex-row  mr-1">
-                <div>
-                  <img
-                    src="https://i.ibb.co/DfBt020/IMG-20230403-234455-removebg-preview.png"
-                    class="  h-8  bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
-                    alt="paradox Logo"
-                  />
-                </div>
-                <div class=" text-2xl hidden sm:block font-semibold whitespace-nowrap dark:text-white">
-                  devHive
-                </div>
+              <Link to="/" class="  mr-1">
+                <img
+                  src="https://i.ibb.co/FHqDjdX/IMG-20230404-110630-fotor-bg-remover-20230404111148.png"
+                  class="  h-12  bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                  alt="devhive Logo"
+                />
               </Link>
               <form action="#" method="GET" class="hidden lg:block lg:ml-2">
                 <label for="topbar-search" class="sr-only ">

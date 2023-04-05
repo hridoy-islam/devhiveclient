@@ -37,25 +37,41 @@ const HeaderDrawer = () => {
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <NavLink
               to="/"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Home</span>
             </NavLink>
             <NavLink
               to="/chat"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Inbox</span>
             </NavLink>
             <NavLink
               to="/track-orders"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Manage Orders</span>
             </NavLink>
             <NavLink
               to="/lists"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Lists</span>
             </NavLink>
@@ -85,30 +101,55 @@ const HeaderDrawer = () => {
                 className="flex items-center dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
               >
                 <li className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <NavLink to="" className="hover:font-bold">
+                  <NavLink
+                    to=""
+                    className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                  >
                     Item 1
                   </NavLink>
                 </li>
-                <li className="flex items-center hover:font-bold min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
+                <li className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                   <NavLink to="">Item 2</NavLink>
                 </li>
               </ul>
             </NavLink>
             <NavLink
               to="/settings"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Settings</span>
             </NavLink>
             <NavLink
+              to="/user-profile/edit"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
+            >
+              <span class="ml-3">Edit Profile</span>
+            </NavLink>
+            <NavLink
               to="/about"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">About</span>
             </NavLink>
             <NavLink
               to="/contact"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Contact Admin</span>
             </NavLink>
@@ -117,19 +158,31 @@ const HeaderDrawer = () => {
             <span class="ml-3">Developer Section</span>
             <NavLink
               to="/developer-profile"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Developer Profile</span>
             </NavLink>
             <NavLink
               to="/my-gigs"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Manage Gigs</span>
             </NavLink>
             <NavLink
               to="/my-orders"
-              className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
             >
               <span class="ml-3">Manage Orders</span>
             </NavLink>
