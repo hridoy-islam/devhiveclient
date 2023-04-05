@@ -14,6 +14,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [selectedImageName, setSelectedImageName] = useState("");
+  const [user, setUSer] = useState(false);
   const [imgUploading, setImgUploading] = useState(false);
   const auth = getAuth(app);
   const handleImageChange = (e) => {
@@ -47,8 +48,8 @@ const Register = () => {
       })
       .catch((error) => console.error(error));
   };
-  const submitLogin = (e) => {
-    e.preventDefault();
+  const submitLogin = (data) => {
+    data.preventDefault();
     setLoading(true);
     const email = users.email;
     const password = users.password;
@@ -80,6 +81,23 @@ const Register = () => {
     //send data to firebase to create user
 
     //if user created then redirect to login page
+
+    fetch('http://localhost:5000/user' , {
+      method : 'POST',
+
+      body : JSON.stringify({
+          email :users.email ,
+          name :users.name,
+          image : users.image
+      }),
+
+      headers : {
+          'Content-type' : 'application/json'
+      }
+  })
+
+    
+  
   };
   const handleUpdate = (name, image) => {
     updateProfile(auth.currentUser, {
@@ -92,7 +110,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });    
   };
 
   //create a function to update profile
