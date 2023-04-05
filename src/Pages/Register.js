@@ -9,6 +9,7 @@ import {
 import app from "../Configs/Firebase.config";
 import { useDispatch } from "react-redux";
 import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+
 const Register = () => {
   const [users, setUsers] = useState({});
   const dispatch = useDispatch();
