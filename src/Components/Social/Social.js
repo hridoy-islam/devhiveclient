@@ -7,10 +7,8 @@ const Social = () => {
     <div>
       {/* hi  */}
       <div className="md:flex">
-        <h1 className="text-2xl text-center">DevhiveClients</h1>
-        <p className="text-center">
-          &copy; DevhiveClient International Ltd. 2023
-        </p>
+        <h1 className="text-2xl text-center">Devhive</h1>
+        <p className="text-center">&copy; Devhive International Ltd. 2023</p>
       </div>
       <div className="flex justify-end ">
         <FaTwitter></FaTwitter>
