@@ -9,7 +9,7 @@ import QuestionAndAnswer from './QuestionAndAnswer';
 const StartSelling = () => {
     return (
         <div>
-           <BackgroundImageWithRange/> 
+        <BackgroundImageWithRange/> 
          <FreelancersImage></FreelancersImage>
          <WorksPlan/>
          <QuestionAndAnswer/>

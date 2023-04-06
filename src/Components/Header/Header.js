@@ -197,10 +197,36 @@ const Header = () => {
                   data-dropdown-toggle="apps-dropdown"
                   class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                 >
-                  {/* <!-- Icon --> */}
-                  <FaHome className="text-2xl"></FaHome>
+                  {/* <!-- Icon --> 
+                  <FaHome className="text-2xl"></FaHome>*/}
                   <span className="font-semibold hidden antialiased sm:block mt-1">
-                    HOME
+                    Home
+                  </span>
+                </button>
+              </NavLink>
+              <NavLink to="/services">
+                <button
+                  type="button"
+                  data-dropdown-toggle="apps-dropdown"
+                  class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                >
+                  {/* <!-- Icon --> 
+                  <FaHome className="text-2xl"></FaHome>*/}
+                  <span className="font-semibold hidden antialiased sm:block mt-1">
+                    Services
+                  </span>
+                </button>
+              </NavLink>
+              <NavLink to="/start_selling">
+                <button
+                  type="button"
+                  data-dropdown-toggle="apps-dropdown"
+                  class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                >
+                  {/* <!-- Icon -->
+                  <FaHome className="text-2xl"></FaHome>*/}
+                  <span className="font-semibold hidden antialiased sm:block mt-1">
+                    Start Selling
                   </span>
                 </button>
               </NavLink>
