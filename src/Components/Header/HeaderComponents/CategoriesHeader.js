@@ -41,7 +41,7 @@ const CategoriesHeader = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [startIndex]);
+  }, [startIndex,handleResize]);
 
   useEffect(() => {
     if (startIndex === 0) {
