@@ -2,11 +2,11 @@ import React from 'react';
 
 const QuestionAndAnswer = () => {
     return (
-       <div className='bg-accent mt-14 py-14 '>
-        <h1 className='text-center text-5xl mb-4'>Q&A</h1>
+       <div className='bg-gradient-to-r from-primary to-secondary mt-14 py-20'>
+        <h1 className='text-center text-3xl font-bold my-12 text-[white]'>Q&A</h1>
          <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 px-7 gap-4  '>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 What can I sell?
                 </div>
                 <div className="collapse-content">
@@ -14,7 +14,7 @@ const QuestionAndAnswer = () => {
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 How much money can I make?
                 </div>
                 <div className="collapse-content">
@@ -22,7 +22,7 @@ const QuestionAndAnswer = () => {
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 How much does it cost
                 </div>
                 <div className="collapse-content">
@@ -30,7 +30,7 @@ const QuestionAndAnswer = () => {
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 How much time will I need to invest?
                 </div>
                 <div className="collapse-content">
@@ -38,7 +38,7 @@ const QuestionAndAnswer = () => {
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 How do I price my service?
                 </div>
                 <div className="collapse-content">
@@ -46,7 +46,7 @@ const QuestionAndAnswer = () => {
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
-                <div className="collapse-title text-xl font-medium">
+                <div className="collapse-title text-xl font-bold">
                 How do I get paid?
                 </div>
                 <div className="collapse-content">

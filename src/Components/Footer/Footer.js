@@ -1,68 +1,73 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
+import Social from '../Social/Social'
 
 const Footer = () => {
   return (
+    <div>
     <footer className="container mx-auto footer p-10 text-neutral-content">
       <div className="footer-color-text">
         <span className="footer-title">Categories</span>
-        <a className="link link-hover">Graphics & Design</a>
-        <a className="link link-hover">Digital Marketing</a>
-        <a className="link link-hover">Writing & Translation</a>
-        <a className="link link-hover">Video & Animation</a>
-        <a className="link link-hover">Music & Audio</a>
-        <a className="link link-hover">Programming & Tech</a>
-        <a className="link link-hover">Data</a>
-        <a className="link link-hover">Business</a>
-        <a className="link link-hover">LifeStyle</a>
-        <a className="link link-hover">Photography</a>
-        <a className="link link-hover">Sitemap</a>
+        <Link to="/"  className="link link-hover">Graphics & Design</Link>
+        <Link to="/"  className="link link-hover">Digital Marketing</Link>
+        <Link to="/"  className="link link-hover">Writing & Translation</Link>
+        <Link to="/"  className="link link-hover">Video & Animation</Link>
+        <Link to="/"  className="link link-hover">Music & Audio</Link>
+        <Link to="/"  className="link link-hover">Programming & Tech</Link>
+        <Link to="/"  className="link link-hover">Data</Link>
+        <Link to="/"  className="link link-hover">Business</Link>
+        <Link to="/"  className="link link-hover">LifeStyle</Link>
+        <Link to="/"  className="link link-hover">Photography</Link>
+        <Link to="/"  className="link link-hover">Sitemap</Link>
       </div>
       <div className="footer-color-text">
         <span className="footer-title">About</span>
-        <a className="link link-hover">Careers</a>
-        <a className="link link-hover">Press & News</a>
-        <a className="link link-hover">Partnerships</a>
-        <a className="link link-hover">Privacy Policy</a>
-        <a className="link link-hover">Terms of Service</a>
-        <a className="link link-hover">Intellectual Property Claims</a>
-        <a className="link link-hover">Investor Relations</a>
+        <Link to="/"  className="link link-hover">Careers</Link>
+        <Link to="/"  className="link link-hover">Press & News</Link>
+        <Link to="/"  className="link link-hover">Partnerships</Link>
+        <Link to="/"  className="link link-hover">Privacy Policy</Link>
+        <Link to="/"  className="link link-hover">Terms of Service</Link>
+        <Link to="/"  className="link link-hover">Intellectual Property Claims</Link>
+        <Link to="/"  className="link link-hover">Investor Relations</Link>
       </div>
       <div className="footer-color-text">
         <span className="footer-title">Support</span>
-        <a className="link link-hover">Help & Support</a>
-        <a className="link link-hover">Trust & Safety</a>
-        <a className="link link-hover">Selling on Fiverr</a>
-        <a className="link link-hover">Buying on Fiver</a>
+        <Link to="/"  className="link link-hover">Help & Support</Link>
+        <Link to="/"  className="link link-hover">Trust & Safety</Link>
+        <Link to="/"  className="link link-hover">Selling on Fiverr</Link>
+        <Link to="/"  className="link link-hover">Buying on Fiver</Link>
       </div>
       <div className="footer-color-text">
         <span className="footer-title">Community</span>
-        <a className="link link-hover">Customer Success Stories</a>
-        <a className="link link-hover">Community Hub</a>
-        <a className="link link-hover">Forum </a>
-        <a className="link link-hover">Events </a>
-        <a className="link link-hover">Blog </a>
-        <a className="link link-hover">Influencers</a>
-        <a className="link link-hover">Affiliates</a>
-        <a className="link link-hover">Podcast</a>
-        <a className="link link-hover">Invite a Friend</a>
-        <a className="link link-hover">Become a Seller</a>
-        <a className="link link-hover">Community Standards</a>
+        <Link to="/"  className="link link-hover">Customer Success Stories</Link>
+        <Link to="/"  className="link link-hover">Community Hub</Link>
+        <Link to="/"  className="link link-hover">Forum </Link>
+        <Link to="/"  className="link link-hover">Events </Link>
+        <Link to="/"  className="link link-hover">Blog </Link>
+        <Link to="/"  className="link link-hover">Influencers</Link>
+        <Link to="/"  className="link link-hover">Affiliates</Link>
+        <Link to="/"  className="link link-hover">Podcast</Link>
+        <Link to="/"  className="link link-hover">Invite a Friend</Link>
+        <Link to="/"  className="link link-hover">Become a Seller</Link>
+        <Link to="/"  className="link link-hover">Community Standards</Link>
       </div>
       <div className="footer-color-text">
         <span className="footer-title">More From Fiverr</span>
-        <a className="link link-hover">Fiverr Business</a>
-        <a className="link link-hover">Fiverr Pro</a>
-        <a className="link link-hover">Fiverr Logo Maker</a>
-        <a className="link link-hover">Fiverr Guides</a>
-        <a className="link link-hover">Get Inspired</a>
-        <a className="link link-hover">Fiverr Select</a>
-        <a className="link link-hover">ClearVoice</a>
-        <a className="link link-hover">Fiverr Workspace</a>
-        <a className="link link-hover">Learn</a>
-        <a className="link link-hover">Working Not Working</a>
+        <Link to="/"  className="link link-hover">Fiverr Business</Link>
+        <Link to="/"  className="link link-hover">Fiverr Pro</Link>
+        <Link to="/"  className="link link-hover">Fiverr Logo Maker</Link>
+        <Link to="/"  className="link link-hover">Fiverr Guides</Link>
+        <Link to="/"  className="link link-hover">Get Inspired</Link>
+        <Link to="/"  className="link link-hover">Fiverr Select</Link>
+        <Link to="/"  className="link link-hover">ClearVoice</Link>
+        <Link to="/"  className="link link-hover">Fiverr Workspace</Link>
+        <Link to="/"  className="link link-hover">Learn</Link>
+        <Link to="/"  className="link link-hover">Working Not Working</Link>
       </div>
     </footer>
+    <Social></Social>
+    </div>
   );
 };
 

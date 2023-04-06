@@ -1,40 +1,50 @@
 import React from 'react';
-import img from '../../image/selling.jpg'
+import {Link} from 'react-router-dom';
 
 const BackgroundImageWithRange = () => {
     return (
-        <div style={{ 
-            backgroundImage: `url(${img})`,
-            backgroundPosition:'center',
-            height:'60vh'
-            
-            
-          }}>
-            <div className='text-center pt-10'>
-               <div>
-                 <h1 className='text-5xl font-bold text-[white]'>Work your way</h1>
-                <p className='text-2xl text-[white]'>You bring the skill. We'll make earning easy.</p>
-                <button className="btn btn-error mt-4 text-[white]">Become a seller</button>
-               </div>
-            </div>
+        <section
+  className="relative bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat"
+>
+  <div
+    className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25"
+  ></div>
 
+  <div
+    className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8"
+  >
+    <div className="max-w-xl text-center sm:text-left">
+      <h1 className="text-3xl font-extrabold sm:text-5xl text-[white]">
+        Let us find your
 
-            <div className='flex justify-around my-32 bg-info opacity-50 '>
-                <div>
-                    <h3 className='text-3xl font-bold'>A Gig is Bought Every</h3>
-                    <p className='text-5xl'>4 SEC</p>
-                </div>
-                <div>
-                    <h4 className='text-3xl font-bold'>Transactions</h4>
-                    <h1 className='text-5xl'>50M+</h1>
+        <strong className="block font-extrabold text-[white]">
+          Forever Home.
+        </strong>
+      </h1>
 
-                </div>
-                <div>
-                    <h4 className='text-3xl font-bold'>Price Range</h4>
-                    <h1 className='text-5xl'>$5 - $10,000</h1>
-                </div>
-            </div>
-        </div>
+      <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-[white]">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
+        tenetur fuga ducimus numquam ea!
+      </p>
+
+      <div className="mt-8 flex flex-wrap gap-4 text-center">
+        <Link
+          to="/"
+          className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+        >
+          Get Started
+        </Link>
+
+        <Link
+          to="/"
+          className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+        >
+          Learn More
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
     );
 };
 
