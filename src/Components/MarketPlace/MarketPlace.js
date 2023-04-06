@@ -5,7 +5,7 @@ import './MarketPlace.css'
 const MarketPlace = () => {
     return (
         <div className='container mx-auto my-10'>
-            <h2 className='md:text-4xl text-3xl font-bold text-left'>Explore the marketplace</h2>
+            <h2 className='md:text-4xl text-3xl text-center font-bold text-left text-primary'>Explore the marketplace</h2>
             <div className='grid  md:grid-cols-5 gap-4 mt-10 grid-cols-2'>
                 <div className="card w-56 bg-base-100  ">
                     <Link className="px-6 pt-6 text-center"><img alt=" " src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design.91dfe44.svg" className="rounded-xl w-14 mx-auto" /></Link>

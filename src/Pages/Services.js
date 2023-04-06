@@ -69,7 +69,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                             <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -97,7 +97,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -125,7 +125,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -153,7 +153,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -181,7 +181,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -209,7 +209,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -237,7 +237,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -265,7 +265,7 @@ const Services = () => {
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
                         <div className="rating flex items-center">
-                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400" />
+                            <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
                             <h2 className='text-lg pl-1'>4.8</h2>
                             <h3 className='text-lg pl-1'>(35)</h3>
                             </div>
@@ -282,7 +282,7 @@ const Services = () => {
             <div className="btn-group my-10 mb-10 flex justify-center">
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1"><MdOutlineArrowBackIos/></button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1">1</button>
-                <button className="border-2 border-slate-700 py-1 px-3 mx-1">2</button>
+                <button className="border-2 border-slate-700 py-1 btn-primary px-3 mx-1">2</button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1">3</button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1">4</button>
                 <button className="border-2 border-slate-700 py-1 px-3 mx-1"><MdOutlineArrowForwardIos/></button>
