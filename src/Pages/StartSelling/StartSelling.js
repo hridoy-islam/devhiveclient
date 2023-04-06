@@ -8,7 +8,7 @@ import QuestionAndAnswer from './QuestionAndAnswer';
 
 const StartSelling = () => {
     return (
-        <div className='mt-12'>
+        <div>
            <BackgroundImageWithRange/> 
          <FreelancersImage></FreelancersImage>
          <WorksPlan/>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const QuestionAndAnswer = () => {
     return (
-       <div className='bg-accent mt-14 py-14 '>
-        <h1 className='text-center text-5xl mb-4'>Q&A</h1>
+       <div className='bg-primary mt-14 py-14 '>
+        <h1 className='text-center text-5xl mb-4 text-white'>Q&A</h1>
          <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 px-7 gap-4  '>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                 <div className="collapse-title text-xl font-medium">
