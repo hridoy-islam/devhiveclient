@@ -10,6 +10,7 @@ import Profile from "../Pages/Profile";
 import ProfileEdit from "../Pages/ProfileEdit";
 import Header from "../Components/Header/Header";
 import NotFound from "../Pages/NotFound/NotFound";
+import ServiceDetails from "../Pages/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
+      },
+      {
+        path: "/services/:slug",
+        element: <ServiceDetails />,
       },
       {
         path: "/user-profile",

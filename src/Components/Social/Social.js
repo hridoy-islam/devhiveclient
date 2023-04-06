@@ -8,10 +8,9 @@ const Social = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 py-5 items-center container mx-auto">
       <div className=" md:flex items-center">
-        <h1 className="text-2xl text-center DevhiveClients">DevhiveClients</h1>
         <p className="text-center">
-          <span className="DevhiveClients-text ">
-            &copy; DevhiveClient International Ltd. 2023
+          <span className="DevhiveClients-text">
+            &copy; Devhive International Ltd. 2023
           </span>
         </p>
       </div>
