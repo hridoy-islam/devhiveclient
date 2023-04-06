@@ -81,23 +81,6 @@ const Register = () => {
     //send data to firebase to create user
 
     //if user created then redirect to login page
-
-    fetch('http://localhost:5000/user' , {
-      method : 'POST',
-
-      body : JSON.stringify({
-          email :users.email ,
-          name :users.name,
-          image : users.image
-      }),
-
-      headers : {
-          'Content-type' : 'application/json'
-      }
-  })
-
-    
-  
   };
   const handleUpdate = (name, image) => {
     updateProfile(auth.currentUser, {
