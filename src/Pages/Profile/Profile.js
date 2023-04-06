@@ -18,7 +18,7 @@ const Profile = () => {
           <ProfileBanner></ProfileBanner>
           <Wallets></Wallets>
         </div>
-        <div className="col-span-0 hidden md:block  md:col-span-7">right</div>
+        <div className="col-span-0 hidden rounded md:block border md:col-span-7">right</div>
       </div>
     </div>
   );

@@ -9,9 +9,7 @@ const ProfileBanner = () => {
   const userData = useSelector((state) => state.login.userData);
   return (
     <div>
-      <div className="App  flex justify-center flex-col items-center">
-       
-
+      <div className="App border rounded p-5 flex justify-center flex-col items-center">
         <div className="flex flex-col items-center justify-center">
           <img
             className="w-20 "
