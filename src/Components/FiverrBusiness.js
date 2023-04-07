@@ -13,7 +13,7 @@ const FiverrBusiness = () => {
                 <p className='flex gap-3 mt-4'> <GrCheckboxSelected className='text-2xl'/> <span className='text-xl'>Connect to freelancers with proven business experience</span></p>
                 <p className='flex gap-3 mt-4'> <GrCheckboxSelected className='text-2xl'/> <span className='text-xl'>Get matched with the perfect talent by a customer success manager</span></p>
                 <p className='flex gap-3 mt-4'> <GrCheckboxSelected className='text-2xl'/> <span className='text-xl'>Manage teamwork and boost productivity with one powerful workspace</span></p>
-                <button className='btn mt-10 bg-secondary hover:shadow-sm hover:bg-black hover:text-white'>Explore fiverr Business</button>
+                <button className='btn mt-10 bg-secondary hover:shadow-sm hover:bg-accent hover:text-black'>Explore fiverr Business</button>
             </div>
             <div>
                 <img src={img} alt=''></img>
