@@ -16,6 +16,7 @@ const AccountSettings = () => {
   const notify3 = (err) => toast.error(err);
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const user = useSelector((state) => state.login.userData);
+  const userToDelete = auth.currentUser;
   const userUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -44,7 +45,7 @@ const AccountSettings = () => {
       `Are you sure to delete account ${user?.displayName}?`
     );
     if (agree) {
-      deleteUser(user)
+      deleteUser(userToDelete)
         .then(function () {
           // User deleted..
           console.log("User deleted");
@@ -53,7 +54,7 @@ const AccountSettings = () => {
         .catch(function (error) {
           // An error happened.
           console.log(error);
-          notify3(error);
+          notify3(error.message);
         });
     }
   };
