@@ -1,8 +1,8 @@
 import React from "react";
-import useLogout from "../../hooks/useLogout";
+
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import NavThemeToggle from "../../Components/Navbar/NavThemeToggle";
+import useLogout from "../../../hooks/useLogout";
 
 const ProfileBanner = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
