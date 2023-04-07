@@ -91,7 +91,7 @@ const Header = () => {
                 <label for="topbar-search" class="sr-only ">
                   Search
                 </label>
-                <div class="relative mt-1 lg:w-[480px] flex">
+                <div class="relative mt-1 lg:w-[450px] flex">
                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
                       class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -365,7 +365,7 @@ const Header = () => {
                 </div>
               ) : (
                 <div>
-                  <button className="btn hidden lg:block btn-ghost btn-circle">
+                  <button className="btn  btn-ghost btn-circle">
                     <NavLink to="/login">
                       <AiOutlineLogin className="w-7 h-7" />
                     </NavLink>
