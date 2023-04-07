@@ -15,16 +15,13 @@ const BackgroundImageWithRange = () => {
   >
     <div className="max-w-xl text-center sm:text-left">
       <h1 className="text-3xl font-extrabold sm:text-5xl text-[white]">
-        Let us find your
+      Work Your Way
 
-        <strong className="block font-extrabold text-[white]">
-          Forever Home.
-        </strong>
+      
       </h1>
 
       <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed text-[white]">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-        tenetur fuga ducimus numquam ea!
+      You bring the skill. We'll make earning easy.
       </p>
 
       <div className="mt-8 flex flex-wrap gap-4 text-center">
