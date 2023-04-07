@@ -15,6 +15,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [selectedImageName, setSelectedImageName] = useState("");
+  const [user, setUSer] = useState(false);
   const [imgUploading, setImgUploading] = useState(false);
   const auth = getAuth(app);
   const handleImageChange = (e) => {
@@ -48,8 +49,8 @@ const Register = () => {
       })
       .catch((error) => console.error(error));
   };
-  const submitLogin = (e) => {
-    e.preventDefault();
+  const submitLogin = (data) => {
+    data.preventDefault();
     setLoading(true);
     const email = users.email;
     const password = users.password;
@@ -93,7 +94,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });    
   };
 
   //create a function to update profile
