@@ -5,13 +5,17 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Services from "../Pages/Services";
 import StartSelling from "../Pages/StartSelling/StartSelling";
-import Settings from "../Pages/Settings/Settings";
 import Chat from "../Pages/Chat/Chat";
 import Profile from "../Pages/Profile";
-import ProfileEdit from "../Pages/ProfileEdit";
 import Header from "../Components/Header/Header";
 import NotFound from "../Pages/NotFound/NotFound";
 import ServiceDetails from "../Pages/ServiceDetails";
+import AccountSettings from "../Components/Settings/AccountSettings";
+import SecuritySettings from "../Components/Settings/SecuritySettings";
+import NotificationSettings from "../Components/Settings/NotificationSettings";
+import BusinessInfoSettings from "../Components/Settings/BusinessInfoSettings";
+import PaymentMethodSettings from "../Components/Settings/PaymentMethodSettings";
+import SettingsLayout from "../Layout/SettingsLayout";
 
 const router = createBrowserRouter([
   {
@@ -51,12 +55,34 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/user-profile/edit",
-        element: <ProfileEdit />,
-      },
-      {
         path: "/settings",
-        element: <Settings />,
+        element: <SettingsLayout />,
+        children: [
+          {
+            path: "/settings/",
+            element: <AccountSettings></AccountSettings>,
+          },
+          {
+            path: "/settings/account",
+            element: <AccountSettings></AccountSettings>,
+          },
+          {
+            path: "/settings/security",
+            element: <SecuritySettings></SecuritySettings>,
+          },
+          {
+            path: "/settings/notification",
+            element: <NotificationSettings></NotificationSettings>,
+          },
+          {
+            path: "/settings/business_info",
+            element: <BusinessInfoSettings></BusinessInfoSettings>,
+          },
+          {
+            path: "/settings/payment",
+            element: <PaymentMethodSettings></PaymentMethodSettings>,
+          },
+        ],
       },
       {
         path: "/chat",

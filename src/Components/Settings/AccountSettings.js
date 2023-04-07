@@ -4,11 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteUser, getAuth, updateProfile } from "firebase/auth";
-import app from "../Configs/Firebase.config";
 import { useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
+import app from "../../Configs/Firebase.config";
 
-const ProfileEdit = () => {
+const AccountSettings = () => {
   const auth = getAuth(app);
   const notify = () => toast.success("Profile Updated !");
   const notify1 = () => toast.warning("Reload Required !");
@@ -61,7 +61,7 @@ const ProfileEdit = () => {
     <div
       data-aos-duration="3000"
       data-aos="fade-left"
-      class="bg-white dark:bg-accent-focus"
+      class="bg-white dark:bg-accent-focus w-full lg:w-[750px]"
     >
       <ToastContainer />
       <section class="">
@@ -207,4 +207,4 @@ const ProfileEdit = () => {
   );
 };
 
-export default ProfileEdit;
+export default AccountSettings;
