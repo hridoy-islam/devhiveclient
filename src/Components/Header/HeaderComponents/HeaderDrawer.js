@@ -10,7 +10,18 @@ AOS.init();
 const HeaderDrawer = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
-
+  const categories = [
+    { name: "All", link: "/category" },
+    { name: "Graphics & Design", link: "" },
+    { name: "Digital Marketing", link: "" },
+    { name: "Writing & Translation", link: "" },
+    { name: "Video & Animation", link: "" },
+    { name: "Music & Audio", link: "" },
+    { name: "Programming & Tech", link: "" },
+    { name: "Photography", link: "" },
+    { name: "Business", link: "" },
+    { name: "AI Services", link: "" },
+  ];
   return (
     <div className="block z-50 lg:hidden">
       <aside
@@ -56,6 +67,26 @@ const HeaderDrawer = () => {
               <span class="ml-3">Inbox</span>
             </NavLink>
             <NavLink
+              to="/services"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
+            >
+              <span class="ml-3">Services</span>
+            </NavLink>
+            <NavLink
+              to="/start_selling"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              }
+            >
+              <span class="ml-3">Start Selling</span>
+            </NavLink>
+            <NavLink
               to="/track-orders"
               className={({ isActive }) =>
                 isActive
@@ -98,19 +129,25 @@ const HeaderDrawer = () => {
               <ul
                 tabIndex={0}
                 id="dropdown-pages"
-                className="flex items-center dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
+                className="flex items-start bg-base-300 dropdown-content flex-col m-2 p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-white group"
               >
-                <li className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 ">
-                  <NavLink
-                    to=""
-                    className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                {categories.map((category) => (
+                  <li
+                    key={category.name}
+                    className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
                   >
-                    Item 1
-                  </NavLink>
-                </li>
-                <li className="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-                  <NavLink to="">Item 2</NavLink>
-                </li>
+                    <NavLink
+                      to={category.link}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                          : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      }
+                    >
+                      {category.name}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </NavLink>
             <NavLink

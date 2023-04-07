@@ -6,6 +6,7 @@ import Register from "../Pages/Register";
 import Services from "../Pages/Services";
 import StartSelling from "../Pages/StartSelling/StartSelling";
 import Settings from "../Pages/Settings/Settings";
+import Chat from "../Pages/Chat/Chat";
 import Profile from "../Pages/Profile";
 import ProfileEdit from "../Pages/ProfileEdit";
 import Header from "../Components/Header/Header";
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <Settings />,
+      },
+      {
+        path: "/chat",
+        element: <Chat />,
       },
     ],
   },
