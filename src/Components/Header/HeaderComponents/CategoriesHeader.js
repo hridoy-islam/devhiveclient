@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const CategoriesHeader = () => {
   const categories = [
     { name: "Graphics & Design", link: "#" },
@@ -16,11 +17,12 @@ const CategoriesHeader = () => {
     { name: "Business", link: "#" },
     { name: "AI Services", link: "#" },
   ];
-
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(categories.length - 1);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
+  const [show, setShow] = useState(false);
 
   const handleResize = () => {
     const container = document.querySelector(".container");
@@ -32,6 +34,7 @@ const CategoriesHeader = () => {
       const categoriesPerPage = Math.floor(containerWidth / categoryWidth);
       const newEndIndex = startIndex + categoriesPerPage - 1;
       setEndIndex(newEndIndex);
+      setShow(true);
     }
   };
   //   handleResize();
@@ -41,7 +44,7 @@ const CategoriesHeader = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [startIndex]);
+  }, [startIndex, handleResize]);
 
   useEffect(() => {
     if (startIndex === 0) {
@@ -68,40 +71,44 @@ const CategoriesHeader = () => {
   };
   //  handleResize();
   return (
-    <div className="bg-white py-1 hidden lg:block border-b">
-      <div
-        data-aos="fade-right"
-        className="container mx-auto px-4 flex items-center justify-center"
-      >
-        {showLeftArrow && (
-          <button
-            onClick={handleLeftArrowClick}
-            className="mr-4 focus:outline-none"
+    <>
+      {show && categories.length > 1 && isLoggedIn && (
+        <div className="bg-white py-1 hidden lg:block border-b">
+          <div
+            data-aos="fade-right"
+            className="container mx-auto px-4 flex items-center justify-center"
           >
-            <BsArrowLeftCircle></BsArrowLeftCircle>
-          </button>
-        )}
-        <ul className="flex HeaderDrawer justify-between items-center overflow-x-scroll">
-          {categories.slice(startIndex, endIndex + 1).map((category) => (
-            <li
-              data-aos="zoom-in"
-              key={category.name}
-              className="mx-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
-            >
-              <Link to={category.link}>{category.name}</Link>
-            </li>
-          ))}
-        </ul>
-        {showRightArrow && (
-          <button
-            onClick={handleRightArrowClick}
-            className="ml-4 focus:outline-none"
-          >
-            <BsArrowRightCircle></BsArrowRightCircle>
-          </button>
-        )}
-      </div>
-    </div>
+            {showLeftArrow && (
+              <button
+                onClick={handleLeftArrowClick}
+                className="mr-4 focus:outline-none"
+              >
+                <BsArrowLeftCircle></BsArrowLeftCircle>
+              </button>
+            )}
+            <ul className="flex HeaderDrawer justify-between items-center overflow-x-scroll">
+              {categories.slice(startIndex, endIndex + 1).map((category) => (
+                <li
+                  data-aos="zoom-in"
+                  key={category.name}
+                  className="mx-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
+                >
+                  <Link to={category.link}>{category.name}</Link>
+                </li>
+              ))}
+            </ul>
+            {showRightArrow && (
+              <button
+                onClick={handleRightArrowClick}
+                className="ml-4 focus:outline-none"
+              >
+                <BsArrowRightCircle></BsArrowRightCircle>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
