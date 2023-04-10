@@ -13,7 +13,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Link } from 'react-router-dom';
 
 const ServiceDetails = () => {
     const sliders = [1, 2, ]
