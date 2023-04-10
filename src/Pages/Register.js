@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   updateProfile,
 } from "firebase/auth";
 import app from "../Configs/Firebase.config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+import { registerUser } from "../features/api/Auth/userActions";
+
 const Register = () => {
   const [users, setUsers] = useState({});
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [selectedImageName, setSelectedImageName] = useState("");
+  const [user, setUSer] = useState(false);
   const [imgUploading, setImgUploading] = useState(false);
   const auth = getAuth(app);
   const handleImageChange = (e) => {
@@ -47,8 +54,8 @@ const Register = () => {
       })
       .catch((error) => console.error(error));
   };
-  const submitLogin = (e) => {
-    e.preventDefault();
+  const submitLogin = (data) => {
+    data.preventDefault();
     setLoading(true);
     const email = users.email;
     const password = users.password;
@@ -66,6 +73,16 @@ const Register = () => {
           // Set the login data in the store
           dispatch(setLoggedIn(true));
           dispatch(setUserData(user));
+          const userData = {
+            name: name,
+            email: user?.email,
+            uid: user?.uid,
+            verified: user?.emailVerified,
+            pic: image,
+          };
+          dispatch(registerUser(userData));
+          navigate(from, { replace: true });
+
           return;
         }
         console.log("unsuccessful user update");
@@ -103,29 +120,25 @@ const Register = () => {
     newUsers[field] = value;
     setUsers(newUsers);
   };
-  const handleForgetPassword = () => {
-    console.log("forget password");
+  // const handleForgetPassword = () => {
+  //   console.log("forget password");
 
-    users?.email ? console.log(users?.email) : alert("email not found");
-  };
-
+  //   users?.email ? console.log(users?.email) : alert("email not found");
+  // };
+  if (isLoggedIn && localStorage.getItem("jwt")) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
-          <a
-            href="#"
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-          >
-            DevHive
-          </a>
+          <img src="https://i.ibb.co/FHqDjdX/IMG-20230404-110630-fotor-bg-remover-20230404111148.png" className="w-60 h-auto" alt="" />
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create a new account
               </h1>
-              <LoginProviders></LoginProviders>
-              <div className="divider">OR</div>
+              
               <form
                 onSubmit={submitLogin}
                 className="space-y-4 md:space-y-6"
@@ -216,12 +229,16 @@ const Register = () => {
                   className={
                     imgUploading
                       ? "btn btn-disabled w-full rounded lg"
-                      : "btn w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      : "devhiveprimarybtn"
                   }
                 >
                   {imgUploading ? "uploading.." : "Sign up"}
                 </button>
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                
+              </form>
+              <div className="divider">OR</div>
+              <LoginProviders></LoginProviders>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Already an user?{" "}
                   <Link
                     to="/login"
@@ -230,7 +247,7 @@ const Register = () => {
                     Sign in
                   </Link>
                 </p>
-              </form>
+              
             </div>
           </div>
         </div>

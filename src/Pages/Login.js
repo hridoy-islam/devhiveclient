@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   getAuth,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "../Configs/Firebase.config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+import { registerUser } from "../features/api/Auth/userActions";
 
 const Login = () => {
   const [users, setUsers] = useState({});
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const auth = getAuth(app);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const submitLogin = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(users);
     setLoading(true);
     const email = users.email;
@@ -31,6 +36,15 @@ const Login = () => {
         const user = userCredential.user;
         dispatch(setLoggedIn(true));
         dispatch(setUserData(user));
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+          verified: user?.emailVerified,
+          pic: user?.photoURL,
+        };
+        dispatch(registerUser(userData));
+        navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {
@@ -76,23 +90,19 @@ const Login = () => {
 
     users?.email ? console.log(users?.email) : alert("email not found");
   };
+  if (isLoggedIn && localStorage.getItem("jwt")) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto  lg:py-0">
-          <a
-            href="#"
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-          >
-            DevHive
-          </a>
+        <img src="https://i.ibb.co/FHqDjdX/IMG-20230404-110630-fotor-bg-remover-20230404111148.png" className="w-60 h-auto" alt="" />
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <LoginProviders></LoginProviders>
-              <div className="divider">OR</div>
               <form
                 onSubmit={submitLogin}
                 className="space-y-4 md:space-y-6"
@@ -155,11 +165,16 @@ const Login = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full btn text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="devhiveprimarybtn"
                 >
                   Sign in
                 </button>
-                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                
+              </form>
+              <div className="divider">OR</div>
+              
+              <LoginProviders></LoginProviders>
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <Link
                     to="/register"
@@ -168,7 +183,7 @@ const Login = () => {
                     Sign up
                   </Link>
                 </p>
-              </form>
+              
 
               <div>
                 {/* modal  */}

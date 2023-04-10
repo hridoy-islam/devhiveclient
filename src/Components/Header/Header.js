@@ -7,7 +7,6 @@ import DrawerBanner from "./HeaderComponents/DrawerBanner";
 import { themeChange } from "theme-change";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
-import { FaHome } from "react-icons/fa";
 import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
@@ -18,7 +17,7 @@ const Header = () => {
   }, []);
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
-  console.log(userData);
+  // console.log(userData);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -91,7 +90,7 @@ const Header = () => {
                 <label for="topbar-search" class="sr-only ">
                   Search
                 </label>
-                <div class="relative mt-1 lg:w-[550px] flex">
+                <div class="relative mt-1 lg:w-[450px] flex">
                   <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
                       class="w-5 h-5 text-gray-500 dark:text-gray-400"
@@ -191,20 +190,20 @@ const Header = () => {
                 )}
               </>
 
-              <NavLink to="/">
+              <NavLink className="hidden lg:block" to="/">
                 <button
                   type="button"
                   data-dropdown-toggle="apps-dropdown"
                   class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                 >
-                  {/* <!-- Icon --> 
-                  <FaHome className="text-2xl"></FaHome>*/}
+                  {/* <!-- Icon -->  */}
+                  {/* <FaHome className="text-2xl"></FaHome> */}
                   <span className="font-semibold hidden antialiased sm:block mt-1">
                     Home
                   </span>
                 </button>
               </NavLink>
-              <NavLink to="/services">
+              <NavLink className="hidden lg:block" to="/services">
                 <button
                   type="button"
                   data-dropdown-toggle="apps-dropdown"
@@ -217,7 +216,7 @@ const Header = () => {
                   </span>
                 </button>
               </NavLink>
-              <NavLink to="/start_selling">
+              <NavLink className="hidden lg:block" to="/start_selling">
                 <button
                   type="button"
                   data-dropdown-toggle="apps-dropdown"
@@ -231,7 +230,7 @@ const Header = () => {
                 </button>
               </NavLink>
               {/* developer start */}
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <div
                   title="developer section"
                   className="dropdown mt-1 dropdown-end"
@@ -270,10 +269,10 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-              )}
+              )} */}
               {/* developer end  */}
               {/* admin start */}
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <div
                   title="admin section"
                   className="dropdown mt-1 dropdown-end"
@@ -314,7 +313,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-              )}
+              )} */}
               {/* admin end  */}
 
               {/* <!-- Apps --> */}
@@ -365,7 +364,7 @@ const Header = () => {
                 </div>
               ) : (
                 <div>
-                  <button className="btn btn-ghost btn-circle">
+                  <button className="btn  btn-ghost btn-circle">
                     <NavLink to="/login">
                       <AiOutlineLogin className="w-7 h-7" />
                     </NavLink>

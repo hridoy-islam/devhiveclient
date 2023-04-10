@@ -35,11 +35,10 @@ const WorksPlan = () => {
           />
         </svg>
 
-        <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
+        <h2 class="mt-4 text-xl font-bold text-white"> Create a Gig</h2>
 
         <p class="mt-1 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo
-          possimus adipisci distinctio alias voluptatum blanditiis laudantium.
+        Sign up for free, set up your Gig, and offer your work to our global audience.
         </p>
       </a>
 
@@ -66,11 +65,10 @@ const WorksPlan = () => {
           />
         </svg>
 
-        <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
+        <h2 class="mt-4 text-xl font-bold text-white"> Deliver great work</h2>
 
         <p class="mt-1 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo
-          possimus adipisci distinctio alias voluptatum blanditiis laudantium.
+        Get notified when you get an order and use our system to discuss details with customers.
         </p>
       </a>
 
@@ -97,11 +95,10 @@ const WorksPlan = () => {
           />
         </svg>
 
-        <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
+        <h2 class="mt-4 text-xl font-bold text-white">Get paid</h2>
 
         <p class="mt-1 text-sm text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo
-          possimus adipisci distinctio alias voluptatum blanditiis laudantium.
+        Get paid on time, every time. Payment is available for withdrawal as soon as it clears.
         </p>
       </a>
     </div>
