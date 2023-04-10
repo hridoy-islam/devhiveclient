@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import app from "../../Configs/Firebase.config";
 import { useDispatch } from "react-redux";
-import { setLoggedIn, setUserData } from "../../features/api/loginSlice";
+import { setLoggedIn, setUserData, setUserLoading } from "../../features/api/loginSlice";
 import { registerUser } from "../../features/api/Auth/userActions";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -41,6 +41,7 @@ const LoginProviders = () => {
           pic: user?.photoURL,
         };
         dispatch(registerUser(userData));
+        dispatch(setUserLoading(false));
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -71,6 +72,7 @@ const LoginProviders = () => {
           pic: user?.photoURL,
         };
         dispatch(registerUser(userData));
+        dispatch(setUserLoading(false));
         navigate(from, { replace: true });
       })
       .catch((error) => {

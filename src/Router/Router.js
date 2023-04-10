@@ -12,6 +12,7 @@ import ProfileEdit from "../Pages/ProfileEdit";
 import Header from "../Components/Header/Header";
 import NotFound from "../Pages/NotFound/NotFound";
 import ServiceDetails from "../Pages/ServiceDetails";
+import PrivateRoute from "../Components/Auth/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/start_selling",
-        element: <StartSelling />,
+        element: (
+          <PrivateRoute>
+            <StartSelling />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/services",

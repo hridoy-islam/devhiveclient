@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import app from "../Configs/Firebase.config";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+import { setLoggedIn, setUserData , setUserLoading } from "../features/api/loginSlice";
 import { registerUser } from "../features/api/Auth/userActions";
 
 const Register = () => {
@@ -81,6 +81,7 @@ const Register = () => {
             pic: image,
           };
           dispatch(registerUser(userData));
+          dispatch(setUserLoading(false));
           navigate(from, { replace: true });
 
           return;

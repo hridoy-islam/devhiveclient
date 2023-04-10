@@ -4,10 +4,7 @@ import { registerSuccess } from "./userReducer";
 
 export const registerUser = (userData) => async (dispatch) => {
   try {
-    const response = await axios.post(
-      "https://server-five-lime.vercel.app/user",
-      userData
-    );
+    const response = await axios.post("http://localhost:5000/user", userData);
     localStorage.setItem("jwt", response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
