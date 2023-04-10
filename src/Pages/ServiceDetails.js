@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { AiFillStar } from "react-icons/ai";
+import '../Components/MarketPlace/MarketPlace.css'
+import { BsClock } from "react-icons/bs";
+import { FiRefreshCw } from "react-icons/fi";
 
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
@@ -10,19 +13,65 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 
 const ServiceDetails = () => {
-    const [basic, setBasic] = useState(false);
-    const [standard, setStandard] = useState(false);
-    const [premium, setPremium] = useState(false);
-    const handleBasic = (e) =>{
-        setBasic(true)
+    const sliders = [1, 2, ]
+    const [packages, setPackages] = useState('basic');
+    let content;
+    if (packages === 'basic'){
+        content = 
+        <div className='p-6'>
+            <div className='flex justify-between'>
+                <h2 className='font-semibold text-xl'>basic or start ups</h2>
+                <h3 className='font-semibold text-2xl'>$80</h3>
+            </div>
+            <p className='py-6 text-md font-medium'>Responsive up to 3 pages including slider, contact form, social links, google map, color branded.</p>
+            <div className='flex'>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><BsClock className='mr-2'></BsClock> 6 Days Delivery</h2>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><FiRefreshCw className='mr-2'></FiRefreshCw> Unlimited Revisions</h2>
+            </div>
+            <div>
+                <h3 className='font-semibold text-md pt-2'>What's Included</h3>
+            </div>
+            <button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($80)</button>
+        </div>
     }
-    const handleStandard = (e) =>{
-        setStandard(true)
+    if (packages === 'standard'){
+        content = 
+        <div className='p-6'>
+            <div className='flex justify-between'>
+                <h2 className='font-semibold text-xl'>Standard Responsive website Design</h2>
+                <h3 className='font-semibold text-2xl'>$200</h3>
+            </div>
+            <p className='py-6 text-md font-medium'>7 Page, Responsive, Mobile friendly, Speed tested, Admin panel, 5 days support, PayPal integration.</p>
+            <div className='flex'>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><BsClock className='mr-2'></BsClock> 10 Days Delivery</h2>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><FiRefreshCw className='mr-2'></FiRefreshCw> Unlimited Revisions</h2>
+            </div>
+            <div>
+                <h3 className='font-semibold text-md pt-2'>What's Included</h3>
+            </div>
+            <button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($200)</button>
+        </div>
     }
-    const handlePremium = (e) =>{
-        setPremium(true);
+    if (packages === 'premium'){
+        content = 
+        <div className='p-6'>
+            <div className='flex justify-between'>
+                <h2 className='font-semibold text-xl'>E Commerce Business website</h2>
+                <h3 className='font-semibold text-2xl'>$350</h3>
+            </div>
+            <p className='py-6 text-md font-medium'>Standard features+ 10 pages, E commerce, +Security & SEO, multiple payment methods, 12 days support.</p>
+            <div className='flex'>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><BsClock className='mr-2'></BsClock> 14 Days Delivery</h2>
+                <h2 className='font-semibold text-md pr-6 flex items-center'><FiRefreshCw className='mr-2'></FiRefreshCw> Unlimited Revisions</h2>
+            </div>
+            <div>
+                <h3 className='font-semibold text-md pt-2'>What's Included</h3>
+            </div>
+            <button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($350)</button>
+        </div>
     }
     
 return (
@@ -44,7 +93,7 @@ return (
                     <h3 className='pl-2 font-medium'>3 Orders in Queue</h3>
                 </div>
             </div>
-            <div className='w-10/12 mt-6'>
+            <div className='w-10/12 mt-6 arrow-icon'>
                 <Swiper
                     modules={[Navigation, Pagination, Scrollbar, A11y]}
                     spaceBetween={10}
@@ -55,17 +104,17 @@ return (
                     onSwiper={(swiper) => console.log(swiper)}
                     onSlideChange={() => console.log('slide change')}
                 >
-                    <SwiperSlide>
-                        <img className='p-2 bg-primary w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
+                    <SwiperSlide >
+                        <img className='p-6 bg-[#e5e7eb] w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className=' p-2 bg-primary w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
+                        <img className='p-6 bg-[#e5e7eb] base-300 w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className='p-2 bg-primary w-full  mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
+                        <img className='p-6 bg-[#e5e7eb] w-full  mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img className='p-2 bg-primary  w-full mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
+                        <img className='p-6 bg-[#e5e7eb] w-full mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
                     </SwiperSlide>
 
                 </Swiper>
@@ -132,7 +181,7 @@ return (
                         <button className='btn btn-primary'>Contact Me</button>
                     </div>
                 </div>
-                <div className='border mt-6 w-10/12'>
+                <div className='border border-[#9ca3af] mt-6 w-10/12'>
                     <div className=' p-5 grid grid-cols-2 gap-4 '>
                         <div>
                             <h2 className='text-lg font-medium'>From</h2>
@@ -160,7 +209,7 @@ return (
             </div>
             <div>
                 <h2 className='text-xl font-bold pt-10 pb-6'>Compare packages</h2>
-                <div className="overflow-x-auto border w-10/12">
+                <div className="overflow-x-auto border border-[#9ca3af] w-10/12">
                     <table className="table w-full">
                         {/* head*/}
                         <thead>
@@ -197,176 +246,133 @@ return (
                     </table>
                 </div>
             </div>
-            <div className='border p-6 mt-16 w-10/12 '>
-            <h2 className='text-2xl font-bold pb-6'>Recommended for you </h2>
-                <div className='flex '>
-                <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={10}
-                    slidesPerView={2}
-                    navigation
-                    // pagination={{ clickable: true }}
-                    // scrollbar={{ draggable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log('slide change')}
-                >
-                    <SwiperSlide>
-                        <div className="card w-full shadow-2xl mr-3">
-                        <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></figure>
-                        <div className="card-body bg-state-300">
-                            <div className='flex'>
-                                <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/348f16c5d833f5c147fac64226ac4542-1679827325884/7eabd055-9bd6-4cf3-847b-ebb4449d8d20.png" alt="profile_img" />
-                                <div className='pl-4'>
-                                    <h3 className='text-left font-bold'>giovanni_ux</h3>
-                                    <h2 className='font-medium'>Top Rated Seller</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
-                            </div>
-                            <div className="card-actions justify-between items-center border-t-2 pt-4">
-                                <div>
-                                <div className="rating flex items-center">
-                                    <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
-                                    <h2 className='text-lg pl-1'>4.8</h2>
-                                    <h3 className='text-lg pl-1'>(35)</h3>
-                                    </div>
-                                </div>
-                                <div className='flex'>
-                                    <h2 className='text-sm items-center font-medium pt-1 pr-1 flex ' >STARTING AT</h2>
-                                    <h3 className='text-2xl font-semibold'>$30</h3>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="card w-full shadow-2xl mr-3">
-                        <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></figure>
-                        <div className="card-body bg-state-300">
-                            <div className='flex'>
-                                <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/7eab80c32f7e9bb5121ab2f1a66f094e-1634034140753/10fbcda8-cb7e-42b7-9a12-613197ddd92c.png" alt="profile_img" />
-                                <div className='pl-4'>
-                                    <h3 className='text-left font-bold'>annann1</h3>
-                                    <h2 className='font-medium'>Level 2 Seller</h2>
-                                </div>
-                            </div>
-                            <div>
-                                <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
-                            </div>
-                            <div className="card-actions justify-between items-center border-t-2 pt-4">
-                                <div>
-                                <div className="rating flex items-center">
-                                    <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
-                                    <h2 className='text-lg pl-1'>4.8</h2>
-                                    <h3 className='text-lg pl-1'>(35)</h3>
-                                    </div>
-                                </div>
-                                <div className='flex'>
-                                    <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
-                                    <h3 className='text-2xl font-semibold'>$50</h3>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="card w-full shadow-2xl mr-3">
-                    <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/278420997/original/a9c85ed9abd2539882193ae4679abee4dd493420.png" className='w-full' alt="banner_img" /></figure>
-                    <div className="card-body bg-state-300">
-                        <div className='flex'>
-                            <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/ee754046722a8aadcb3db4cd0632926a-1674345420154/b3e185ff-affc-41af-8f8a-65ce4ff9e570.jpg"  alt="profile_img" />
-                            <div className='pl-4'>
-                                <h3 className='text-left font-bold'>suessvilliano</h3>
-                                <h2 className='font-medium'>Level 2 Seller</h2>
-                            </div>
-                        </div>
-                        <div>
-                            <p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p>
-                        </div>
-                        <div className="card-actions justify-between items-center border-t-2 pt-4">
-                            <div>
-                            <div className="rating flex items-center">
-                                <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
-                                <h2 className='text-lg pl-1'>4.8</h2>
-                                <h3 className='text-lg pl-1'>(35)</h3>
-                                </div>
-                            </div>
-                            <div className='flex'>
-                                <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
-                                <h3 className='text-2xl font-semibold'>$25</h3>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                    </SwiperSlide>
+            <div className='border border-[#9ca3af] p-6 bg-[#e5e7eb] mt-16 w-10/12 '>
+                <h2 className='text-2xl font-bold pb-6'>Recommended for you </h2>
+                <div className="grid grid-cols-2 gap-4">
+                    {
+                        sliders.map(slider => <>
+                            {/* <Link
+                                href="#"
+                                class="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1592&q=80)] bg-cover bg-center bg-no-repeat"
+                            >
+                                <div class="absolute inset-0 bg-black/25"></div>
 
-                </Swiper>
-                    {/* <div className="card w-full bg-base-100 shadow-xl mx-3">
-                    <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></figure>
-                    <div className="card-body bg-state-300">
-                        <div className='flex'>
-                            <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/348f16c5d833f5c147fac64226ac4542-1679827325884/7eabd055-9bd6-4cf3-847b-ebb4449d8d20.png" alt="profile_img" />
-                            <div className='pl-4'>
-                                <h3 className='text-left font-bold'>giovanni_ux</h3>
-                                <h2 className='font-medium'>Top Rated Seller</h2>
-                            </div>
-                        </div>
-                        <div>
-                            <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
-                        </div>
-                        <div className="card-actions justify-between items-center border-t-2 pt-4">
-                            <div>
-                            <div className="rating flex items-center">
-                                <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
-                                <h2 className='text-lg pl-1'>4.8</h2>
-                                <h3 className='text-lg pl-1'>(35)</h3>
+                                <div class="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
+                                    <div class="sm:pt-18 pt-12 text-white lg:pt-24">
+                                        <h3 class="text-xl text-[white] font-bold sm:text-2xl">Rome</h3>
+
+                                        <p class="text-sm text-[white]">Italy</p>
+                                    </div>
+                                </div>
+                            </Link> */}
+                            <div className="card w-full shadow-2xl mr-3">
+                            <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></figure>
+                            <div className="card-body bg-[white] rounded-xl">
+                                <div className='flex'>
+                                    <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/348f16c5d833f5c147fac64226ac4542-1679827325884/7eabd055-9bd6-4cf3-847b-ebb4449d8d20.png" alt="profile_img" />
+                                    <div className='pl-4'>
+                                        <h3 className='text-left font-bold'>giovanni_ux</h3>
+                                        <h2 className='font-medium'>Top Rated Seller</h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
+                                </div>
+                                <div className="card-actions justify-between items-center border-t-2 pt-4">
+                                    <div>
+                                    <div className="rating flex items-center">
+                                        <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
+                                        <h2 className='text-lg pl-1'>4.8</h2>
+                                        <h3 className='text-lg pl-1'>(35)</h3>
+                                        </div>
+                                    </div>
+                                    <div className='flex'>
+                                        <h2 className='text-sm items-center font-medium pt-1 pr-1 flex ' >STARTING AT</h2>
+                                        <h3 className='text-2xl font-semibold'>$30</h3>
+                                    </div>
                                 </div>
                             </div>
-                            <div className='flex'>
-                                <h2 className='text-sm items-center font-medium pt-1 pr-1 flex ' >STARTING AT</h2>
-                                <h3 className='text-2xl font-semibold'>$30</h3>
                             </div>
+                        </>)
+                    }
+                </div>
+            </div>
+            <div className='mt-10'>
+                <h2 className='text-2xl font-bold pb-4'>Reviews</h2>
+                <div className='flex'>
+                        <h4 className='text-lg text-left font-medium mr-2'>15 reviews for this Gig</h4>
+                        <div className='rating pb-2 flex items-center'>
+                            <span className='text-lg base-400 text-warning'><AiFillStar></AiFillStar></span>
+                            <span className='text-lg base-400 text-warning'><AiFillStar></AiFillStar></span>
+                            <span className='text-lg base-400 text-warning'><AiFillStar></AiFillStar></span>
+                            <span className='text-lg base-400 text-warning'><AiFillStar></AiFillStar></span>
+                            <span className='text-lg base-400 text-warning'><AiFillStar></AiFillStar></span>
+                            <h3 className='font-medium text-lg text-warning pl-1'>5</h3>
                         </div>
-                    </div>
-                    </div>
-                    <div className="card w-full bg-base-100 shadow-xl mx-3">
-                    <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></figure>
-                    <div className="card-body bg-state-300">
-                        <div className='flex'>
-                            <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/7eab80c32f7e9bb5121ab2f1a66f094e-1634034140753/10fbcda8-cb7e-42b7-9a12-613197ddd92c.png" alt="profile_img" />
-                            <div className='pl-4'>
-                                <h3 className='text-left font-bold'>annann1</h3>
-                                <h2 className='font-medium'>Level 2 Seller</h2>
-                            </div>
-                        </div>
+                </div>
+                <div className='border-t border-[#9ca3af] w-10/12 mt-6 pt-4 pb-4'>
+                    <div className='flex lg:flex-row pt-4 '>
                         <div>
-                            <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
+                        <img className='w-14 mr-6 rounded-full' src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/5b394f50b09af0960edff91705cd9b11-1679343678600/e5123408-2cd3-478e-80b3-534bb38d6f42.jpg" alt="fiver_img" />
                         </div>
-                        <div className="card-actions justify-between items-center border-t-2 pt-4">
-                            <div>
-                            <div className="rating flex items-center">
-                                <input type="radio" name="rating-1" className="mask text-sm mask-star base-400 bg-warning" />
-                                <h2 className='text-lg pl-1'>4.8</h2>
-                                <h3 className='text-lg pl-1'>(35)</h3>
-                                </div>
+                        <div className='flex flex-col pl-4'>
+                            <h4 className='text-md text-left font-medium mr-3  '>vectorcomm</h4>
+                            <div className='flex my-3'>
+                                <img className='w-6 mr-2' src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png" alt="country_img" />
+                                <h4 className='text-md text-left font-medium pr-3 '>United States</h4>
                             </div>
-                            <div className='flex'>
-                                <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
-                                <h3 className='text-2xl font-semibold'>$50</h3>
+                            <div className='rating pb-2 flex items-center '>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <h3 className='font-semibold text-warning pl-1'>5</h3>
+                                <span className='h-3 border-l-2 border-[gray] mx-2'></span>
+                                <h4 className='text-md text-left font-medium flex  pr-3  items-start'>1 week ago</h4>
                             </div>
+                            <p className='font-medium text-lg'>Steve was great to work and created a really cool, unique design. Exactly what I needed. Would definitely work with him again!</p>
+                            
                         </div>
                     </div>
-                    </div> */}
+                </div>
+                <div className='border-t border-[#9ca3af] w-10/12 mt-6 pt-4 pb-4'>
+                    <div className='flex lg:flex-row pt-4 '>
+                        <div>
+                        <img className='w-14 mr-6 rounded-full' src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/5b394f50b09af0960edff91705cd9b11-1679343678600/e5123408-2cd3-478e-80b3-534bb38d6f42.jpg" alt="fiver_img" />
+                        </div>
+                        <div className='flex flex-col pl-4'>
+                            <h4 className='text-md text-left font-medium mr-3  '>vectorcomm</h4>
+                            <div className='flex my-3'>
+                                <img className='w-6 mr-2' src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png" alt="country_img" />
+                                <h4 className='text-md text-left font-medium pr-3 '>United States</h4>
+                            </div>
+                            <div className='rating pb-2 flex items-center '>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>
+                                <h3 className='font-semibold text-warning pl-1'>5</h3>
+                                <span className='h-3 border-l-2 border-[gray] mx-2'></span>
+                                <h4 className='text-md text-left font-medium flex  pr-3  items-start'>1 week ago</h4>
+                            </div>
+                            <p className='font-medium text-lg'>Steve was great to work and created a really cool, unique design. Exactly what I needed. Would definitely work with him again!</p>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div className='w-4/12 border h-48 max-h-max'>
-            <div className="btn-group flex justify-between">
-                <button onClick={handleBasic} className="p-5 w-4/12 border-r border-b bd-primary">Basic</button>
-                <button onClick={handleStandard} className="p-5 w-4/12 text-white bg-primary border-r border-b">Standard</button>
-                <button onClick={handlePremium} className="p-5 w-4/12 border-b">Premium</button>
-            </div>
+        <div className='w-4/12 border-2 border-[#dadbdd] h-max'>
+          <div>
+            <button onClick={() => setPackages('basic')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 border-r-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Basic</button>
+            <button onClick={() => setPackages('standard')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 border-r-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Standard</button>
+            <button onClick={() => setPackages('premium')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Premium</button>
+          </div>
+          <div>
+            <h3>{content}</h3>
+          </div>
         </div>
     </div>
  );

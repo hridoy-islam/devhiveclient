@@ -14,3 +14,24 @@
     padding: 0 20px 8px;
     width: 100px;
 }
+
+.arrow-icon .swiper-button-next:after {
+    font-size: 23px !important;
+}
+.arrow-icon .swiper-button-next{
+    color: gray;
+    border: 1px solid ;
+    border-radius: 101%;
+    padding: 20px;
+    background: white;
+}
+.arrow-icon .swiper-button-prev:after {
+    font-size: 23px !important;
+}
+.arrow-icon .swiper-button-prev{
+    color: gray !important;
+    border: 1px solid ;
+    border-radius: 101%;
+    padding: 20px;
+    background: white;
+}
