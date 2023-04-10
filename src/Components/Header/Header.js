@@ -18,7 +18,7 @@ const Header = () => {
   }, []);
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
-  console.log(userData);
+  // console.log(userData);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

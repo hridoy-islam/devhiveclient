@@ -23,7 +23,7 @@ const Chat = () => {
       direction: "outgoing",
     };
 
-    const newMessages = [...messagesend, newMessage];
+    const newMessages = [...messages, newMessage];
     //update our user state
     setMessages(newMessages);
 
