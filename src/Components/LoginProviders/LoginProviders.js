@@ -9,8 +9,13 @@ import {
 import app from "../../Configs/Firebase.config";
 import { useDispatch } from "react-redux";
 import { setLoggedIn, setUserData } from "../../features/api/loginSlice";
+import { registerUser } from "../../features/api/Auth/userActions";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginProviders = () => {
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
   const githubprovider = new GithubAuthProvider();
   const dispatch = useDispatch();
@@ -28,12 +33,22 @@ const LoginProviders = () => {
         // Set the login data in the store
         dispatch(setLoggedIn(true));
         dispatch(setUserData(user));
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+          verified: user?.emailVerified,
+          pic: user?.photoURL,
+        };
+        dispatch(registerUser(userData));
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
+        console.log(errorMessage);
         const email = error.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
@@ -48,6 +63,15 @@ const LoginProviders = () => {
         // ...
         dispatch(setLoggedIn(true));
         dispatch(setUserData(user));
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+          verified: user?.emailVerified,
+          pic: user?.photoURL,
+        };
+        dispatch(registerUser(userData));
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         // Handle Errors here.

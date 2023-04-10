@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   updateProfile,
 } from "firebase/auth";
 import app from "../Configs/Firebase.config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+import { registerUser } from "../features/api/Auth/userActions";
 
 const Register = () => {
   const [users, setUsers] = useState({});
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [selectedImageName, setSelectedImageName] = useState("");
   const [user, setUSer] = useState(false);
@@ -68,6 +73,16 @@ const Register = () => {
           // Set the login data in the store
           dispatch(setLoggedIn(true));
           dispatch(setUserData(user));
+          const userData = {
+            name: name,
+            email: user?.email,
+            uid: user?.uid,
+            verified: user?.emailVerified,
+            pic: image,
+          };
+          dispatch(registerUser(userData));
+          navigate(from, { replace: true });
+
           return;
         }
         console.log("unsuccessful user update");
@@ -94,7 +109,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
-      });    
+      });
   };
 
   //create a function to update profile
@@ -105,12 +120,14 @@ const Register = () => {
     newUsers[field] = value;
     setUsers(newUsers);
   };
-  const handleForgetPassword = () => {
-    console.log("forget password");
+  // const handleForgetPassword = () => {
+  //   console.log("forget password");
 
-    users?.email ? console.log(users?.email) : alert("email not found");
-  };
-
+  //   users?.email ? console.log(users?.email) : alert("email not found");
+  // };
+  if (isLoggedIn && localStorage.getItem("jwt")) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">

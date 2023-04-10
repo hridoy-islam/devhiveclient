@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import LoginProviders from "../Components/LoginProviders/LoginProviders";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   getAuth,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import app from "../Configs/Firebase.config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoggedIn, setUserData } from "../features/api/loginSlice";
+import { registerUser } from "../features/api/Auth/userActions";
 
 const Login = () => {
   const [users, setUsers] = useState({});
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const auth = getAuth(app);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const submitLogin = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(users);
     setLoading(true);
     const email = users.email;
@@ -31,6 +36,15 @@ const Login = () => {
         const user = userCredential.user;
         dispatch(setLoggedIn(true));
         dispatch(setUserData(user));
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+          verified: user?.emailVerified,
+          pic: user?.photoURL,
+        };
+        dispatch(registerUser(userData));
+        navigate(from, { replace: true });
         // ...
       })
       .catch((error) => {
@@ -76,6 +90,9 @@ const Login = () => {
 
     users?.email ? console.log(users?.email) : alert("email not found");
   };
+  if (isLoggedIn && localStorage.getItem("jwt")) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <div>
       <section className="bg-gray-50 py-5 dark:bg-gray-900">
