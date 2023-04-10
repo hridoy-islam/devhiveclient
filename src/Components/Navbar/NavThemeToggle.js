@@ -10,7 +10,7 @@ const NavThemeToggle = () => {
     // 👆 false parameter is required for react project
   }, []);
   return (
-    <div>
+    <div className="flex justify-center">
       <ul class="menu menu-horizontal   p-0">
         <label className="swap swap-rotate w-12 hidden   p-5   z-50 cursor-pointer   btn-sm btn btn-ghost btn-circle">
           <input type="checkbox" />
@@ -36,7 +36,7 @@ const NavThemeToggle = () => {
         </label>
 
         <li
-          className="w-44  md:absolute md:right-20 md:top-2 z-20"
+          className="w-44  md:absolute md:right-20 z-20"
           data-choose-theme
           tabindex="0"
         >
