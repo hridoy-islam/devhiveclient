@@ -7,7 +7,6 @@ import DrawerBanner from "./HeaderComponents/DrawerBanner";
 import { themeChange } from "theme-change";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
-import { FaHome } from "react-icons/fa";
 import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);

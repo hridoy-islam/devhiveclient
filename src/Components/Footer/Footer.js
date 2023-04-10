@@ -35,8 +35,8 @@ const Footer = () => {
         <span className="footer-title">Support</span>
         <Link to="/"  className="link link-hover">Help & Support</Link>
         <Link to="/"  className="link link-hover">Trust & Safety</Link>
-        <Link to="/"  className="link link-hover">Selling on Fiverr</Link>
-        <Link to="/"  className="link link-hover">Buying on Fiver</Link>
+        <Link to="/"  className="link link-hover">Selling on DevHive</Link>
+        <Link to="/"  className="link link-hover">Buying on DevHive</Link>
       </div>
       <div className="footer-color-text">
         <span className="footer-title">Community</span>
@@ -53,15 +53,15 @@ const Footer = () => {
         <Link to="/"  className="link link-hover">Community Standards</Link>
       </div>
       <div className="footer-color-text">
-        <span className="footer-title">More From Fiverr</span>
-        <Link to="/"  className="link link-hover">Fiverr Business</Link>
-        <Link to="/"  className="link link-hover">Fiverr Pro</Link>
-        <Link to="/"  className="link link-hover">Fiverr Logo Maker</Link>
-        <Link to="/"  className="link link-hover">Fiverr Guides</Link>
+        <span className="footer-title">More From DevHiver</span>
+        <Link to="/"  className="link link-hover">DevHive Business</Link>
+        <Link to="/"  className="link link-hover">DevHive Pro</Link>
+        <Link to="/"  className="link link-hover">DevHive Logo Maker</Link>
+        <Link to="/"  className="link link-hover">DevHive Guides</Link>
         <Link to="/"  className="link link-hover">Get Inspired</Link>
-        <Link to="/"  className="link link-hover">Fiverr Select</Link>
+        <Link to="/"  className="link link-hover">DevHiver Select</Link>
         <Link to="/"  className="link link-hover">ClearVoice</Link>
-        <Link to="/"  className="link link-hover">Fiverr Workspace</Link>
+        <Link to="/"  className="link link-hover">DevHive Workspace</Link>
         <Link to="/"  className="link link-hover">Learn</Link>
         <Link to="/"  className="link link-hover">Working Not Working</Link>
       </div>
