@@ -231,10 +231,7 @@ const Header = () => {
                 </button>
               </NavLink>
               {isLoggedIn && (
-                <NavLink
-                  className="hidden lg:block"
-                  to="/developer/create_service"
-                >
+                <NavLink className="hidden lg:block" to="/create-service">
                   <button
                     type="button"
                     data-dropdown-toggle="apps-dropdown"

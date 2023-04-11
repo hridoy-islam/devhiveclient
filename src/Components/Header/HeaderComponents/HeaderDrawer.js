@@ -194,7 +194,7 @@ const HeaderDrawer = () => {
           <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <span class="ml-3">Developer Section</span>
             <NavLink
-              to="/developer/create_service"
+              to="/create-service"
               className={({ isActive }) =>
                 isActive
                   ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
