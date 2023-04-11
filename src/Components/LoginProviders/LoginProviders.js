@@ -87,14 +87,14 @@ const LoginProviders = () => {
   return (
     <div className="flex flex-col gap-2">
       <button
-        className="btn flex gap-5 w-full btn-outline btn-error"
+        className="btn flex gap-5 w-full btn-outline text-primary"
         onClick={handleGoogleLogin}
       >
         <FaGoogle></FaGoogle>
         <span>Continue with Google</span>
       </button>
       <button
-        className="btn w-full flex gap-5 btn-outline "
+        className="btn w-full flex gap-5 btn-outline text-secondary"
         onClick={handleGithubLogin}
       >
         <FaGithub></FaGithub>

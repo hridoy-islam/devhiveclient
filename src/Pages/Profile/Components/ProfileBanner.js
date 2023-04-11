@@ -1,41 +1,34 @@
 import React from "react";
-import useLogout from "../hooks/useLogout";
+
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import NavThemeToggle from "../Components/Navbar/NavThemeToggle";
+import useLogout from "../../../hooks/useLogout";
 
-const Profile = () => {
+const ProfileBanner = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   return (
     <div>
-      <div
-        data-aos="zoom-in"
-        data-aos-duration="3000"
-        className="App  flex justify-center flex-col items-center"
-      >
-        <h1 className="text-5xl font-bold m-5">Profile</h1>
-        {/* <div className="flex flex-row gap-3"> */}
-
-        <NavThemeToggle></NavThemeToggle>
-        {/* </div> */}
-        <img
-          className="w-20 "
-          title={userData?.displayName}
-          src={userData?.photoURL}
-          alt={userData?.displayName}
-        />
+      <div className="App border rounded p-5 flex justify-center flex-col items-center">
+        <div className="flex flex-col items-center justify-center">
+          <img
+            className="w-20 "
+            title={userData?.displayName}
+            src={userData?.photoURL}
+            alt={userData?.displayName}
+          />
+          <img
+            src="http://cdn.onlinewebfonts.com/svg/img_188436.png"
+            alt="select_photo"
+            className="btn-xs relative bottom-6 btn btn-ghost btn-outline btn-circle"
+          />
+        </div>
         <h2 className="text-3xl">{userData?.displayName}</h2>
         <h2 className="text-xl">{userData?.email}</h2>
         <h4 className="text-xl">uid: {userData?.uid}</h4>
         <h4 className="text-xl">{userData?.phoneNumber}</h4>
 
         <div className="flex m-3">
-          {/* <Link to="/settings">
-          <Button className="mr-6 w-28" gradientMonochrome="lime">
-            Edit Profile
-          </Button>
-        </Link> */}
           <Link to="/user-profile/edit">
             <button className=" btn btn-info" gradientMonochrome="failure">
               Edit Profile
@@ -54,4 +47,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileBanner;
