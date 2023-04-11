@@ -16,6 +16,11 @@ import NotificationSettings from "../Components/Settings/NotificationSettings";
 import BusinessInfoSettings from "../Components/Settings/BusinessInfoSettings";
 import PaymentMethodSettings from "../Components/Settings/PaymentMethodSettings";
 import SettingsLayout from "../Layout/SettingsLayout";
+import Graphic from "../Pages/Graphic";
+import DigitalMarketing from "../Pages/DigitalMarketing";
+import Writting from "../Pages/Writting";
+import CreateService from "../Pages/CreateService";
+import Video from "../Pages/Video";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +32,28 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/graphic-design",
+        element: <Graphic />,
+      },
+      {
+        path: "/digital-marketing",
+        element: <DigitalMarketing />,
+      },
+      {
+        path: "/writting",
+        element: <Writting />,
+      },
+      {
+        path: "/video",
+        element: <Video />
+      },
+      {
+        path: '/music',
+        element: <Music />
+      }
+      {
+        path: "/create-service",
+        element: <CreateService />,
       },
       {
         path: "/login",
