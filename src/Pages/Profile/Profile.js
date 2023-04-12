@@ -7,6 +7,8 @@ import ProfileBanner from "./Components/ProfileBanner";
 import Wallets from "./Components/Wallets";
 import image from "../../image/seller.jpg";
 import "./Profile.css";
+import ProfileDescription from "./Components/ProfileDescription";
+import SharedInformation from "./Components/SharedInformation";
 
 const Profile = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -19,6 +21,8 @@ const Profile = () => {
         <div className="md:col-span-5 col-span-11 flex flex-col items-center justify-center gap-10 ">
           <ProfileBanner></ProfileBanner>
           <Wallets></Wallets>
+          <ProfileDescription></ProfileDescription>
+          <SharedInformation></SharedInformation>
         </div>
         <div className="h-[100vh] col-span-0 hidden rounded md:block border md:col-span-7">
           <div className="seller-buyer">
