@@ -8,6 +8,8 @@ import { themeChange } from "theme-change";
 import { useSelector } from "react-redux";
 import { AiOutlineLogin } from "react-icons/ai";
 import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
+import { IoIosCreate } from "react-icons/io";
+import { MdSell } from "react-icons/md";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -222,13 +224,26 @@ const Header = () => {
                   data-dropdown-toggle="apps-dropdown"
                   class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                 >
-                  {/* <!-- Icon -->
-                  <FaHome className="text-2xl"></FaHome>*/}
-                  <span className="font-semibold hidden antialiased sm:block mt-1">
+                  <MdSell className="text-2xl mt-1  xl:hidden block"></MdSell>
+                  <span className="font-semibold hidden antialiased xl:block mt-1">
                     Start Selling
                   </span>
                 </button>
               </NavLink>
+              {isLoggedIn && (
+                <NavLink className="hidden lg:block" to="/create-service">
+                  <button
+                    type="button"
+                    data-dropdown-toggle="apps-dropdown"
+                    class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
+                  >
+                    <IoIosCreate className="text-2xl xl:hidden block"></IoIosCreate>
+                    <span className="font-semibold hidden antialiased xl:block mt-1">
+                      Create
+                    </span>
+                  </button>
+                </NavLink>
+              )}
               {/* developer start */}
               {/* {isLoggedIn && (
                 <div
