@@ -9,10 +9,10 @@ const ProfileBanner = () => {
   const userData = useSelector((state) => state.login.userData);
   return (
     <div>
-      <div className="App border rounded p-5 flex justify-center flex-col items-center">
+      <div className="App border rounded hello p-14 flex justify-center flex-col items-center">
         <div className="flex flex-col items-center justify-center">
           <img
-            className="w-20 "
+            className="w-40 rounded-full"
             title={userData?.displayName}
             src={userData?.photoURL}
             alt={userData?.displayName}
@@ -25,17 +25,20 @@ const ProfileBanner = () => {
         </div>
         <h2 className="text-3xl">{userData?.displayName}</h2>
         <h2 className="text-xl">{userData?.email}</h2>
-        <h4 className="text-xl">uid: {userData?.uid}</h4>
+        {/* <h4 className="text-xl">uid: {userData?.uid}</h4> */}
         <h4 className="text-xl">{userData?.phoneNumber}</h4>
 
         <div className="flex m-3">
           <Link to="/user-profile/edit">
-            <button className=" btn btn-info" gradientMonochrome="failure">
+            <button
+              className=" btn btn-outline btn-primary"
+              gradientMonochrome="failure"
+            >
               Edit Profile
             </button>
           </Link>
           <button
-            className="ml-3 btn btn-warning"
+            className="ml-3 btn btn-outline btn-secondary"
             gradientMonochrome="failure"
             onClick={useLogout()}
           >
