@@ -53,19 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/video",
-        element: <Video />
+        element: <Video />,
       },
       {
-        path: '/music',
-        element: <Music />
+        path: "/music",
+        element: <Music />,
       },
       {
         path: "/create-service",
         element: <CreateService />,
       },
       {
-        path: '/programming',
-        element: <Programming />
+        path: "/programming",
+        element: <Programming />,
       },
       {
         path: "/login",
@@ -140,32 +140,31 @@ const router = createBrowserRouter([
   // CreateServiseRouter
 
   {
-    path: '/createserviseform',
+    path: "/createserviseform",
     element: <CreateServiseForm />,
     children: [
       {
-        path: '/createserviseform',
-        element: <CreateServiseOverview />
+        path: "/createserviseform/",
+        element: <CreateServiseOverview />,
       },
       {
-        path: '/create_pricing',
-        element: <CreateServisePricing />
+        path: "/createserviseform/create_pricing",
+        element: <CreateServisePricing />,
       },
       {
-        path: '/create_requirement',
-        element: <CreateServiseRequirements />
+        path: "/createserviseform/create_requirement",
+        element: <CreateServiseRequirements />,
       },
       {
-        path: '/create_gallery',
-        element: <CreateServiseGallery />
-
+        path: "/createserviseform/create_gallery",
+        element: <CreateServiseGallery />,
       },
       {
-        path: '/create_publish',
-        element: <CreateServisePublish />
-      }
-    ]
-  }
+        path: "/createserviseform/create_publish",
+        element: <CreateServisePublish />,
+      },
+    ],
+  },
 ]);
 
 export default router;
