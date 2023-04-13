@@ -23,6 +23,12 @@ import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
+import CreateServiseForm from "../Layout/CreateServiseForm";
+import CreateServiseOverview from "../Pages/CreateServiseOverview";
+import CreateServisePricing from "../Pages/CreateServisePricing";
+import CreateServiseRequirements from "../Pages/CreateServiseRequirements";
+import CreateServiseGallery from "../Pages/CreateServiseGallery";
+import CreateServisePublish from "../Pages/CreateServisePublish";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +136,36 @@ const router = createBrowserRouter([
       </div>
     ),
   },
+
+  // CreateServiseRouter
+
+  {
+    path: '/createserviseform',
+    element: <CreateServiseForm />,
+    children: [
+      {
+        path: '/createserviseform',
+        element: <CreateServiseOverview />
+      },
+      {
+        path: '/create_pricing',
+        element: <CreateServisePricing />
+      },
+      {
+        path: '/create_requirement',
+        element: <CreateServiseRequirements />
+      },
+      {
+        path: '/create_gallery',
+        element: <CreateServiseGallery />
+
+      },
+      {
+        path: '/create_publish',
+        element: <CreateServisePublish />
+      }
+    ]
+  }
 ]);
 
 export default router;
