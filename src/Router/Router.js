@@ -23,6 +23,7 @@ import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
+import PrivateRoute from '../Components/Auth/PrivateRoute/PrivateRoute'
 import ManageGigs from "../Components/Admin/ManageGigs";
 import AdminLayout from "../Layout/AdminLayout";
 import ManageUsers from "../Components/Admin/ManageUsers";
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-service",
-        element: <CreateService />,
+        element: <PrivateRoute><CreateService /></PrivateRoute>,
       },
       {
         path: "/programming",

@@ -37,7 +37,7 @@ const AccountSettings = () => {
         notify2(error.message);
       });
   };
-
+  // hi
   //   const { user } = useContext(AuthContext);
   //   console.log(user);
   const deleteAccount = () => {
