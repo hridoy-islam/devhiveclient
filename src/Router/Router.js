@@ -125,6 +125,33 @@ const router = createBrowserRouter([
         path: "/chat",
         element: <Chat />,
       },
+
+      {
+        path: "/createserviseform",
+        element: <CreateServiseForm />,
+        children: [
+          {
+            path: "/createserviseform/",
+            element: <CreateServiseOverview />,
+          },
+          {
+            path: "/createserviseform/create_pricing",
+            element: <CreateServisePricing />,
+          },
+          {
+            path: "/createserviseform/create_requirement",
+            element: <CreateServiseRequirements />,
+          },
+          {
+            path: "/createserviseform/create_gallery",
+            element: <CreateServiseGallery />,
+          },
+          {
+            path: "/createserviseform/create_publish",
+            element: <CreateServisePublish />,
+          },
+        ],
+      },
     ],
   },
   {
@@ -138,33 +165,6 @@ const router = createBrowserRouter([
   },
 
   // CreateServiseRouter
-
-  {
-    path: "/createserviseform",
-    element: <CreateServiseForm />,
-    children: [
-      {
-        path: "/createserviseform/",
-        element: <CreateServiseOverview />,
-      },
-      {
-        path: "/createserviseform/create_pricing",
-        element: <CreateServisePricing />,
-      },
-      {
-        path: "/createserviseform/create_requirement",
-        element: <CreateServiseRequirements />,
-      },
-      {
-        path: "/createserviseform/create_gallery",
-        element: <CreateServiseGallery />,
-      },
-      {
-        path: "/createserviseform/create_publish",
-        element: <CreateServisePublish />,
-      },
-    ],
-  },
 ]);
 
 export default router;
