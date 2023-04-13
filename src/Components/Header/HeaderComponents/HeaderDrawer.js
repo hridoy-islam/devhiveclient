@@ -238,7 +238,7 @@ const HeaderDrawer = () => {
             <span class="ml-3">Admin Section</span>
 
             <Link
-              to="/all-gigs"
+              to="/admin/all-gigs"
               class="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
             >
               <svg
@@ -259,7 +259,7 @@ const HeaderDrawer = () => {
             </Link>
             <li>
               <Link
-                to="/all-users"
+                to="/admin/all-users"
                 class="flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
@@ -276,7 +276,7 @@ const HeaderDrawer = () => {
             </li>
             <li>
               <Link
-                to="/issues"
+                to="/admin/issues"
                 class="flex hover:font-bold  items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
                 <svg
