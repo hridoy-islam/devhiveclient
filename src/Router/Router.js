@@ -30,6 +30,7 @@ import ManageUsers from "../Components/Admin/ManageUsers";
 import ManageIssues from "../Components/Admin/ManageIssues";
 import ManageCategories from "../Components/Admin/ManageCategories";
 import ManageDevelopers from "../Components/Admin/ManageDevelopers";
+import Checkout from "../Pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/create-service",
         element: <PrivateRoute><CreateService /></PrivateRoute>,
+      },
+      {
+        path: "/checkout",
+        element: <PrivateRoute><Checkout /></PrivateRoute>,
       },
       {
         path: "/programming",

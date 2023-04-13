@@ -12,15 +12,12 @@ const HeaderDrawer = () => {
   const userData = useSelector((state) => state.login.userData);
   const categories = [
     { name: "All", link: "/category" },
-    { name: "Graphics & Design", link: "" },
-    { name: "Digital Marketing", link: "" },
-    { name: "Writing & Translation", link: "" },
-    { name: "Video & Animation", link: "" },
-    { name: "Music & Audio", link: "" },
-    { name: "Programming & Tech", link: "" },
-    { name: "Photography", link: "" },
-    { name: "Business", link: "" },
-    { name: "AI Services", link: "" },
+    { name: "Graphics & Design", link: "/graphic-design" },
+    { name: "Digital Marketing", link: "/digital-marketing" },
+    { name: "Writing & Translation", link: "/writting" },
+    { name: "Video & Animation", link: "/video" },
+    { name: "Music & Audio", link: "/music" },
+    { name: "Programming & Tech", link: "/programming" },
   ];
   return (
     <div className="block z-50 lg:hidden">
