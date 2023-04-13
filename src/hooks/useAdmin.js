@@ -16,7 +16,7 @@ const useAdmin = () => {
           },
         };
         const { data } = await axios.get(
-          `http://localhost:5000/user/${uid}`,
+          `https://server-five-lime.vercel.app/user/${uid}`,
 
           config
         );
