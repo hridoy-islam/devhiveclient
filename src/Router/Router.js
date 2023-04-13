@@ -23,6 +23,12 @@ import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
+import ManageGigs from "../Components/Admin/ManageGigs";
+import AdminLayout from "../Layout/AdminLayout";
+import ManageUsers from "../Components/Admin/ManageUsers";
+import ManageIssues from "../Components/Admin/ManageIssues";
+import ManageCategories from "../Components/Admin/ManageCategories";
+import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 
 const router = createBrowserRouter([
   {
@@ -47,19 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/video",
-        element: <Video />
+        element: <Video />,
       },
       {
-        path: '/music',
-        element: <Music />
+        path: "/music",
+        element: <Music />,
       },
       {
         path: "/create-service",
         element: <CreateService />,
       },
       {
-        path: '/programming',
-        element: <Programming />
+        path: "/programming",
+        element: <Programming />,
       },
       {
         path: "/login",
@@ -112,6 +118,36 @@ const router = createBrowserRouter([
           {
             path: "/settings/payment",
             element: <PaymentMethodSettings></PaymentMethodSettings>,
+          },
+        ],
+      },
+      {
+        path: "/admin",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "/admin/",
+            element: <ManageGigs></ManageGigs>,
+          },
+          {
+            path: "/admin/all-gigs",
+            element: <ManageGigs></ManageGigs>,
+          },
+          {
+            path: "/admin/all-users",
+            element: <ManageUsers></ManageUsers>,
+          },
+          {
+            path: "/admin/issues",
+            element: <ManageIssues></ManageIssues>,
+          },
+          {
+            path: "/admin/all-categories",
+            element: <ManageCategories></ManageCategories>,
+          },
+          {
+            path: "/admin/all-developers",
+            element: <ManageDevelopers></ManageDevelopers>,
           },
         ],
       },

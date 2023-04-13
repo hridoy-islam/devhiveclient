@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import NavThemeToggle from "../../Components/Navbar/NavThemeToggle";
 import ProfileBanner from "./Components/ProfileBanner";
 import Wallets from "./Components/Wallets";
+import useAdmin from "../../hooks/useAdmin";
 
 const Profile = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
+  useAdmin();
   return (
     <div>
       <NavThemeToggle></NavThemeToggle>
