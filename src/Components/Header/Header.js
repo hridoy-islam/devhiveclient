@@ -241,6 +241,9 @@ const Header = () => {
                     <span className="font-semibold hidden antialiased xl:block mt-1">
                       Create
                     </span>
+                    <span className="font-semibold hidden antialiased xl:block mt-1">
+                      Service
+                    </span>
                   </button>
                 </NavLink>
               )}
@@ -288,19 +291,15 @@ const Header = () => {
               {/* developer end  */}
               {/* admin start */}
               {isLoggedIn && (
-                <Link
-                  to="/admin"
-                  title="admin section"
-                  className="dropdown mt-1 dropdown-end"
-                >
+                <NavLink className="hidden lg:block" to="/admin">
                   <button
                     type="button"
                     data-dropdown-toggle="apps-dropdown"
-                    class="p-2 hidden lg:block text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                   >
                     <svg
                       aria-hidden="true"
-                      class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                      class="xl:hidden block flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -311,8 +310,11 @@ const Header = () => {
                         clip-rule="evenodd"
                       ></path>
                     </svg>
+                    <span className="font-semibold hidden antialiased xl:block mt-1">
+                      Dashboard
+                    </span>
                   </button>
-                </Link>
+                </NavLink>
               )}
               {/* admin end  */}
 

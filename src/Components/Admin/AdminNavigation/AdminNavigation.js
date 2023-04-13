@@ -9,7 +9,7 @@ const AdminNavigation = () => {
           to="/admin/all-developers"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 border-l-[3px] border-accent-content bg-accent px-4 py-3 text-accent-content"
+              ? "flex items-center gap-2 border-l-[3px] border-primary-content bg-primary px-4 py-3 text-accent-content"
               : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
           }
         >
@@ -34,7 +34,7 @@ const AdminNavigation = () => {
           to="/admin/issues"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 border-l-[3px] border-accent-content bg-accent px-4 py-3 text-accent-content"
+              ? "flex items-center gap-2 border-l-[3px] border-primary-content bg-primary px-4 py-3 text-accent-content"
               : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
           }
         >
@@ -64,7 +64,7 @@ const AdminNavigation = () => {
           to="/admin/all-categories"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 border-l-[3px] border-accent-content bg-accent px-4 py-3 text-accent-content"
+              ? "flex items-center gap-2 border-l-[3px] border-primary-content bg-primary px-4 py-3 text-accent-content"
               : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
           }
         >
@@ -89,7 +89,7 @@ const AdminNavigation = () => {
           to="/admin/all-users"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 border-l-[3px] border-accent-content bg-accent px-4 py-3 text-accent-content"
+              ? "flex items-center gap-2 border-l-[3px] border-primary-content bg-primary px-4 py-3 text-accent-content"
               : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
           }
         >
@@ -115,7 +115,7 @@ const AdminNavigation = () => {
           to="/admin/all-gigs"
           className={({ isActive }) =>
             isActive
-              ? "flex items-center gap-2 border-l-[3px] border-accent-content bg-accent px-4 py-3 text-accent-content"
+              ? "flex items-center gap-2 border-l-[3px] border-primary-content bg-primary px-4 py-3 text-accent-content"
               : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-gray-500 hover:border-gray-100 hover:bg-gray-50 hover:text-gray-700"
           }
         >
