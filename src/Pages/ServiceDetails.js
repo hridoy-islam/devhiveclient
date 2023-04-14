@@ -13,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 
 const ServiceDetails = () => {
     const sliders = [1, 2,]
@@ -33,7 +34,7 @@ const ServiceDetails = () => {
                 <div>
                     <h3 className='font-semibold text-md pt-2'>What's Included</h3>
                 </div>
-                <button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($80)</button>
+                <Link to="/checkout"><button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($80)</button></Link>
             </div>
     }
     if (packages === 'standard') {

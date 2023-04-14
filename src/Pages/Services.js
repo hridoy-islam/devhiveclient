@@ -1,5 +1,6 @@
 import { FaVideo } from 'react-icons/fa';
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
+import {Link} from 'react-router-dom';
 
 const Services = () => {
     return (
@@ -54,7 +55,11 @@ const Services = () => {
             </div>
             <div className='mt-10 mb-10 grid lg:grid-cols-4 grid-cols gap-6 '>
                 <div className="card w-full bg-base-100 shadow-xl ">
-                <figure><img src="https://media.istockphoto.com/id/1364358321/photo/developing-programming-and-coding-technologies-with-website-design-in-virtual-diagram.jpg?b=1&s=170667a&w=0&k=20&c=lqtg6fx99gv83yRrZV9ttgQLRBti2zgjBNbPR9RWJGU=" alt="banner_img" /></figure>
+                <figure>
+                    <Link to="/services/slug" >
+                    <img src="https://media.istockphoto.com/id/1364358321/photo/developing-programming-and-coding-technologies-with-website-design-in-virtual-diagram.jpg?b=1&s=170667a&w=0&k=20&c=lqtg6fx99gv83yRrZV9ttgQLRBti2zgjBNbPR9RWJGU=" alt="banner_img" />
+                    </Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/bdbcbe0eebb34dcf7fa083e8fd37ed08-1673712364002/1c14df2c-67f0-4008-a960-01186accf310.JPG" alt="profile_img"  />
@@ -64,7 +69,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -82,7 +87,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/348f16c5d833f5c147fac64226ac4542-1679827325884/7eabd055-9bd6-4cf3-847b-ebb4449d8d20.png" alt="profile_img" />
@@ -92,7 +98,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -110,7 +116,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/7eab80c32f7e9bb5121ab2f1a66f094e-1634034140753/10fbcda8-cb7e-42b7-9a12-613197ddd92c.png" alt="profile_img" />
@@ -120,7 +127,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -138,7 +145,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/278420997/original/a9c85ed9abd2539882193ae4679abee4dd493420.png" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/278420997/original/a9c85ed9abd2539882193ae4679abee4dd493420.png" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/ee754046722a8aadcb3db4cd0632926a-1674345420154/b3e185ff-affc-41af-8f8a-65ce4ff9e570.jpg"  alt="profile_img" />
@@ -148,7 +156,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -166,7 +174,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/228730526/original/b7d7a8aa5493afe1c5983aff4e0e976dad1ab268.jpg" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/7eab80c32f7e9bb5121ab2f1a66f094e-1634034140753/10fbcda8-cb7e-42b7-9a12-613197ddd92c.png" alt="profile_img" />
@@ -176,7 +185,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design modern and responsive react website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -194,7 +203,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://media.istockphoto.com/id/1364358321/photo/developing-programming-and-coding-technologies-with-website-design-in-virtual-diagram.jpg?b=1&s=170667a&w=0&k=20&c=lqtg6fx99gv83yRrZV9ttgQLRBti2zgjBNbPR9RWJGU=" alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://media.istockphoto.com/id/1364358321/photo/developing-programming-and-coding-technologies-with-website-design-in-virtual-diagram.jpg?b=1&s=170667a&w=0&k=20&c=lqtg6fx99gv83yRrZV9ttgQLRBti2zgjBNbPR9RWJGU=" alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/bdbcbe0eebb34dcf7fa083e8fd37ed08-1673712364002/1c14df2c-67f0-4008-a960-01186accf310.JPG" alt="profile_img" />
@@ -204,7 +214,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design modern and responsive wordpress website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design modern and responsive wordpress website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -222,7 +232,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/278420997/original/a9c85ed9abd2539882193ae4679abee4dd493420.png" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/278420997/original/a9c85ed9abd2539882193ae4679abee4dd493420.png" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/ee754046722a8aadcb3db4cd0632926a-1674345420154/b3e185ff-affc-41af-8f8a-65ce4ff9e570.jpg"  alt="profile_img" />
@@ -232,7 +243,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will do UI UX design for websites and mobile apps</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>
@@ -250,7 +261,8 @@ const Services = () => {
                 </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
-                <figure><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></figure>
+                <figure><Link to="/services/slug" ><img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192388031/original/711d268a1de3e51ab210a8bd2483aef28fcb8a39.jpg" className='w-full' alt="banner_img" /></Link>
+                    </figure>
                 <div className="card-body bg-state-300">
                     <div className='flex'>
                         <img className='rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/348f16c5d833f5c147fac64226ac4542-1679827325884/7eabd055-9bd6-4cf3-847b-ebb4449d8d20.png" alt="profile_img" />
@@ -260,7 +272,7 @@ const Services = () => {
                         </div>
                     </div>
                     <div>
-                        <p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p>
+                        <Link to="/services/slug"  ><p className='text-left font-medium font-xl my-3'>I will design a custom and unique website</p></Link>
                     </div>
                     <div className="card-actions justify-between items-center border-t-2 pt-4">
                         <div>

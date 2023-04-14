@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchAuthState());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="">
       <RouterProvider router={router}></RouterProvider>
