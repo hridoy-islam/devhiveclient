@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HeaderDrawer.css";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
@@ -10,18 +10,20 @@ AOS.init();
 const HeaderDrawer = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
-  const categories = [
-    { name: "All", link: "/category" },
-    { name: "Graphics & Design", link: "" },
-    { name: "Digital Marketing", link: "" },
-    { name: "Writing & Translation", link: "" },
-    { name: "Video & Animation", link: "" },
-    { name: "Music & Audio", link: "" },
-    { name: "Programming & Tech", link: "" },
-    { name: "Photography", link: "" },
-    { name: "Business", link: "" },
-    { name: "AI Services", link: "" },
-  ];
+    const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+  React.useEffect(() => {
+    setLoading(true);
+    fetch("http://localhost:5000/category")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+    // setLoading(false);
+  }, []);
   return (
     <div className="block z-50 lg:hidden">
       <aside
@@ -137,7 +139,7 @@ const HeaderDrawer = () => {
                     className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
                   >
                     <NavLink
-                      to={category.link}
+                      to={category.route}
                       className={({ isActive }) =>
                         isActive
                           ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
