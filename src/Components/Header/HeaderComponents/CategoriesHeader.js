@@ -75,7 +75,7 @@ const CategoriesHeader = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/category")
+    fetch("https://server-five-lime.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);

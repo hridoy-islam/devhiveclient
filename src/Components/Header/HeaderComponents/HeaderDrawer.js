@@ -10,12 +10,12 @@ AOS.init();
 const HeaderDrawer = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
-    const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   React.useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/category")
+    fetch("https://server-five-lime.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
