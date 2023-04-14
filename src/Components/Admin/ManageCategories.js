@@ -10,6 +10,7 @@ const ManageCategories = () => {
   const [type, setType] = useState([]);
 
   // console.log(type);
+  // console.log(type);
   const handleAdd = (e) => {
     e.preventDefault();
     // console.log("clicked");
@@ -25,12 +26,10 @@ const ManageCategories = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        
-          console.log(data);
-          alert("Category Added Successfully");
-          setType([...type, data]);
-          e.reset();
-        
+        console.log(data);
+        alert("Category Added Successfully");
+        setType([...type, data]);
+        e.reset();
       })
       .catch((err) => console.log(err));
   };
