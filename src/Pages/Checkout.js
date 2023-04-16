@@ -1,6 +1,117 @@
-import React from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import React, { useEffect, useState } from 'react';
 
-const Checkout = () => {
+const Checkout = ({ data }) => {
+
+    const [cardError, setCardError] = useState('');
+    const [success, setSuccess] = useState("");
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState("");
+    const [clientSecret, setClientSecret] = useState("");
+
+
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const { price, name, email, id } = data || {};
+
+    useEffect(() => {
+        fetch('/create-payment-intent', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({ price })
+        })
+            .then((res) => res.json())
+            .then((data) => setClientSecret(data.clientSecret));
+    }, [price]);
+
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!stripe || !elements) {
+            return;
+        };
+
+        const card = elements.getElement(CardElement);
+
+        if (card == null) {
+            return;
+        }
+
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card,
+        });
+
+        if (error) {
+            console.log('[error]', error);
+            setCardError(error.message);
+        } else {
+            // console.log('[PaymentMethod]', paymentMethod);
+            setCardError('')
+        }
+
+
+
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: email
+                    }
+                }
+            }
+        );
+        setSuccess('');
+        setProcessing(true);
+        if (confirmError) {
+            setCardError(confirmError.message);
+            return;
+        };
+        if (paymentIntent.status === 'succeeded') {
+            setSuccess('congrats! Your Payment completed')
+            setTransactionId(paymentIntent.id)
+            // stor payment info in database:-
+            const payment = {
+                price,
+                email,
+                paymentIntent: paymentIntent.id,
+                bookingId: id
+
+            }
+            fetch('/payments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(payment)
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.insertedId) {
+                        setSuccess('congrats! Your Payment completed')
+                        setTransactionId(paymentIntent.id)
+                        alert('data store by database')
+                    }
+
+                })
+        }
+
+
+        setProcessing(false);
+        console.log('paymentIntent', paymentIntent);
+    }
+
+
     return (
 
         <section className='py-12'>
@@ -8,28 +119,28 @@ const Checkout = () => {
             <div className="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
                 <div className="bg-gray-50 py-6 md:py-12">
                     <div className="mx-auto max-w-md space-y-2 px-4 lg:px-4">
-                            <div className="flow-root">
-                                <div className="flex items-center gap-4 py-4">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                                        alt=""
-                                        className="h-16 w-16 rounded object-cover"
-                                    />
+                        <div className="flow-root">
+                            <div className="flex items-center gap-4 py-4">
+                                <img
+                                    src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+                                    alt=""
+                                    className="h-16 w-16 rounded object-cover"
+                                />
 
-                                    <div>
-                                        <h2 className="font-medium text-gray-900">Create Your Website Within 3 Days</h2>
-                                        <p className="text-2xl font-medium tracking-tight text-gray-900">
-                                            $99.99
-                                        </p>
-                                    </div>
+                                <div>
+                                    <h2 className="font-medium text-gray-900">Create Your Website Within 3 Days</h2>
+                                    <p className="text-2xl font-medium tracking-tight text-gray-900">
+                                        $99.99
+                                    </p>
                                 </div>
-
                             </div>
-                        
+
+                        </div>
+
                     </div>
                 </div>
 
-                <div className="bg-white py-6 md:py-12">
+                {/* <div className="bg-white py-6 md:py-12">
                     <div className="mx-auto max-w-lg px-4 lg:px-8">
                         <form className="grid grid-cols-6 gap-4 border p-6 border-gray-200 shadow-sm">
 
@@ -85,7 +196,43 @@ const Checkout = () => {
                             </div>
                         </form>
                     </div>
+                </div> */}
+
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <CardElement
+                            options={{
+                                style: {
+                                    base: {
+                                        fontSize: '16px',
+                                        color: '#424770',
+                                        '::placeholder': {
+                                            color: '#aab7c4',
+                                        },
+                                    },
+                                    invalid: {
+                                        color: '#9e2146',
+                                    },
+                                },
+                            }}
+                        />
+                        <button className='btn btn-sm btn-info mt-4'
+                            type="submit" disabled={!stripe || !clientSecret || processing}>
+                            Pay
+                        </button>
+
+                    </form>
+                    <p className='text-red-500'>{cardError}</p>
+                    <div className='text-error mt-2'>
+                        {
+                            success && <div>
+                                <p className='text-green-500'>{success}</p>
+                                <p >Your transactionId: <span className='font-bold text-black'> {transactionId}</span> </p>
+                            </div>
+                        }
+                    </div>
                 </div>
+
             </div>
         </section>
     );
