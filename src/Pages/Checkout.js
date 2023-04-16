@@ -114,10 +114,13 @@ const Checkout = ({ data }) => {
 
     return (
 
+
+
         <section className='py-12'>
-            <h1 className='text-center text-2xl font-semibold py-6'>Complete Your Order Now</h1>
+            <h1 className='text-center text-2xl font-semibold '>Complete Your Order Now</h1>
+
             <div className="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
-                <div className="bg-gray-50 py-6 md:py-12">
+                <div className="bg-gray-50  md:py-12">
                     <div className="mx-auto max-w-md space-y-2 px-4 lg:px-4">
                         <div className="flow-root">
                             <div className="flex items-center gap-4 py-4">
@@ -198,7 +201,9 @@ const Checkout = ({ data }) => {
                     </div>
                 </div> */}
 
+                <br />
                 <div>
+                    <h1 className='text-2xl mb-8 font-semibold '>payment</h1>
                     <form onSubmit={handleSubmit}>
                         <CardElement
                             options={{
