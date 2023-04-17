@@ -16,7 +16,7 @@ import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 
 const ServiceDetails = () => {
-    const sliders = [1, 2,]
+    const sliders = [1, 2]
     const [packages, setPackages] = useState('basic');
     let content;
     if (packages === 'basic') {

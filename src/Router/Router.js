@@ -23,7 +23,7 @@ import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
-import PrivateRoute from '../Components/Auth/PrivateRoute/PrivateRoute'
+import PrivateRoute from "../Components/Auth/PrivateRoute/PrivateRoute";
 import ManageGigs from "../Components/Admin/ManageGigs";
 import AdminLayout from "../Layout/AdminLayout";
 import ManageUsers from "../Components/Admin/ManageUsers";
@@ -31,6 +31,7 @@ import ManageIssues from "../Components/Admin/ManageIssues";
 import ManageCategories from "../Components/Admin/ManageCategories";
 import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 import Checkout from "../Pages/Checkout";
+import Payment from "../Components/PaymentFile/Payment";
 
 const router = createBrowserRouter([
   {
@@ -63,11 +64,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-service",
-        element: <PrivateRoute><CreateService /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <CreateService />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/checkout",
-        element: <PrivateRoute><Checkout /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/programming",
