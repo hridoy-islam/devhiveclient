@@ -6,17 +6,19 @@ import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const CategoriesHeader = () => {
-  const categories = [
-    { name: "Graphics & Design", link: "#" },
-    { name: "Digital Marketing", link: "#" },
-    { name: "Writing & Translation", link: "#" },
-    { name: "Video & Animation", link: "#" },
-    { name: "Music & Audio", link: "#" },
-    { name: "Programming & Tech", link: "#" },
-    { name: "Photography", link: "#" },
-    { name: "Business", link: "#" },
-    { name: "AI Services", link: "#" },
-  ];
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const categories = [
+  //   { name: "Graphics & Design", link: "#" },
+  //   { name: "Digital Marketing", link: "#" },
+  //   { name: "Writing & Translation", link: "#" },
+  //   { name: "Video & Animation", link: "#" },
+  //   { name: "Music & Audio", link: "#" },
+  //   { name: "Programming & Tech", link: "#" },
+  //   { name: "Photography", link: "#" },
+  //   { name: "Business", link: "#" },
+  //   { name: "AI Services", link: "#" },
+  // ];
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(categories.length - 1);
@@ -70,9 +72,21 @@ const CategoriesHeader = () => {
     setEndIndex((prevIndex) => prevIndex + 1);
   };
   //  handleResize();
+
+  React.useEffect(() => {
+    setLoading(true);
+    fetch("https://server-five-lime.vercel.app/category")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+    // setLoading(false);
+  }, []);
   return (
     <>
-      {show && categories.length > 1 && isLoggedIn && (
+      {show && !loading && categories.length > 1 && isLoggedIn && (
         <div className="bg-white py-1 hidden lg:block border-b">
           <div
             data-aos="fade-right"
@@ -93,7 +107,7 @@ const CategoriesHeader = () => {
                   key={category.name}
                   className="mx-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
                 >
-                  <Link to={category.link}>{category.name}</Link>
+                  <Link to={category.route}>{category.name}</Link>
                 </li>
               ))}
             </ul>
