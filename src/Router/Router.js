@@ -32,6 +32,7 @@ import ManageCategories from "../Components/Admin/ManageCategories";
 import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 import Checkout from "../Pages/Checkout";
 import About from "../Pages/About/About";
+import Payment from "../Components/PaymentFile/Payment";
 
 const router = createBrowserRouter([
   {
@@ -78,15 +79,7 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
           <PrivateRoute>
-            <Checkout />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/checkout",
-        element: (
-          <PrivateRoute>
-            <Checkout />
+            <Payment />
           </PrivateRoute>
         ),
       },
