@@ -14,7 +14,7 @@ const ManageUsers = () => {
           },
         };
         const { data } = await axios.delete(
-          `https://server-five-lime.vercel.app/user/${id}`,
+          `https://devhiveserver.vercel.app/user/${id}`,
 
           config
         );
@@ -35,7 +35,7 @@ const ManageUsers = () => {
           },
         };
         const { data } = await axios.get(
-          `https://server-five-lime.vercel.app/user/all`,
+          `https://devhiveserver.vercel.app/user/all`,
 
           config
         );
