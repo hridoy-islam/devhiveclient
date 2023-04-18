@@ -17,7 +17,7 @@ const ManageCategories = () => {
     const formData = new FormData(e.target);
     const servicedata = Object.fromEntries(formData);
     console.log(servicedata);
-    fetch("https://server-five-lime.vercel.app/category", {
+    fetch("https://devhiveserver.vercel.app/category", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const ManageCategories = () => {
   };
   React.useEffect(() => {
     setLoading(true);
-    fetch("https://server-five-lime.vercel.app/category")
+    fetch("https://devhiveserver.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         setType(data);
@@ -54,7 +54,7 @@ const ManageCategories = () => {
           },
         };
         const { data } = await axios.delete(
-          `https://server-five-lime.vercel.app/category/${id}`,
+          `https://devhiveserver.vercel.app/category/${id}`,
 
           config
         );

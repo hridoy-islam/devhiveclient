@@ -15,7 +15,7 @@ const HeaderDrawer = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch("https://server-five-lime.vercel.app/category")
+    fetch("https://devhiveserver.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
