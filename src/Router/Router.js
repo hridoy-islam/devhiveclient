@@ -19,7 +19,6 @@ import SettingsLayout from "../Layout/SettingsLayout";
 import Graphic from "../Pages/Graphic";
 import DigitalMarketing from "../Pages/DigitalMarketing";
 import Writting from "../Pages/Writting";
-import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
@@ -32,6 +31,8 @@ import ManageCategories from "../Components/Admin/ManageCategories";
 import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 import About from "../Pages/About/About";
 import Payment from "../Components/PaymentFile/Payment";
+import CreateServiseForm from "../Layout/CreateServiseForm";
+
 
 const router = createBrowserRouter([
   {
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
         path: "/create-service",
         element: (
           <PrivateRoute>
-            <CreateService />
+            <CreateServiseForm/>
           </PrivateRoute>
         ),
       },
@@ -82,6 +83,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      
       {
         path: "/programming",
         element: <Programming />,
@@ -174,6 +176,8 @@ const router = createBrowserRouter([
         path: "/chat",
         element: <Chat />,
       },
+
+      
     ],
   },
   {
@@ -185,6 +189,8 @@ const router = createBrowserRouter([
       </div>
     ),
   },
+
+  // CreateServiseRouter
 ]);
 
 export default router;
