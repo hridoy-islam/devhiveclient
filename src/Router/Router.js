@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         element: <Music />,
       },
       {
-        path: "/createserviseform",
+        path: "/create-service",
         element: <CreateServiseForm/>
       },
       {
