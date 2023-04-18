@@ -19,16 +19,11 @@ import SettingsLayout from "../Layout/SettingsLayout";
 import Graphic from "../Pages/Graphic";
 import DigitalMarketing from "../Pages/DigitalMarketing";
 import Writting from "../Pages/Writting";
-import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
 import CreateServiseForm from "../Layout/CreateServiseForm";
-import CreateServiseOverview from "../Pages/CreateServiseOverview";
-import CreateServisePricing from "../Pages/CreateServisePricing";
-import CreateServiseRequirements from "../Pages/CreateServiseRequirements";
-import CreateServiseGallery from "../Pages/CreateServiseGallery";
-import CreateServisePublish from "../Pages/CreateServisePublish";
+
 
 const router = createBrowserRouter([
   {
@@ -60,8 +55,8 @@ const router = createBrowserRouter([
         element: <Music />,
       },
       {
-        path: "/create-service",
-        element: <CreateService />,
+        path: "/createserviseform",
+        element: <CreateServiseForm/>
       },
       {
         path: "/programming",
@@ -126,32 +121,7 @@ const router = createBrowserRouter([
         element: <Chat />,
       },
 
-      {
-        path: "/createserviseform",
-        element: <CreateServiseForm />,
-        children: [
-          {
-            path: "/createserviseform/",
-            element: <CreateServiseOverview />,
-          },
-          {
-            path: "/createserviseform/create_pricing",
-            element: <CreateServisePricing />,
-          },
-          {
-            path: "/createserviseform/create_requirement",
-            element: <CreateServiseRequirements />,
-          },
-          {
-            path: "/createserviseform/create_gallery",
-            element: <CreateServiseGallery />,
-          },
-          {
-            path: "/createserviseform/create_publish",
-            element: <CreateServisePublish />,
-          },
-        ],
-      },
+      
     ],
   },
   {
