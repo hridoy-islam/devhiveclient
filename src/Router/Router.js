@@ -32,7 +32,8 @@ import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 import About from "../Pages/About/About";
 import Payment from "../Components/PaymentFile/Payment";
 import CreateServiseForm from "../Layout/CreateServiseForm";
-
+import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
+import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
         path: "/create-service",
         element: (
           <PrivateRoute>
-            <CreateServiseForm/>
+            <CreateServiseForm />
           </PrivateRoute>
         ),
       },
@@ -83,7 +84,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      
+
       {
         path: "/programming",
         element: <Programming />,
@@ -112,6 +113,23 @@ const router = createBrowserRouter([
         path: "/user-profile",
         element: <Profile />,
       },
+      {
+        path: "/developer-profile",
+        element: (
+          <PrivateRoute>
+            <DeveloperProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/developer-register",
+        element: (
+          <PrivateRoute>
+            <DeveloperRegister />
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: "/settings",
         element: <SettingsLayout />,
@@ -176,8 +194,6 @@ const router = createBrowserRouter([
         path: "/chat",
         element: <Chat />,
       },
-
-      
     ],
   },
   {
