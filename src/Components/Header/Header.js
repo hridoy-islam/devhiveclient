@@ -298,8 +298,7 @@ const Header = () => {
                     data-dropdown-toggle="apps-dropdown"
                     class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                   >
-                   <RiDashboardFill className="text-2xl xl:hidden block">
-                   </RiDashboardFill>
+                    <RiDashboardFill className="text-2xl xl:hidden block"></RiDashboardFill>
                     <span className="font-semibold hidden antialiased xl:block mt-1">
                       Dashboard
                     </span>

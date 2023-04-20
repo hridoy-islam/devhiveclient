@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { useToast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ManageDevelopers = () => {
   const [admin, setAdmin] = useState([]);
   const [search, setSearch] = useState("");
@@ -27,9 +31,11 @@ const ManageDevelopers = () => {
       console.log(error);
     }
   }, []);
+
   const handleSearch = (e) => {};
   // console.log(search);
   // console.log(admin);
+  const toast = useToast;
   useEffect(() => {
     try {
       const user = async () => {
@@ -65,11 +71,46 @@ const ManageDevelopers = () => {
     const modal = document.getElementById("my-modal-6");
     modal.checked = true;
   };
+  const userData = useSelector((state) => state.login.userData);
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    console.log(e.target.confirmAdd.value);
+    const data = {
+      id: selectedId?._id,
+      adminmakerpass: e.target.confirmAdd.value,
+      adminmaker: localStorage.getItem("user_id"),
+    };
+    console.log(data);
+    try {
+      const user = localStorage.getItem("jwt");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user}`,
+        },
+      };
+      const response = await axios.post(
+        "https://devhiveserver.vercel.app/admin",
+        data,
+        config
+      );
+      console.log(response.data);
+      btnClose();
+      setAdmin([...admin, data]);
+      const modal = document.getElementById("my-modal-6");
+      modal.checked = false;
+      toast.success("admin added");
+    } catch (error) {
+      console.log(error);
+      alert(error?.response?.data?.error);
+      toast.error("something went wrong");
+    }
+  };
   return (
     <div className="w-full min-h-screen lg:w-[750px]">
       <section class="bg-gray-50  dark:bg-gray-900 p-3 sm:p-5">
         <div class="mx-auto  max-w-screen-xl px-2 lg:px-4">
           {/* <!-- Start coding here --> */}
+          <ToastContainer></ToastContainer>
           <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
               <div class="w-full md:w-1/2">
@@ -199,17 +240,33 @@ const ManageDevelopers = () => {
                     <p className="py-4">
                       Please enter your password to confirm
                     </p>
-                    <div className="modal-action">
-                      <label
-                        onClick={() => {
-                          btnClose();
-                        }}
-                        htmlFor="my-modal-6"
-                        className="btn"
-                      >
-                        Cancel
-                      </label>
-                    </div>
+                    <form onSubmit={handleAdd} action="">
+                      <input
+                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        type="password"
+                        name="confirmAdd"
+                        placeholder="••••••••"
+                        // defaultValue={users?.email}
+                        id=""
+                        // onBlur={handleEventBlur}
+                        required=""
+                      />
+
+                      <div className="modal-action">
+                        <button type="submit" className="btn">
+                          Submit
+                        </button>
+                        <label
+                          onClick={() => {
+                            btnClose();
+                          }}
+                          htmlFor="my-modal-6"
+                          className="btn"
+                        >
+                          Cancel
+                        </label>
+                      </div>
+                    </form>
                   </div>
                 </div>
                 <div class="flex items-center space-x-3 w-full md:w-auto">
