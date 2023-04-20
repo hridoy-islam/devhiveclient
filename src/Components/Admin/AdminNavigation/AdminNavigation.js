@@ -6,7 +6,7 @@ const AdminNavigation = () => {
     <div>
       <nav aria-label="Main Nav" className="flex flex-col">
         <NavLink
-          to="/admin/all-developers"
+          to="/admin/"
           className={({ isActive }) =>
             isActive
               ? "flex items-center gap-2 border-l-[3px] border-secondary bg-primary px-4 py-3 text-primary-content"
@@ -28,10 +28,10 @@ const AdminNavigation = () => {
             />
           </svg>
 
-          <span className="text-sm font-medium"> Manage Admins </span>
+          <span className="text-sm font-medium"> Admin Dashboard </span>
         </NavLink>
         <NavLink
-          to="/admin/issues"
+          to="/admin/all-admins"
           className={({ isActive }) =>
             isActive
               ? "flex items-center gap-2 border-l-[3px] border-secondary bg-primary px-4 py-3 text-primary-content"
@@ -58,7 +58,7 @@ const AdminNavigation = () => {
             />
           </svg>
 
-          <span className="text-sm font-medium"> Manage Issues </span>
+          <span className="text-sm font-medium"> Manage Admins </span>
         </NavLink>
         <NavLink
           to="/admin/all-categories"

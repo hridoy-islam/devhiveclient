@@ -96,7 +96,8 @@ const ManageDevelopers = () => {
       );
       console.log("admin added");
       btnClose();
-      setAdmin([...admin, data]);
+      setAdmin([...admin, response.data]);
+      // console.log([...admin, response]);
       const modal = document.getElementById("my-modal-6");
       modal.checked = false;
       // toast.success("admin added");

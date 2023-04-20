@@ -34,6 +34,7 @@ import Payment from "../Components/PaymentFile/Payment";
 import CreateServiseForm from "../Layout/CreateServiseForm";
 import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
 import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
+import Admin from "../Components/Admin/Admin";
 
 const router = createBrowserRouter([
   {
@@ -178,7 +179,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/admin/",
-            element: <ManageGigs></ManageGigs>,
+            element: <Admin></Admin>,
           },
           {
             path: "/admin/all-gigs",
@@ -197,7 +198,7 @@ const router = createBrowserRouter([
             element: <ManageCategories></ManageCategories>,
           },
           {
-            path: "/admin/all-developers",
+            path: "/admin/all-admins",
             element: <ManageDevelopers></ManageDevelopers>,
           },
         ],
