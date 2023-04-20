@@ -101,10 +101,11 @@ const ManageDevelopers = () => {
       toast.success("admin added");
     } catch (error) {
       console.log(error);
-      alert(error?.response?.data?.error);
+      alert(error?.response?.data?.error || error?.response?.data?.msg);
       toast.error("something went wrong");
     }
   };
+  const handleAdminDelete = () => {};
   return (
     <div className="w-full min-h-screen lg:w-[750px]">
       <section class="bg-gray-50  dark:bg-gray-900 p-3 sm:p-5">
