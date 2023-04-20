@@ -106,35 +106,62 @@ const ManageDevelopers = () => {
       toast.error("something went wrong");
     }
   };
+  // const handleRemove = async (e) => {
+  //   e.preventDefault();
+  //   // console.log(e.target.confirmRemove.value);
+  //   const data = {
+  //     adminterminator: localStorage.getItem("user_id"),
+  //     adminterminatorpass: e.target.confirmRemove.value,
+  //   };
+  //   // console.log(data);
+  //   try {
+  //     const user = localStorage.getItem("jwt");
+  //     const config = {
+  //       headers: {
+  //         Authorization: `Bearer ${user}`,
+  //       },
+  //     };
+  //     const url = `https://devhiveserver.vercel.app/admin/${adminToRemove?._id}`;
+  //     // console.log(url);
+  //     const response = await axios.delete(url, data, config);
+  //     console.log(response.data);
+  //     btnClose();
+  //     // setAdmin([...admin, data]);
+  //     const modal = document.getElementById("my-modal-5");
+  //     modal.checked = false;
+  //     // toast.success("admin added");
+  //     alert("admin removed");
+  //   } catch (error) {
+  //     console.log(error);
+  //     alert("something went wrong");
+  //     // toast.error("something went wrong");
+  //   }
+  // };
   const handleRemove = async (e) => {
     e.preventDefault();
-    // console.log(e.target.confirmRemove.value);
-    const data = {
-      adminterminator: localStorage.getItem("user_id"),
-      adminterminatorpass: e.target.confirmRemove.value,
-    };
-    // console.log(data);
+
+    // const adminToRemove = // some code to get the admin object you want to delete
+    const adminterminatorpass = e.target.confirmRemove.value;
+    const adminterminator = localStorage.getItem("user_id");
+    const jwtToken = localStorage.getItem("jwt");
+
+    const data = { adminterminator, adminterminatorpass };
+    const headers = { Authorization: `Bearer ${jwtToken}` };
+
     try {
-      const user = localStorage.getItem("jwt");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user}`,
-        },
-      };
-      const url = `https://devhiveserver.vercel.app/admin/${adminToRemove?._id}`;
-      // console.log(url);
-      const response = await axios.delete(url, data, config);
+      const response = await axios.delete(
+        `https://devhiveserver.vercel.app/admin/${adminToRemove._id}`,
+        { data, headers }
+      );
+
       console.log(response.data);
-      btnClose();
-      // setAdmin([...admin, data]);
+      alert("admin removed");
       const modal = document.getElementById("my-modal-5");
       modal.checked = false;
-      // toast.success("admin added");
-      alert("admin removed");
+      btnClose();
     } catch (error) {
       console.log(error);
       alert("something went wrong");
-      // toast.error("something went wrong");
     }
   };
   const handleAdminDelete = (admin) => {
