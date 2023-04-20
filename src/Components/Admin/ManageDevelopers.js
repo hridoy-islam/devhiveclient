@@ -10,6 +10,7 @@ const ManageDevelopers = () => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [selectedId, setSelectedId] = useState();
+  const [adminToRemove, setAdminToRemove] = useState();
   useEffect(() => {
     try {
       const user = async () => {
@@ -74,13 +75,13 @@ const ManageDevelopers = () => {
   const userData = useSelector((state) => state.login.userData);
   const handleAdd = async (e) => {
     e.preventDefault();
-    console.log(e.target.confirmAdd.value);
+    // console.log(e.target.confirmAdd.value);
     const data = {
       id: selectedId?._id,
       adminmakerpass: e.target.confirmAdd.value,
       adminmaker: localStorage.getItem("user_id"),
     };
-    console.log(data);
+    // console.log(data);
     try {
       const user = localStorage.getItem("jwt");
       const config = {
@@ -93,19 +94,54 @@ const ManageDevelopers = () => {
         data,
         config
       );
-      console.log(response.data);
+      console.log("admin added");
       btnClose();
       setAdmin([...admin, data]);
       const modal = document.getElementById("my-modal-6");
       modal.checked = false;
-      toast.success("admin added");
+      // toast.success("admin added");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       alert(error?.response?.data?.error || error?.response?.data?.msg);
       toast.error("something went wrong");
     }
   };
-  const handleAdminDelete = () => {};
+  const handleRemove = async (e) => {
+    e.preventDefault();
+    // console.log(e.target.confirmRemove.value);
+    const data = {
+      adminterminator: localStorage.getItem("user_id"),
+      adminterminatorpass: e.target.confirmRemove.value,
+    };
+    // console.log(data);
+    try {
+      const user = localStorage.getItem("jwt");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user}`,
+        },
+      };
+      const url = `https://devhiveserver.vercel.app/admin/${adminToRemove?._id}`;
+      // console.log(url);
+      const response = await axios.delete(url, data, config);
+      console.log(response.data);
+      btnClose();
+      // setAdmin([...admin, data]);
+      const modal = document.getElementById("my-modal-5");
+      modal.checked = false;
+      // toast.success("admin added");
+      alert("admin removed");
+    } catch (error) {
+      console.log(error);
+      alert("something went wrong");
+      // toast.error("something went wrong");
+    }
+  };
+  const handleAdminDelete = (admin) => {
+    setAdminToRemove(admin);
+    const modal = document.getElementById("my-modal-5");
+    modal.checked = true;
+  };
   return (
     <div className="w-full min-h-screen lg:w-[750px]">
       <section class="bg-gray-50  dark:bg-gray-900 p-3 sm:p-5">
@@ -248,7 +284,7 @@ const ManageDevelopers = () => {
                         name="confirmAdd"
                         placeholder="••••••••"
                         // defaultValue={users?.email}
-                        id=""
+                        id="confirmAdd"
                         // onBlur={handleEventBlur}
                         required=""
                       />
@@ -482,6 +518,7 @@ const ManageDevelopers = () => {
                       </td>
                       <td class="px-4 py-3">
                         <button
+                          onClick={() => handleAdminDelete(adminData)}
                           className={
                             adminData?.isSuperAdmin
                               ? "btn btn-sm btn-error btn-outline btn-disabled"
@@ -548,6 +585,43 @@ const ManageDevelopers = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+            {/* Put this part before </body> tag */}
+            <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">
+                  You are about to remove {adminToRemove?.name} from admin!
+                </h3>
+                <p className="py-4">Please enter your password to confirm</p>
+                <form onSubmit={handleRemove} action="">
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    type="password"
+                    name="confirmRemove"
+                    placeholder="••••••••"
+                    // defaultValue={users?.email}
+                    id="confirmRemove"
+                    // onBlur={handleEventBlur}
+                    required=""
+                  />
+
+                  <div className="modal-action">
+                    <button type="submit" className="btn">
+                      Submit
+                    </button>
+                    <label
+                      onClick={() => {
+                        btnClose();
+                      }}
+                      htmlFor="my-modal-5"
+                      className="btn"
+                    >
+                      Cancel
+                    </label>
+                  </div>
+                </form>
+              </div>
             </div>
             <nav
               class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
