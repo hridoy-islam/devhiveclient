@@ -28,7 +28,7 @@ const AdminNavigation = () => {
             />
           </svg>
 
-          <span className="text-sm font-medium"> Manage Developers </span>
+          <span className="text-sm font-medium"> Manage Admins </span>
         </NavLink>
         <NavLink
           to="/admin/issues"
