@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { AiOutlineCloseCircle } from "react-icons/ai";
 const ManageDevelopers = () => {
   const [admin, setAdmin] = useState([]);
+  const [search, setSearch] = useState("");
+  const [users, setUsers] = useState([]);
+  const [selectedId, setSelectedId] = useState();
   useEffect(() => {
     try {
       const user = async () => {
@@ -25,66 +28,190 @@ const ManageDevelopers = () => {
     }
   }, []);
   const handleSearch = (e) => {};
+  // console.log(search);
   // console.log(admin);
+  useEffect(() => {
+    try {
+      const user = async () => {
+        const user = localStorage.getItem("jwt");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user}`,
+          },
+        };
+        const { data } = await axios.get(
+          `https://devhiveserver.vercel.app/user/user?search=${search}`,
+
+          config
+        );
+        setUsers(data);
+      };
+      user();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [search]);
+  const btnClose = () => {
+    setSearch("");
+    setUsers([]);
+    selectedUser();
+  };
+  // console.log(users);
+  const selectedUser = (user) => {
+    // console.log(id);
+    setSelectedId(user);
+  };
+  const addAdmin = () => {
+    const modal = document.getElementById("my-modal-6");
+    modal.checked = true;
+  };
   return (
-    <div className="w-full lg:w-[750px]">
-      <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-        <div class="mx-auto max-w-screen-xl px-2 lg:px-4">
+    <div className="w-full min-h-screen lg:w-[750px]">
+      <section class="bg-gray-50  dark:bg-gray-900 p-3 sm:p-5">
+        <div class="mx-auto  max-w-screen-xl px-2 lg:px-4">
           {/* <!-- Start coding here --> */}
           <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
               <div class="w-full md:w-1/2">
-                <form class="flex items-center">
+                <div class="flex items-center">
                   <label for="simple-search" class="sr-only">
                     Search
                   </label>
-                  <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg
-                        aria-hidden="true"
-                        class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                        fill="currentColor"
-                        viewbox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
+                  {!selectedId ? (
+                    <div class="relative flex flex-row w-full">
+                      {search.length !== 0 && (
+                        <button
+                          className="btn relative  left-8 top-2 btn-ghost cursor-pointer btn-outline btn-xs btn-circle"
+                          onClick={btnClose}
+                        >
+                          {" "}
+                          <AiOutlineCloseCircle></AiOutlineCloseCircle>
+                        </button>
+                      )}
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        {search.length < 1 && (
+                          <svg
+                            aria-hidden="true"
+                            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                            fill="currentColor"
+                            viewbox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        )}
+                      </div>
+                      <input
+                        onChange={(e) => setSearch(e.target.value)}
+                        type="text"
+                        id="simple-search"
+                        value={search}
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Search"
+                        required=""
+                      />
                     </div>
-                    <input
-                      onChange={handleSearch}
-                      type="text"
-                      id="simple-search"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      placeholder="Search"
-                      required=""
-                    />
-                  </div>
-                </form>
+                  ) : (
+                    <div className="flex border border-solid p-2 rounded-md justify-evenly flex-row flex-wrap items-center w-full">
+                      <button>{selectedId?.name}</button>
+                      <button
+                        onClick={() => {
+                          btnClose();
+                        }}
+                        className="btn btn-ghost btn-xs btn-outline btn-circle"
+                      >
+                        <AiOutlineCloseCircle></AiOutlineCloseCircle>
+                      </button>
+                    </div>
+                  )}
+                  {search && !selectedId && (
+                    <div className="relative right-60 top-6">
+                      <ul className="absolute menu p-2 shadow bg-base-100 rounded-box w-52">
+                        {users.map((user) => (
+                          <li
+                            className="flex flex-row overflow-clip"
+                            key={user?._id}
+                          >
+                            <a
+                              className="w-full"
+                              onClick={() => {
+                                selectedUser(user);
+                              }}
+                            >
+                              {" "}
+                              <img
+                                src={user?.pic}
+                                className="w-6"
+                                alt=""
+                              />{" "}
+                              {user?.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </div>
               <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                <button
-                  type="button"
-                  class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-                >
-                  <svg
-                    class="h-3.5 w-3.5 mr-2"
-                    fill="currentColor"
-                    viewbox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+                {selectedId && (
+                  <button
+                    onClick={addAdmin}
+                    type="button "
+                    class="flex items-center border justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                   >
-                    <path
-                      clip-rule="evenodd"
-                      fill-rule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    />
-                  </svg>
-                  Add admin
-                </button>
+                    <svg
+                      class="h-3.5 w-3.5 mr-2"
+                      fill="currentColor"
+                      viewbox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      />
+                    </svg>
+                    Add admin
+                  </button>
+                )}
+                {/* The button to open modal */}
+                {/* <label htmlFor="my-modal-6" className="btn">
+                  open modal
+                </label> */}
+
+                {/* Put this part before </body> tag */}
+                <input
+                  type="checkbox"
+                  id="my-modal-6"
+                  className="modal-toggle"
+                />
+                <div className="modal modal-bottom sm:modal-middle">
+                  <div className="modal-box">
+                    <h3 className="font-bold text-lg">
+                      You are about to set {selectedId?.name} as an admin!
+                    </h3>
+                    <p className="py-4">
+                      Please enter your password to confirm
+                    </p>
+                    <div className="modal-action">
+                      <label
+                        onClick={() => {
+                          btnClose();
+                        }}
+                        htmlFor="my-modal-6"
+                        className="btn"
+                      >
+                        Cancel
+                      </label>
+                    </div>
+                  </div>
+                </div>
                 <div class="flex items-center space-x-3 w-full md:w-auto">
                   <button
                     id="actionsDropdownButton"
