@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin";
 
 const SettingsNavigation = () => {
+  const [admin] = useAdmin();
   return (
     <div>
       <nav aria-label="Main Nav" className="flex flex-col">
@@ -136,32 +138,36 @@ const SettingsNavigation = () => {
 
           <span className="text-sm font-medium"> Payment Methods</span>
         </NavLink>
-        <div className="divider"></div>
-        <NavLink
-          to="/admin"
-          className={({ isActive }) =>
-            isActive
-              ? "flex items-center gap-2 border-l-[3px] border-secondary text-secondary bg-primary  px-4 py-3 "
-              : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-secondary hover:border-gray-100 hover:bg-gray-50 hover:text-secondary"
-          }
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 opacity-75"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
+        {admin && (
+          <div>
+            <div className="divider"></div>
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center gap-2 border-l-[3px] border-secondary text-secondary bg-primary  px-4 py-3 "
+                  : "flex items-center gap-2 border-l-[3px] border-transparent px-4 py-3 text-secondary hover:border-gray-100 hover:bg-gray-50 hover:text-secondary"
+              }
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 opacity-75"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
 
-          <span className="text-sm font-medium">Administrator</span>
-        </NavLink>
+              <span className="text-sm font-medium">Administrator</span>
+            </NavLink>
+          </div>
+        )}
       </nav>
     </div>
   );
