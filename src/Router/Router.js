@@ -35,6 +35,7 @@ import CreateServiseForm from "../Layout/CreateServiseForm";
 import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
 import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 import Admin from "../Components/Admin/Admin";
+import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -175,7 +176,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <AdminLayout />,
+        element: (
+          <AdminRoute>
+            <AdminLayout />
+          </AdminRoute>
+        ),
         children: [
           {
             path: "/admin/",
