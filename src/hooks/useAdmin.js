@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 
 const useAdmin = () => {
   const [admin, setAdmin] = useState(false);
-  const [loadingAdmin, setLoadingAdmin] = useState(false);
+  const [loadingAdmin, setLoadingAdmin] = useState(true);
   const uid = localStorage.getItem("user_id");
 
   useEffect(() => {
-    setLoadingAdmin(true);
+    // setLoadingAdmin(true);
     const user = localStorage.getItem("jwt");
     const config = {
       headers: {
