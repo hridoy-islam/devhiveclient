@@ -14,15 +14,19 @@ const ManageUsers = () => {
           },
         };
         const { data } = await axios.delete(
-          `https://devhiveserver.vercel.app/user/${id}`,
+          `https://devhiveserver.vercel.app/admin/user/${id}`,
 
           config
         );
         console.log(data);
+        alert("user deleted");
       };
       user();
     } catch (error) {
       console.log(error);
+      alert(error.response.data.msg);
+      alert("something went wrong");
+      console.log("something went wrong");
     }
   };
   useEffect(() => {
