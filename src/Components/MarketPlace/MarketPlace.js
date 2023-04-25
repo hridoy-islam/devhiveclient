@@ -9,7 +9,7 @@ const MarketPlace = () => {
         Explore the marketplace
       </h2>
       <div className="grid  md:grid-cols-5 gap-4 mt-10 grid-cols-2">
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -23,7 +23,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -37,7 +37,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -51,7 +51,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -65,7 +65,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -79,7 +79,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -93,7 +93,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -107,7 +107,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -121,7 +121,7 @@ const MarketPlace = () => {
             </h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
@@ -133,7 +133,7 @@ const MarketPlace = () => {
             <h2 className="card-title pt-7  ">Data</h2>
           </div>
         </div>
-        <div className="card w-56 bg-base-100  ">
+        <div className="card  bg-base-100  ">
           <Link className="px-6 pt-6 text-center">
             <img
               alt=" "
