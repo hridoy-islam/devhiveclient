@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import LeftNavBanner from "./LeftNavBanner";
 import axios from "axios";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LeftChatNav = () => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [selectedId, setSelectedId] = useState();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const selectedUser = (user) => {
     // console.log(id);
     setSelectedId(user);
@@ -36,6 +41,12 @@ const LeftChatNav = () => {
     <div>
       <div class="flex flex-col py-8 pl-6 pr-2 w-full bg-white ">
         <div class="flex flex-row items-center justify-center h-12 w-full">
+          <button
+            onClick={() => navigate(from, { replace: true })}
+            className="btn absolute left-6 btn-outline btn-sm btn-circle"
+          >
+            <IoMdArrowRoundBack className="text-xl"></IoMdArrowRoundBack>
+          </button>
           <div class="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10">
             <svg
               class="w-6 h-6"
