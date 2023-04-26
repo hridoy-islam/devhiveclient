@@ -17,8 +17,9 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedChat } from "../../../features/chat/chatSlice";
-import { getSenderName } from "../../../Configs/chatLogics";
+import { getSenderFull, getSenderName } from "../../../Configs/chatLogics";
 import LoadingAnimation from "../../../Components/LoadingAnimation";
+import ProfileModal from "./ProfileModal";
 
 const ENDPOINT = "https://devhiveserver.onrender.com";
 var socket, selectedChatCompare;
@@ -72,7 +73,11 @@ const MessageSection = () => {
             ? "outgoing"
             : "incoming",
       }));
-      setMessages(modifiedMsg, ...messages);
+      const combineMsg = [...messages, ...modifiedMsg];
+      console.log(combineMsg);
+      setMessages(combineMsg);
+      console.log(messages);
+      console.log(modifiedMsg);
       console.log(modifiedMsg);
     } catch (error) {}
   };
@@ -96,6 +101,7 @@ const MessageSection = () => {
               ? "outgoing"
               : "incoming",
         };
+        //  setMessages((prevMessages) => [...prevMessages, modifiedMsg]);
         setMessages([...messages, modifiedMsg]);
       }
     });
@@ -105,7 +111,7 @@ const MessageSection = () => {
   const handleSend = async (messagesend) => {
     const newMessage = {
       message: messagesend,
-      // sender: user?.name,
+      sender: thisUserData?.name,
       direction: "outgoing",
     };
 
@@ -125,12 +131,14 @@ const MessageSection = () => {
         {
           content: messagesend,
           chatId: selectedChat._id,
+          sender: localStorage.getItem("user_id"),
         },
         config
       );
       socket.emit("new message", data);
       // console.log(data);
     } catch (error) {
+      console.log(error);
       // toast({
       //   title: "Error Occurred!",
       //   description: "Failed to send the message.",
@@ -148,7 +156,7 @@ const MessageSection = () => {
   const typingHandler = () => {
     if (!socketConnected) return;
     if (!typing) {
-      setTyping(true);
+      // setTyping(true);
       socket.emit("typing", selectedChat._id);
     }
     let lastTypingTime = new Date().getTime();
@@ -208,61 +216,70 @@ const MessageSection = () => {
         </div>
       )}
 
-      {/* {selectedChat?.isGroupChat === false && (
-          <ProfileModal
-            current={getSenderFull(user, selectedChat?.users)}
-          ></ProfileModal>
-        )}
-        {selectedChat?.isGroupChat === true && (
-          <GroupModal current={selectedChat}></GroupModal>
-        )} */}
+      {selectedChat?.isGroupChat === false && (
+        <ProfileModal
+          current={getSenderFull(
+            localStorage.getItem("user_id"),
+            selectedChat?.users
+          )}
+        ></ProfileModal>
+      )}
 
-      <ConversationHeader
-        displayname="dsf"
-        className="h-16 "
-      ></ConversationHeader>
-
-      <MainContainer className="flex flex-col">
-        {loading ? (
-          <div h="lg" className="w-full m-6">
-            {/* <SkeletonText
+      {!selectedChat ? (
+        <div className="h-full flex items-center justify-center">
+          <h1 className="text-3xl text-center">
+            Please Select a Chat to continue.
+          </h1>
+        </div>
+      ) : (
+        <>
+          <ConversationHeader
+            displayname="dsf"
+            className="h-16 "
+          ></ConversationHeader>
+          <MainContainer className="flex flex-col">
+            {loading ? (
+              <div h="lg" className="w-full m-6">
+                {/* <SkeletonText
                 mt="4"
                 noOfLines={11}
                 rounded="lg"
                 spacing="4"
                 skeletonHeight="8"
               /> */}
-            <LoadingAnimation></LoadingAnimation>
-          </div>
-        ) : (
-          <ChatContainer>
-            <MessageList
-              className="mb-20"
-              // scrollBehavior="smooth"
-              typingIndicator={
-                typing ? (
-                  <TypingIndicator
-                  // content={
-                  //   selectedChat &&
-                  //   getSenderName(user, selectedChat?.users) + " is typing"
-                  // }
-                  />
-                ) : null
-              }
-            >
-              {messages.map((message, i) => {
-                return <Message key={i} model={message} />;
-              })}
-            </MessageList>
-            <MessageInput
-              onChange={typingHandler}
-              className="fixed bottom-20"
-              onSend={handleSend}
-              placeholder="Type message here"
-            />
-          </ChatContainer>
-        )}
-      </MainContainer>
+                <LoadingAnimation></LoadingAnimation>
+              </div>
+            ) : (
+              <ChatContainer>
+                <MessageList
+                  className="mb-20"
+                  // scrollBehavior="smooth"
+                  typingIndicator={
+                    typing ? (
+                      <TypingIndicator
+                      // content={
+                      //   selectedChat &&
+                      //   getSenderName(user, selectedChat?.users) + " is typing"
+                      // }
+                      />
+                    ) : null
+                  }
+                >
+                  {messages?.map((message, i) => {
+                    return <Message key={i} model={message} />;
+                  })}
+                </MessageList>
+                <MessageInput
+                  onChange={typingHandler}
+                  className="fixed bottom-20"
+                  onSend={handleSend}
+                  placeholder="Type message here"
+                />
+              </ChatContainer>
+            )}
+          </MainContainer>
+        </>
+      )}
     </div>
   );
 };
