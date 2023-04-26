@@ -2,18 +2,35 @@ import React, { useEffect, useState } from "react";
 import LeftNavBanner from "./LeftNavBanner";
 import axios from "axios";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { FaWindowClose } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { BsFillChatDotsFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedChat } from "../../../features/chat/chatSlice";
+import DrawerBanner from "../../../Components/Header/HeaderComponents/DrawerBanner";
+import { getSenderName, getSenderPic } from "../../../Configs/chatLogics";
+import LoadingAnimation from "../../../Components/LoadingAnimation";
 const LeftChatNav = () => {
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const selectedChat = useSelector((state) => state.chat.selectedChat);
+  const thisUserData = useSelector((state) => state.login.userData);
   const [users, setUsers] = useState([]);
   const [selectedId, setSelectedId] = useState();
+  const [loading, setLoading] = useState(false);
+  const [chats, setChats] = useState([]);
+  const [loadingChat, setLoadingChat] = useState(false);
   let location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const selectedUser = (user) => {
     // console.log(id);
     setSelectedId(user);
+  };
+  const closeBtn = () => {
+    setSearch();
+    setUsers([]);
+    selectedUser();
   };
   useEffect(() => {
     try {
@@ -36,11 +53,72 @@ const LeftChatNav = () => {
       console.log(error);
     }
   }, [search]);
-  console.log(users);
+  // console.log(users);
+  const addUserForChat = async (userId) => {
+    const userData = localStorage.getItem("user_id");
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+      const { data } = await axios.post(
+        `https://devhiveserver.vercel.app/chat/${userData}`,
+        { userId },
+        config
+      );
+      if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+
+      console.log(chats);
+      dispatch(setSelectedChat(data));
+
+      setLoadingChat(false);
+      // setSearchResultOpen(!searchResultOpen);
+      closeBtn();
+      console.log(data);
+      setSearch("");
+    } catch (error) {
+      console.log(error);
+      setLoadingChat(false);
+    }
+  };
+  const fetchChats = async () => {
+    const userData = localStorage.getItem("user_id");
+
+    try {
+      setLoading(true);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+
+      const { data } = await axios.get(
+        `https://devhiveserver.vercel.app/chat/${userData}`,
+        config
+      );
+      setChats(data);
+      setLoading(false);
+      // console.log(data);
+      // console.log(data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      alert(error.message || "error fetching chat");
+    }
+  };
+
+  console.log("selected chat: ", selectedChat);
+  useEffect(() => {
+    fetchChats();
+  }, []);
+  console.log(chats);
   return (
     <div>
-      <div class="flex flex-col py-8 pl-6 pr-2 w-full bg-white ">
-        <div class="flex flex-row items-center justify-center h-12 w-full">
+      <div class="flex  flex-col py-8 pl-6 pr-2 w-full h-screen bg-white ">
+        <div class="flex flex-row items-center justify-center  w-full">
           <button
             onClick={() => navigate(from, { replace: true })}
             className="btn absolute left-6 btn-outline btn-sm btn-circle"
@@ -65,8 +143,11 @@ const LeftChatNav = () => {
           </div>
           <div class="ml-2 font-bold text-2xl">DevHiveChat</div>
         </div>
-        <LeftNavBanner></LeftNavBanner>
-        <div class="flex flex-col mt-8">
+        {/* <LeftNavBanner></LeftNavBanner> */}
+        <div className="border rounded-lg px-3 pb-2 mt-2">
+          <DrawerBanner></DrawerBanner>
+        </div>
+        <div class="flex flex-col mt-2">
           <div class="flex flex-row items-center justify-between text-xs mt-2">
             <span class="font-bold">Search User</span>
             <span class="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
@@ -95,26 +176,22 @@ const LeftChatNav = () => {
           )}
           <div class="w-full  flex flex-col space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
             {selectedId && (
-              <button
-                // onClick={addAdmin}
-                type="button "
-                class="flex items-center border justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-              >
-                <svg
-                  class="h-3.5 w-3.5 mr-2"
-                  fill="currentColor"
-                  viewbox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
+              <div className="flex gap-2 mt-4 flex-row items-center w-full justify-evenly">
+                <button
+                  onClick={() => addUserForChat(selectedId?._id)}
+                  type="button "
+                  class="flex items-center border justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                 >
-                  <path
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                  />
-                </svg>
-                Chat with {selectedId.name}
-              </button>
+                  <BsFillChatDotsFill className="mr-2"></BsFillChatDotsFill>
+                  Chat with {selectedId.name}
+                </button>
+                <button
+                  onClick={closeBtn}
+                  className="btn btn-error btn-sm btn-outline "
+                >
+                  <FaWindowClose className="text-2xl"></FaWindowClose>
+                </button>
+              </div>
             )}
             {/* The button to open modal */}
             {/* <label htmlFor="my-modal-6" className="btn">
@@ -145,43 +222,41 @@ const LeftChatNav = () => {
           <div class="flex flex-row items-center justify-between mt-6 text-xs">
             <span class="font-bold">Active Conversations</span>
             <span class="flex items-center justify-center bg-gray-300 h-4 w-4 rounded-full">
-              4
+              {chats?.length || 0}
             </span>
           </div>
-          <div class="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
-            <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-              <div class="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
-                H
-              </div>
-              <div class="ml-2 text-sm font-semibold">Henry Boyd</div>
-            </button>
-            <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-              <div class="flex items-center justify-center h-8 w-8 bg-gray-200 rounded-full">
-                M
-              </div>
-              <div class="ml-2 text-sm font-semibold">Marta Curtis</div>
-              <div class="flex items-center justify-center ml-auto text-xs text-white bg-red-500 h-4 w-4 rounded leading-none">
-                2
-              </div>
-            </button>
-            <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-              <div class="flex items-center justify-center h-8 w-8 bg-orange-200 rounded-full">
-                P
-              </div>
-              <div class="ml-2 text-sm font-semibold">Philip Tucker</div>
-            </button>
-            <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-              <div class="flex items-center justify-center h-8 w-8 bg-pink-200 rounded-full">
-                C
-              </div>
-              <div class="ml-2 text-sm font-semibold">Christine Reid</div>
-            </button>
-            <button class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
-              <div class="flex items-center justify-center h-8 w-8 bg-purple-200 rounded-full">
-                J
-              </div>
-              <div class="ml-2 text-sm font-semibold">Jerry Guzman</div>
-            </button>
+          <div class="flex HeaderDrawer flex-col space-y-1 mt-4 -mx-2 h-36 overflow-y-auto">
+            {chats.length === 0 ? (
+              <LoadingAnimation className="w-full"></LoadingAnimation>
+            ) : (
+              chats?.map((chat) => (
+                <button
+                  onClick={() => dispatch(setSelectedChat(chat))}
+                  className={
+                    selectedChat?._id == chat?._id
+                      ? "flex hover:bg-base-200 bg-base-300 flex-row items-center rounded-xl p-2 shadow-md"
+                      : "flex hover:bg-base-200 flex-row items-center rounded-xl p-2 shadow-md"
+                  }
+                >
+                  <div className="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
+                    <img
+                      src={getSenderPic(
+                        localStorage.getItem("user_id"),
+                        chat?.users
+                      )}
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-2 text-sm font-semibold">
+                    {/* {chat.users[1].name} */}
+                    {getSenderName(
+                      localStorage.getItem("user_id"),
+                      chat?.users
+                    )}
+                  </div>
+                </button>
+              ))
+            )}
           </div>
         </div>
       </div>
