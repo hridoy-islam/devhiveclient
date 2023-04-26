@@ -26,14 +26,14 @@ const BackgroundImageWithRange = () => {
 
       <div className="mt-8 flex flex-wrap gap-4 text-center">
         <Link
-          to="/"
+          to="/developer-register"
           className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
         >
           Get Started
         </Link>
 
         <Link
-          to="/"
+          to="/about"
           className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
         >
           Learn More

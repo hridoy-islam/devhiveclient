@@ -1,54 +1,32 @@
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  TypingIndicator,
-} from "@chatscope/chat-ui-kit-react";
-import { useState } from "react";
+import React from "react";
+import MessageSection from "./Components/MessageSection";
+import LeftChatNav from "./Components/LeftChatNav";
+import "./Chat.module.css";
+import { useSelector } from "react-redux";
+
 const Chat = () => {
-  const [typing, setTyping] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      message: "Hello! I am devHive. How can I help you with?",
-      sender: "hasan",
-    },
-  ]);
-  const handleSend = async (messagesend) => {
-    const newMessage = {
-      message: messagesend,
-      sender: "user",
-      direction: "outgoing",
-    };
+  const selectedChat = useSelector((state) => state.chat.selectedChat);
 
-    const newMessages = [...messages, newMessage];
-    //update our user state
-    setMessages(newMessages);
-
-    //set a typing indicator
-    setTyping(true);
-
-    //process message and post to the server
-  };
   return (
-    <div style={{ position: "relative", height: "500px" }}>
-      <MainContainer>
-        <ChatContainer>
-          <MessageList
-            scrollBehavior="smooth"
-            typingIndicator={
-              typing ? <TypingIndicator content="hasan is typing" /> : null
-            }
-          >
-            {messages.map((message, i) => {
-              return <Message key={i} model={message} />;
-            })}
-          </MessageList>
-          <MessageInput onSend={handleSend} placeholder="Type message here" />
-        </ChatContainer>
-      </MainContainer>
+    <div className="h-screen chatScroll grid grid-cols-12">
+      <div
+        className={
+          selectedChat
+            ? "hidden lg:block col-span-12 lg:col-span-4"
+            : "block col-span-12 lg:col-span-4"
+        }
+      >
+        {<LeftChatNav></LeftChatNav>}
+      </div>
+      <div
+        className={
+          selectedChat
+            ? "block col-span-12 lg:col-span-8"
+            : "hidden col-span-12 lg:col-span-8 lg:block"
+        }
+      >
+        <MessageSection></MessageSection>
+      </div>
     </div>
   );
 };

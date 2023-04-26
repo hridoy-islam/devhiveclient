@@ -98,9 +98,9 @@ const ManageCategories = () => {
                       onClick={() => {
                         handleDelete(type?._id);
                       }}
-                      className="btn btn-error text-error btn-outline w-6"
+                      className="btn btn-error text-error btn-outline "
                     >
-                      <AiOutlineDelete></AiOutlineDelete>
+                      <AiOutlineDelete className="text-2xl text-center"></AiOutlineDelete>
                     </button>
                     <Link to={`${type?.route}`}>
                       <button className="btn btn-primary">Discover</button>

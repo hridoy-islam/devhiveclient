@@ -19,7 +19,6 @@ import SettingsLayout from "../Layout/SettingsLayout";
 import Graphic from "../Pages/Graphic";
 import DigitalMarketing from "../Pages/DigitalMarketing";
 import Writting from "../Pages/Writting";
-import CreateService from "../Pages/CreateService";
 import Video from "../Pages/Video";
 import Music from "../Pages/Music";
 import Programming from "../Pages/Programming";
@@ -32,6 +31,11 @@ import ManageCategories from "../Components/Admin/ManageCategories";
 import ManageDevelopers from "../Components/Admin/ManageDevelopers";
 import About from "../Pages/About/About";
 import Payment from "../Components/PaymentFile/Payment";
+import CreateServiseForm from "../Layout/CreateServiseForm";
+import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
+import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
+import Admin from "../Components/Admin/Admin";
+import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +74,7 @@ const router = createBrowserRouter([
         path: "/create-service",
         element: (
           <PrivateRoute>
-            <CreateService />
+            <CreateServiseForm />
           </PrivateRoute>
         ),
       },
@@ -82,6 +86,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/programming",
         element: <Programming />,
@@ -108,8 +113,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/user-profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/developer-profile",
+        element: (
+          <PrivateRoute>
+            <DeveloperProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/developer-register",
+        element: (
+          <PrivateRoute>
+            <DeveloperRegister />
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: "/settings",
         element: <SettingsLayout />,
@@ -142,11 +176,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <AdminLayout />,
+        element: (
+          <AdminRoute>
+            <AdminLayout />
+          </AdminRoute>
+        ),
         children: [
           {
             path: "/admin/",
-            element: <ManageGigs></ManageGigs>,
+            element: <Admin></Admin>,
           },
           {
             path: "/admin/all-gigs",
@@ -165,16 +203,24 @@ const router = createBrowserRouter([
             element: <ManageCategories></ManageCategories>,
           },
           {
-            path: "/admin/all-developers",
+            path: "/admin/all-admins",
             element: <ManageDevelopers></ManageDevelopers>,
           },
         ],
       },
-      {
-        path: "/chat",
-        element: <Chat />,
-      },
+      // {
+      //   path: "/chat",
+      //   element: <Chat />,
+      // },
     ],
+  },
+  {
+    path: "/chat",
+    element: (
+      <PrivateRoute>
+        <Chat />
+      </PrivateRoute>
+    ),
   },
   {
     path: "*",
@@ -185,6 +231,8 @@ const router = createBrowserRouter([
       </div>
     ),
   },
+
+  // CreateServiseRouter
 ]);
 
 export default router;

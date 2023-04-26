@@ -11,6 +11,7 @@ import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 import { RiDashboardFill } from "react-icons/ri";
 import { IoIosCreate } from "react-icons/io";
 import { MdSell } from "react-icons/md";
+import useChat from "../../hooks/useChat";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +22,10 @@ const Header = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   // console.log(userData);
-
+  const startChat = useChat("6442a7391d9c6ad6b75ea1b3");
+  const handleAdminChat = () => {
+    startChat();
+  };
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -298,8 +302,7 @@ const Header = () => {
                     data-dropdown-toggle="apps-dropdown"
                     class="flex flex-row gap-1 p-2 items-center  ml-0 sm:ml-3 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 "
                   >
-                   <RiDashboardFill className="text-2xl xl:hidden block">
-                   </RiDashboardFill>
+                    <RiDashboardFill className="text-2xl xl:hidden block"></RiDashboardFill>
                     <span className="font-semibold hidden antialiased xl:block mt-1">
                       Dashboard
                     </span>
@@ -350,7 +353,9 @@ const Header = () => {
                       <NavLink to="/settings">Settings</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/contact">Contact Admin</NavLink>
+                      <button onClick={handleAdminChat}>
+                        <NavLink>Contact Admin</NavLink>
+                      </button>
                     </li>
                   </ul>
                 </div>

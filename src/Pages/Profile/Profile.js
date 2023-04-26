@@ -25,13 +25,21 @@ const Profile = () => {
           <SharedInformation></SharedInformation>
         </div>
         <div className="h-[100vh]  col-span-0 hidden rounded md:block border md:col-span-7">
-          <div className="seller-buyer w-full">
-            <img src={image} alt="" />
+          <div className="seller-buyer flex items-center flex-col h-full justify-between w-full">
+            <img
+              className="w-full"
+              src="https://media.tenor.com/02ILjyFVXWQAAAAC/handshake.gif"
+              alt=""
+            />
             <h1 className="text-center text-3xl font-bold">
               Ready to earn on your own terms?
             </h1>
             <div className="flex justify-center">
-              <button>Become a seller</button>
+              <Link to="/developer-register">
+                <button className="btn mb-5 btn-lg btn-success">
+                  Become a seller
+                </button>
+              </Link>
             </div>
           </div>
         </div>

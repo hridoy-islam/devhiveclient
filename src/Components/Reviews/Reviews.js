@@ -5,7 +5,7 @@ const Reviews = () => {
     <div>
       <div
         data-tf-popover="PTSqlNUt"
-        data-tf-custom-icon="https://images.typeform.com/images/LcKqMJzA3c26"
+        data-tf-custom-icon="https://lh3.googleusercontent.com/a/AGNmyxZSedoF2XJvDN7CLI9pZSQ2EdFpjHW2_c6fU_Cg1g=s96-c"
         data-tf-opacity="100"
         data-tf-iframe-props="title=DevHive Project Ratings"
         data-tf-transitive-search-params

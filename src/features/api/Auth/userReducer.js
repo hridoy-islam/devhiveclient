@@ -14,6 +14,7 @@ const userSlice = createSlice({
     },
     logoutUser: (state) => {
       localStorage.removeItem("jwt");
+      localStorage.removeItem("user_id");
       return {
         ...state,
         user: null,
