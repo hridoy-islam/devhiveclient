@@ -11,6 +11,7 @@ import CategoriesHeader from "./HeaderComponents/CategoriesHeader";
 import { RiDashboardFill } from "react-icons/ri";
 import { IoIosCreate } from "react-icons/io";
 import { MdSell } from "react-icons/md";
+import useChat from "../../hooks/useChat";
 const Header = () => {
   const [drawer, setDrawer] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +22,10 @@ const Header = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   // console.log(userData);
-
+  const startChat = useChat("6442a7391d9c6ad6b75ea1b3");
+  const handleAdminChat = () => {
+    startChat();
+  };
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -349,7 +353,9 @@ const Header = () => {
                       <NavLink to="/settings">Settings</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/contact">Contact Admin</NavLink>
+                      <button onClick={handleAdminChat}>
+                        <NavLink>Contact Admin</NavLink>
+                      </button>
                     </li>
                   </ul>
                 </div>
