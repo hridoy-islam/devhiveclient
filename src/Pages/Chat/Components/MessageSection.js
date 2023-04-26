@@ -18,8 +18,9 @@ import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedChat } from "../../../features/chat/chatSlice";
 import { getSenderName } from "../../../Configs/chatLogics";
+import LoadingAnimation from "../../../Components/LoadingAnimation";
 
-const ENDPOINT = "https://chat-server-ddtp.onrender.com";
+const ENDPOINT = "https://devhiveserver.onrender.com";
 var socket, selectedChatCompare;
 
 const MessageSection = () => {
@@ -231,6 +232,7 @@ const MessageSection = () => {
                 spacing="4"
                 skeletonHeight="8"
               /> */}
+            <LoadingAnimation></LoadingAnimation>
           </div>
         ) : (
           <ChatContainer>
