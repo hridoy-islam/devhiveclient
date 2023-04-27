@@ -65,7 +65,7 @@ const MessageSection = () => {
       console.log(data);
       setLoading(false);
       socket.emit("join chat", selectedChat._id);
-      const modifiedMsg = data.map((message) => ({
+      const modifiedMsg = data?.map((message) => ({
         message: message?.content,
         sender: message?.sender?.name,
         direction:
@@ -73,20 +73,34 @@ const MessageSection = () => {
             ? "outgoing"
             : "incoming",
       }));
-      const combineMsg = [...messages, ...modifiedMsg];
-      console.log(combineMsg);
-      setMessages(combineMsg);
-      console.log(messages);
-      console.log(modifiedMsg);
-      console.log(modifiedMsg);
-    } catch (error) {}
+      // const combineMsg = [...messages, ...modifiedMsg];
+      // console.log(combineMsg);
+      setMessages(modifiedMsg);
+      console.log(...messages, modifiedMsg);
+      // if the message is from the same user, then just include with previous message, else remove previous messages and set new messages
+      // if (messages.length > 0) {
+      //   if (messages[messages.length - 1].sender === modifiedMsg[0].sender) {
+      //     setMessages([...messages, ...modifiedMsg]);
+      //   } else {
+      //     setMessages(modifiedMsg);
+      //   }
+      // } else {
+      //   setMessages(modifiedMsg);
+      // }
+
+      // console.log(messages);
+      // console.log(modifiedMsg);
+      // console.log(modifiedMsg);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     fetchMessages();
     selectedChatCompare = selectedChat;
   }, [selectedChat]);
   useEffect(() => {
-    socket.on("message received", (newMessageReceived) => {
+    const handleNewMessage = (newMessageReceived) => {
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessageReceived.chat._id
@@ -94,18 +108,23 @@ const MessageSection = () => {
         //give notification
       } else {
         const modifiedMsg = {
-          message: newMessageReceived?.content,
-          sender: newMessageReceived?.sender?.name,
+          message: newMessageReceived.content,
+          sender: newMessageReceived.sender.name,
           direction:
-            newMessageReceived?.sender?._id === localStorage.getItem("user_id")
+            newMessageReceived.sender._id === localStorage.getItem("user_id")
               ? "outgoing"
               : "incoming",
         };
-        //  setMessages((prevMessages) => [...prevMessages, modifiedMsg]);
-        setMessages([...messages, modifiedMsg]);
+        setMessages((messages) => [...messages, modifiedMsg]);
       }
-    });
-  });
+    };
+
+    socket.on("message received", handleNewMessage);
+
+    return () => {
+      socket.off("message received", handleNewMessage);
+    };
+  }, [selectedChatCompare]);
   console.log(messages);
 
   const handleSend = async (messagesend) => {

@@ -5,6 +5,7 @@ import "aos/dist/aos.css"; // You can also use <link> for styles
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DrawerBanner from "./DrawerBanner";
+import useChat from "../../../hooks/useChat";
 // ..
 AOS.init();
 const HeaderDrawer = () => {
@@ -12,6 +13,10 @@ const HeaderDrawer = () => {
   const userData = useSelector((state) => state.login.userData);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const startChat = useChat("6442a7391d9c6ad6b75ea1b3");
+  const handleAdminChat = () => {
+    startChat();
+  };
 
   React.useEffect(() => {
     setLoading(true);
@@ -183,10 +188,10 @@ const HeaderDrawer = () => {
               <span class="ml-3">About</span>
             </NavLink>
             <NavLink
-              to="/contact"
+              onClick={handleAdminChat}
               className={({ isActive }) =>
                 isActive
-                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  ? "flex Active hover:font-bold items-center p-2 text-base font-normal rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   : "flex hover:font-bold items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               }
             >
