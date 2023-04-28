@@ -36,6 +36,7 @@ import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
 import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 import Admin from "../Components/Admin/Admin";
 import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
+import SslCommerz from "../Components/PaymentFile/SslCommerz/SslCommerz";
 
 const router = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
           <PrivateRoute>
-            <Payment />
+            <SslCommerz />
           </PrivateRoute>
         ),
       },
