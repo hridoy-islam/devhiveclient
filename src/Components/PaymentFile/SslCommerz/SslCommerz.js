@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Reviews from "../../Reviews/Reviews";
 
 const SslCommerz = () => {
   const userData = useSelector((state) => state.login.userData);
@@ -8,7 +9,7 @@ const SslCommerz = () => {
       <h1 className="text-center text-2xl font-semibold ">
         Complete Your Order Now
       </h1>
-
+      <Reviews></Reviews>
       <div className="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
         <div className="bg-gray-50  md:py-12">
           <div className="mx-auto max-w-md space-y-2 px-4 lg:px-4">
@@ -36,7 +37,7 @@ const SslCommerz = () => {
           {/* <!-- component --> */}
           <div class="leading-loose">
             <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
-              <p class="text-gray-800 font-medium">Customer information</p>
+              <p class="text-gray-800 font-medium">Shipment information</p>
               <div class="">
                 <label class="block text-sm text-gray-00" for="cus_name">
                   Name
@@ -50,6 +51,21 @@ const SslCommerz = () => {
                   required=""
                   placeholder="Your Name"
                   aria-label="Name"
+                />
+              </div>
+              <div class="">
+                <label class="block text-sm text-gray-00" for="cus_phone">
+                  Phone
+                </label>
+                <input
+                  class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                  id="cus_phone"
+                  name="cus_phone"
+                  defaultValue={userData?.displayName}
+                  type="text"
+                  required=""
+                  placeholder="Your Phone"
+                  aria-label="Phone"
                 />
               </div>
               <div class="mt-2">
@@ -133,14 +149,21 @@ const SslCommerz = () => {
                 />
               </div>
               <p class="mt-4 text-gray-800 font-medium">Payment information</p>
-              <div class="">
+              <div class="flex flex-row gap-3 items-center">
+                <input
+                  type="radio"
+                  className="checked"
+                  checked="true"
+                  name="payWithSslCommerz"
+                  id=""
+                />
                 <label class="block text-sm text-gray-600" for="cus_name">
                   Pay With sslCommerz
                 </label>
               </div>
               <div class="mt-4">
                 <button
-                  class="px-4 py-1 btn w-full text-white font-light tracking-wider bg-gray-900 rounded"
+                  class="px-4 py-1 btn btn-primary w-full text-white font-light tracking-wider bg-gray-900 rounded"
                   type="submit"
                 >
                   Pay Now ট99.99

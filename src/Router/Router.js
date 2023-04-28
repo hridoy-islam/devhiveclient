@@ -37,6 +37,8 @@ import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 import Admin from "../Components/Admin/Admin";
 import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
 import SslCommerz from "../Components/PaymentFile/SslCommerz/SslCommerz";
+import SingleOrder from "../Components/Orders/SingleOrder";
+import Orders from "../Components/Orders/Orders";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SslCommerz />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/track-orders",
+        element: (
+          <PrivateRoute>
+            <Orders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/track-orders/:id",
+        element: (
+          <PrivateRoute>
+            <SingleOrder />
           </PrivateRoute>
         ),
       },
