@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const OrderSuccess = () => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const transactionId = query.get("transactionId");
+  // console.log(transactionId);
   return (
     <div>
       <div class="bg-gray-100 h-screen">
@@ -37,14 +41,16 @@ const OrderSuccess = () => {
                 See Orders
               </Link>
             </div>
-            <div class=" text-center">
-              <Link
-                to="/track-orders"
-                class="px-12 btn w-[350px] bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
-              >
-                Get Invoice
-              </Link>
-            </div>
+            {transactionId && (
+              <div class=" text-center">
+                <Link
+                  to={`/track-orders/${transactionId}`}
+                  class="px-12 btn w-auto sm:w-[350px] bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+                >
+                  Get Invoice
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

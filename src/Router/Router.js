@@ -126,6 +126,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/track-orders/:id",
+        loader: ({ params }) => {
+          return fetch(`https://devhiveserver.vercel.app/order/transaction/${params.id}`);
+        },
         element: (
           <PrivateRoute>
             <SingleOrder />

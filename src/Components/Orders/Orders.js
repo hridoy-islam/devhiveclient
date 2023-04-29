@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import axios from "axios";
 // import { DotsVerticalIcon } from "@heroicons/react/24/outline";
 // import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
@@ -63,6 +64,32 @@ function classNames(...classes) {
 }
 
 export default function Orders() {
+  const [orderData, setOrderData] = useState([]);
+  useEffect(() => {
+    try {
+      const user = async () => {
+        const user = localStorage.getItem("jwt");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user}`,
+          },
+        };
+        const { data } = await axios.get(
+          `https://devhiveserver.vercel.app/order/all/${localStorage.getItem(
+            "user_id"
+          )}`,
+
+          config
+        );
+        setOrderData(data);
+        // console.log(data);
+      };
+      user();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  console.log(orderData);
   return (
     <div className="bg-white">
       <div className="py-16 sm:py-24">

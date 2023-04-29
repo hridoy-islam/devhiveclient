@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 const SingleOrder = () => {
+  const orderDetail = useLoaderData();
+  // console.log(orderDetail);
+  const userData = useSelector((state) => state.login.userData);
+  // console.log(userData);
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/track-orders";
+  const navigate = useNavigate();
+  // if there is no data at orderDetail, then navigate
+  useEffect(() => {
+    if (orderDetail == null) {
+      navigate(from, { replace: true });
+    }
+  }, [orderDetail]);
   return (
     <div>
       {/* <!-- component --> */}
+      <button
+        onClick={() => window.print()}
+        className="btn btn-primary btn-outline fixed right-3 my-2"
+      >
+        🖨️ Print Invoice
+      </button>
       <div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
         {/* <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ ---> */}
 
         <div class="flex justify-start item-start space-y-2 flex-col">
           <h1 class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
-            Order #13432
+            Order #{orderDetail?.tran_id}
           </h1>
           <p class="text-base dark:text-gray-300 font-medium leading-6 text-gray-600">
-            21st Mart 2021 at 10:34 PM
+            {orderDetail?.updatedAt}
           </p>
+          <h1 class="text-3xl dark:text-white lg:text-xl font-semibold leading-7 lg:leading-9 text-gray-800">
+            Payment Status: {orderDetail?.paid ? " ✅ Paid" : "Not Paid "}
+          </h1>
         </div>
         <div class="mt-10 flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
           <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
@@ -139,7 +168,7 @@ const SingleOrder = () => {
                       Subtotal
                     </p>
                     <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
-                      $56.00
+                      ট{orderDetail?.total_amount}
                     </p>
                   </div>
                   <div class="flex justify-between items-center w-full">
@@ -150,7 +179,7 @@ const SingleOrder = () => {
                       </span>
                     </p>
                     <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
-                      -$28.00 (50%)
+                      -ট00.00 (0%)
                     </p>
                   </div>
                   <div class="flex justify-between items-center w-full">
@@ -158,7 +187,7 @@ const SingleOrder = () => {
                       Shipping
                     </p>
                     <p class="text-base dark:text-gray-300 leading-4 text-gray-600">
-                      $8.00
+                      ট0.00
                     </p>
                   </div>
                 </div>
@@ -167,7 +196,7 @@ const SingleOrder = () => {
                     Total
                   </p>
                   <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
-                    $36.00
+                    ট{orderDetail?.total_amount}
                   </p>
                 </div>
               </div>
@@ -186,18 +215,21 @@ const SingleOrder = () => {
                     </div>
                     <div class="flex flex-col justify-start items-center">
                       <p class="text-lg leading-6 dark:text-white font-semibold text-gray-800">
-                        DPD Delivery
+                        Online Delivery
                         <br />
                         <span class="font-normal">Delivery with 24 Hours</span>
                       </p>
                     </div>
                   </div>
                   <p class="text-lg font-semibold leading-6 dark:text-white text-gray-800">
-                    $8.00
+                    ট0.00
                   </p>
                 </div>
                 <div class="w-full flex justify-center items-center">
-                  <button class="hover:bg-black dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">
+                  <button
+                    onClick={() => alert("currently not available!")}
+                    class="hover:bg-black border  dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white"
+                  >
                     View Carrier Details
                   </button>
                 </div>
@@ -212,15 +244,16 @@ const SingleOrder = () => {
               <div class="flex flex-col justify-start items-start flex-shrink-0">
                 <div class="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
                   <img
-                    src="https://i.ibb.co/5TSg7f6/Rectangle-18.png"
+                    src={userData?.photoURL}
+                    className="w-12 h-12 rounded-full"
                     alt="avatar"
                   />
                   <div class="flex justify-start items-start flex-col space-y-2">
                     <p class="text-base dark:text-white font-semibold leading-4 text-left text-gray-800">
-                      David Kent
+                      {userData?.displayName}
                     </p>
                     <p class="text-sm dark:text-gray-300 leading-5 text-gray-600">
-                      10 Previous Orders
+                      UID: {userData?.uid}
                     </p>
                   </div>
                 </div>
@@ -247,7 +280,7 @@ const SingleOrder = () => {
                     />
                   </svg>
                   <p class="cursor-pointer text-sm leading-5 ">
-                    david89@gmail.com
+                    {userData?.email}
                   </p>
                 </div>
               </div>
@@ -258,7 +291,11 @@ const SingleOrder = () => {
                       Shipping Address
                     </p>
                     <p class="w-48 lg:w-full dark:text-gray-300 xl:w-48 text-center md:text-left text-sm leading-5 text-gray-600">
-                      180 North King Street, Northhampton MA 1060
+                      {orderDetail?.cus_add1}
+                      <br />
+                      {orderDetail?.cus_city} {orderDetail?.cus_postcode}
+                      <br />
+                      {orderDetail?.cus_country}
                     </p>
                   </div>
                   <div class="flex justify-center md:justify-start items-center md:items-start flex-col space-y-4">
@@ -266,15 +303,22 @@ const SingleOrder = () => {
                       Billing Address
                     </p>
                     <p class="w-48 lg:w-full dark:text-gray-300 xl:w-48 text-center md:text-left text-sm leading-5 text-gray-600">
-                      180 North King Street, Northhampton MA 1060
+                      {orderDetail?.cus_add1}
+                      <br />
+                      {orderDetail?.cus_city} {orderDetail?.cus_postcode}
+                      <br />
+                      {orderDetail?.cus_country}
                     </p>
                   </div>
                 </div>
-                <div class="flex w-full justify-center items-center md:justify-start md:items-start">
+                <Link
+                  to="/settings/account"
+                  class="flex w-full justify-center items-center md:justify-start md:items-start"
+                >
                   <button class="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">
                     Edit Details
                   </button>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
