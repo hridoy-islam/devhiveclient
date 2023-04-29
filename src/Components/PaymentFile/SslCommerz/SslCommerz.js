@@ -12,12 +12,15 @@ const SslCommerz = () => {
     console.log(BillData);
 
     try {
-      const { data } = await axios.get(`http://localhost:5000/order`, {
-        params: BillData,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")},`,
-        },
-      });
+      const { data } = await axios.get(
+        `https://devhiveserver.vercel.app/order`,
+        {
+          params: BillData,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")},`,
+          },
+        }
+      );
       console.log(data);
       if (data?.url != undefined) {
         window.location.replace(data?.url);
