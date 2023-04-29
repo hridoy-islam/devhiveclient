@@ -1,9 +1,33 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Reviews from "../../Reviews/Reviews";
+import axios from "axios";
 
 const SslCommerz = () => {
   const userData = useSelector((state) => state.login.userData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const BillData = Object.fromEntries(formData);
+    console.log(BillData);
+
+    try {
+      const { data } = await axios.get(`http://localhost:5000/order`, {
+        params: BillData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")},`,
+        },
+      });
+      console.log(data);
+      if (data?.url != undefined) {
+        window.location.replace(data?.url);
+      }
+    } catch (error) {
+      alert("error occurred");
+      console.log(error);
+    }
+  };
+
   return (
     <section className="py-12 bg-base-100 border m-3 rounded-lg">
       <h1 className="text-center text-2xl font-semibold ">
@@ -36,7 +60,10 @@ const SslCommerz = () => {
         <div>
           {/* <!-- component --> */}
           <div class="leading-loose">
-            <form class="max-w-xl m-4 p-10 bg-white rounded shadow-xl">
+            <form
+              onSubmit={handleSubmit}
+              class="max-w-xl m-4 p-10 bg-white rounded shadow-xl"
+            >
               <p class="text-gray-800 font-medium">Shipment information</p>
               <div class="">
                 <label class="block text-sm text-gray-00" for="cus_name">
@@ -51,6 +78,14 @@ const SslCommerz = () => {
                   required=""
                   placeholder="Your Name"
                   aria-label="Name"
+                />
+                <input
+                  class="hidden"
+                  id="cus_id"
+                  name="cus_id"
+                  value={localStorage.getItem("user_id")}
+                  type="text"
+                  required=""
                 />
               </div>
               <div class="">
@@ -89,63 +124,63 @@ const SslCommerz = () => {
                 </label>
                 <input
                   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                  id="cus_email"
-                  name="cus_email"
+                  id="cus_add1"
+                  name="cus_add1"
                   type="text"
                   required=""
                   placeholder="Street"
-                  aria-label="Email"
+                  aria-label="Address"
                 />
               </div>
               <div class="mt-2">
                 <label
                   class="hidden text-sm block text-gray-600"
-                  for="cus_email"
+                  for="cus_city"
                 >
                   City
                 </label>
                 <input
                   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                  id="cus_email"
-                  name="cus_email"
+                  id="cus_city"
+                  name="cus_city"
                   type="text"
                   required=""
                   placeholder="City"
-                  aria-label="Email"
+                  aria-label="City"
                 />
               </div>
               <div class="inline-block mt-2 w-1/2 pr-1">
                 <label
                   class="hidden block text-sm text-gray-600"
-                  for="cus_email"
+                  for="cus_country"
                 >
                   Country
                 </label>
                 <input
                   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                  id="cus_email"
-                  name="cus_email"
+                  id="cus_country"
+                  name="cus_country"
                   type="text"
                   required=""
                   placeholder="Country"
-                  aria-label="Email"
+                  aria-label="Country"
                 />
               </div>
               <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                 <label
                   class="hidden block text-sm text-gray-600"
-                  for="cus_email"
+                  for="cus_postcode"
                 >
                   Zip
                 </label>
                 <input
                   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                  id="cus_email"
-                  name="cus_email"
+                  id="cus_postcode"
+                  name="cus_postcode"
                   type="text"
                   required=""
-                  placeholder="Zip"
-                  aria-label="Email"
+                  placeholder="Postcode"
+                  aria-label="Postcode"
                 />
               </div>
               <p class="mt-4 text-gray-800 font-medium">Payment information</p>

@@ -23,12 +23,26 @@ const OrderSuccess = () => {
               Thank you for completing your secure online payment.
             </p>
             <p> Have a great day! </p>
-            <div class="py-10 text-center">
+            <div class="pt-10 pb-5  text-center">
               <Link
                 to="/"
-                class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+                class="px-12 mr-3 bg-indigo-600 btn btn-outline hover:bg-indigo-500 text-white font-semibold py-3"
               >
                 GO HOME
+              </Link>
+              <Link
+                to="/track-orders"
+                class="px-12 btn btn-outline bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+              >
+                See Orders
+              </Link>
+            </div>
+            <div class=" text-center">
+              <Link
+                to="/track-orders"
+                class="px-12 btn w-[350px] bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
+              >
+                Get Invoice
               </Link>
             </div>
           </div>

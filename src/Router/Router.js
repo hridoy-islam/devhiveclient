@@ -39,6 +39,9 @@ import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
 import SslCommerz from "../Components/PaymentFile/SslCommerz/SslCommerz";
 import SingleOrder from "../Components/Orders/SingleOrder";
 import Orders from "../Components/Orders/Orders";
+import OrderSuccess from "../Components/Orders/Components/OrderSuccess";
+import OrderError from "../Components/Orders/Components/OrderError";
+import OrderCancel from "../Components/Orders/Components/OrderCancel";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +89,30 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SslCommerz />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/success",
+        element: (
+          <PrivateRoute>
+            <OrderSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/fail",
+        element: (
+          <PrivateRoute>
+            <OrderError />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/cancel",
+        element: (
+          <PrivateRoute>
+            <OrderCancel />
           </PrivateRoute>
         ),
       },
