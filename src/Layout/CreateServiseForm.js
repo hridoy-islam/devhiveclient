@@ -13,37 +13,310 @@ const CreateServiseForm = () => {
     let content;
 
     if (step === 1) {
-        content = < div className='w-8/12 m-auto h-96 bg-[gray] px-36 py-20'>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Gig Title
-            </label>
-            <textarea type="text"  {...register("gig_title", {
-                required: 'gig_title is required',
+        content = < div className='min-h-full bg-[#f3d0d0] px-36 py-16'>
+            <div className='w-8/12 m-auto'>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Gig Title
+                </label>
+                <input type="text"  {...register("gig_title", {
+                    required: 'gig_title is required',
 
-            })} className="input input-bordered w-full " placeholder='I will do Something i am really good at' />
+                })} className="input input-bordered w-full " placeholder='I will do Something i am really good at' required />
 
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Category
-            </label>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Describe your Gig
+                </label>
+                <textarea type="text"  {...register("gig_describe", {
+                    required: 'gig_describe is required',
+
+                })} className="input input-bordered w-full " placeholder='Describe your gig' required />
+
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Category
+                </label>
 
 
-            <select {...register("category")} className="input input-bordered w-full ">
-                <option defaultValue='SELECT A CATEGORY'>SELECT A CATEGORY</option>
-                <option value="graphicsDesign">GRAPHICS & DESIGN</option>
-                <option value="programmingTech">PROGRAMMING & TECH</option>
-                <option value="videoAnimation">VIDEO & ANIMATION</option>
-            </select>
 
-            <button className='btn btn-secondary absolute right-72 mt-20' onClick={() => setStep(2)} >Continue</button>
+                {/* checkout servise and provider */}
+
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
+
+                                <th>Servises</th>
+                                <th>Tools</th>
+                                <th>Featuers</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            <tr>
+
+                                <td>
+
+                                    <input
+                                        {...register('Business WordPress websites', { required: true })}
+                                        type="checkbox"
+                                        name="business_wordpress_websites"
+                                        value="Business WordPress websites"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Business WordPress websites</span>
+
+
+
+                                </td>
+                                <td>
+
+                                    <input
+                                        {...register('WordPress', { required: true })}
+                                        type="checkbox"
+                                        name="wordpress"
+                                        value="Pizza"
+                                        className="form-check-input"
+
+                                    />
+
+                                    <span className="label-text pl-2">WordPress</span>
+                                </td>
+
+                                <td>
+
+                                    <input
+                                        {...register('Mobile_Friendly', { required: true })}
+                                        type="checkbox"
+                                        name="mobile_friendly"
+                                        value="Mobile-Friendly"
+                                        className="form-check-input"
+
+                                    />
+
+                                    <span className="label-text pl-2">Mobile-Friendly</span>
+                                </td>
+
+
+
+                            </tr>
+
+                            {/* row 2 */}
+
+                            <tr>
+
+                                <td>
+
+                                    <input
+                                        {...register('e-commerce', { required: true })}
+                                        type="checkbox"
+                                        name="e_commarce"
+                                        value="E-commerce website"
+                                        className="form-check-input"
+
+                                    />
+
+                                    <span className="label-text pl-2">E-commerce website</span>
+
+
+                                </td>
+                                <td>
+
+                                    <input
+                                        {...register('Divi', { required: true })}
+                                        type="checkbox"
+                                        name="divi"
+                                        value="Divi"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Divi</span>
+                                </td>
+
+                                <td>
+
+                                    <input
+                                        {...register('custom Design', { required: true })}
+                                        type="checkbox"
+                                        name="custom_design"
+                                        value="Custom Design"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Custom Design</span>
+                                </td>
+
+
+
+                            </tr>
+
+                            {/* row-3 */}
+
+                            <tr>
+
+                                <td>
+
+                                    <input
+                                        {...register('Personal Websites & Blogs', { required: true })}
+                                        type="checkbox"
+                                        name="personal_website_&_blogs"
+                                        value="Personal Websites & Blogs"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Personal Websites & Blogs</span>
+
+
+                                </td>
+                                <td>
+
+                                    <input
+                                        {...register('Elementor', { required: true })}
+                                        type="checkbox"
+                                        name="elementor"
+                                        value="Elementor"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Elementor</span>
+                                </td>
+
+                                <td>
+
+                                    <input
+                                        {...register('User-friendly UI/UX design', { required: true })}
+                                        type="checkbox"
+                                        name="user_friendly_ui/ux_design"
+                                        value="User-friendly UI/UX design"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">User-friendly UI/UX design</span>
+                                </td>
+
+
+
+                            </tr>
+
+                            {/* row 4 */}
+
+                            <tr>
+
+                                <td>
+
+                                    <input
+                                        {...register('React', { required: true })}
+                                        type="checkbox"
+                                        name="react"
+                                        value="React"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">React</span>
+
+
+                                </td>
+                                <td>
+
+                                    <input
+                                        {...register('Wordpress', { required: true })}
+                                        type="checkbox"
+                                        name="wordpress"
+                                        value="Wordpress"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Wordpress</span>
+                                </td>
+
+                                <td>
+
+                                    <input
+                                        {...register('Speed optimized', { required: true })}
+                                        type="checkbox"
+                                        name="Speed optimized"
+                                        value="speed_ptimized"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Speed optimized</span>
+                                </td>
+
+
+
+                            </tr>
+
+                            {/* row 5 */}
+                            <tr>
+
+                                <td>
+
+                                    <input
+                                        {...register('Portfolio', { required: true })}
+                                        type="checkbox"
+                                        name="portfolio"
+                                        value="Portfolio"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Portfolio</span>
+
+
+                                </td>
+                                <td>
+
+                                    <input
+                                        {...register('Gutenburg', { required: true })}
+                                        type="checkbox"
+                                        name="gutenburg"
+                                        value="Gutenburg"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Gutenburg</span>
+                                </td>
+
+                                <td>
+
+                                    <input
+                                        {...register('Social media integration', { required: true })}
+                                        type="checkbox"
+                                        name="Social media integration"
+                                        value="social_media_integration"
+                                        className="form-check-input"
+
+                                    />
+                                    <span className="label-text pl-2">Social media integration</span>
+                                </td>
+
+
+
+                            </tr>
+                        </tbody>
+
+
+
+
+
+
+
+                    </table>
+                </div>
+
+                <button className='btn btn-secondary absolute right-72 mt-2' onClick={() => setStep(2)} >Continue</button>
+
+            </div>
 
         </div>
-
     }
-    if (step === 2) {
-        content = <div className=' px-32 py-36 '>
-            <div className='grid grid-cols-4 lg:grid-cols-4 '>
 
-                <div></div>
+
+    if (step === 2) {
+        content = <div className=' py-20 bg-[#f3d0d0] '>
+            <div className='grid grid-cols-4 lg:grid-cols-4 ml-36  '>
+
+
                 <div>
                     <h3 className='bg-accent text-center py-4'>BASIC</h3>
                     <input type="text"  {...register("package", {
@@ -115,139 +388,59 @@ const CreateServiseForm = () => {
                 </div>
 
             </div>
-            <button className='btn btn-secondary absolute right-48 mt-8' onClick={() => setStep(3)} >Continue</button>
+            <button className='btn btn-secondary absolute right-60 mt-5' onClick={() => setStep(3)} >Continue</button>
 
         </div>
 
     }
 
     if (step === 3) {
-        content = <div className=' px-32 py-36 ' >
+        content = <div className=' min-h-full bg-[#f3d0d0] px-32 py-28 ' >
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Select Profile Image
+            </label>
+            <input type="file"  {...register("img", {
+                required: 'img is required',
+            })} className="input input-bordered w-full  "
+            />
 
+            <div className='flex gap-4'>
+                <div>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Select your Own Country
+                    </label>
 
-            <section class="bg-gray-200 ">
-                <div class="mx-auto  px-4 py-16 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-                        <div class="lg:col-span-2 lg:py-12">
-
-
-                        </div>
-
-                        <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-                            <form action="" class="space-y-4">
-                                <div>
-                                    <label class="sr-only" for="name">Name</label>
-                                    <input
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Name"
-                                        type="text"
-                                        id="name"
-                                    />
-                                </div>
-
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    <div>
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input
-                                            class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                            placeholder="Email address"
-                                            type="email"
-                                            id="email"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label class="sr-only" for="phone">Phone</label>
-                                        <input
-                                            class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                            placeholder="Phone Number"
-                                            type="tel"
-                                            id="phone"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
-                                    <div>
-                                        <input
-                                            class="peer sr-only"
-                                            id="option1"
-                                            type="radio"
-                                            tabindex="-1"
-                                            name="option"
-                                        />
-
-                                        <label
-                                            for="option1"
-                                            class="block w-full rounded-lg border border-gray-200 p-3 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-                                            tabindex="0"
-                                        >
-                                            <span class="text-sm font-medium"> Option 1 </span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <input
-                                            class="peer sr-only"
-                                            id="option2"
-                                            type="radio"
-                                            tabindex="-1"
-                                            name="option"
-                                        />
-
-                                        <label
-                                            for="option2"
-                                            class="block w-full rounded-lg border border-gray-200 p-3 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-                                            tabindex="0"
-                                        >
-                                            <span class="text-sm font-medium"> Option 2 </span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <input
-                                            class="peer sr-only"
-                                            id="option3"
-                                            type="radio"
-                                            tabindex="-1"
-                                            name="option"
-                                        />
-
-                                        <label
-                                            for="option3"
-                                            class="block w-full rounded-lg border border-gray-200 p-3 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
-                                            tabindex="0"
-                                        >
-                                            <span class="text-sm font-medium"> Option 3 </span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label class="sr-only" for="message">Message</label>
-
-                                    <textarea
-                                        class="w-full rounded-lg border-gray-200 p-3 text-sm"
-                                        placeholder="Message"
-                                        rows="8"
-                                        id="message"
-                                    ></textarea>
-                                </div>
-
-                                <div class="mt-4">
-                                    <button
-                                        type="submit"
-                                        class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
-                                    >
-                                        Send Enquiry
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    <select  {...register("Country Name")} className="input input-bordered w-full  ">
+                        <option disabled selected >Country Name</option>
+                        <option value="Bangladesh"> Bangladesh</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="United State">United State</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Sudia Arabia">Sudia Arabia</option>
+                    </select>
                 </div>
-            </section>
-            <button className='btn btn-secondary absolute right-48 mt-8' onClick={() => setStep(4)} >Continue</button>
+
+                <div>
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Select Member since
+                    </label>
+                    <input type="date"  {...register("since", {
+                        required: 'since is required',
+                    })} className="input input-bordered w-full   "
+                    />
+                </div>
+            </div>
+
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Introduction your Experiences
+            </label>
+            <input type="text"  {...register("text", {
+                required: 'text is required',
+            })} className="input input-bordered  w-full min-h-full py-10   " placeholder='Describe  your experiences here...'
+            />
+
+
+            <button className='btn btn-secondary absolute right-48 mt-24' onClick={() => setStep(4)} >Submit</button>
 
         </div>
     }
@@ -260,15 +453,11 @@ const CreateServiseForm = () => {
                     <li className={`step ${step === 1 && 'step-primary'}`}>
                         <span>Overview</span>
                     </li>
-                    <li className={`step ${step >= 1 && 'step-primary'}`}>
+                    <li className={`step ${step === 2 && 'step-primary'}`}>
                         <span>Pricing</span>
                     </li>
-                    <li className="step  ">
-                        <span>Requirements</span>
-                    </li>
-
-                    <li className="step">
-                        <span>Publish</span>
+                    <li className={`step ${step === 3 && 'step-primary'}`}>
+                        <span>Requirement</span>
                     </li>
                 </ul>
                 <div className='divide'></div>
