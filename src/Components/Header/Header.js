@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <div>
       <header>
-        <nav class="bg-base-300 lg:bg-base-100 lg:border-b border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
+        <nav class="bg-base-300 print:hidden lg:bg-base-100 lg:border-b border-gray-200 px-4 lg:px-6 w-[100%] py-2.5 dark:bg-gray-800">
           <div class="flex flex-wrap justify-between items-center">
             <div class="flex justify-start items-center">
               {drawer && <HeaderDrawer></HeaderDrawer>}
@@ -71,6 +71,7 @@ const Header = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
+                
                 <svg
                   aria-hidden="true"
                   class="hidden w-6 h-6"

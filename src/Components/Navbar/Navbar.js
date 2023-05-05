@@ -3,6 +3,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 import NavThemeToggle from "./NavThemeToggle";
 
 const Navbar = () => {
+
   return (
     <div>
       <div className="navbar bg-base-300">
@@ -39,7 +40,7 @@ const Navbar = () => {
                   <p>Developer</p>
                   <svg
                     className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns="http://www.w3.org/2000/svg"y
                     width="20"
                     height="20"
                     viewBox="0 0 24 24"
