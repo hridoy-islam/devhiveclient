@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useGetQueryServiceQuery } from "../../../features/api/Services/ServicesApi";
 const CategoriesHeader = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,10 @@ const CategoriesHeader = () => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const [show, setShow] = useState(false);
+
+  const [category, setCategory] = useState('');
+  console.log(category);
+
 
   const handleResize = () => {
     const container = document.querySelector(".container");
@@ -107,7 +112,7 @@ const CategoriesHeader = () => {
                   key={category.name}
                   className="mx-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300"
                 >
-                  <Link to={category.route}>{category.name}</Link>
+                  <Link onClick={() => setCategory(category?.name)} to={`/serviceQuery/${category?.name}`}>{category.name}</Link>
                 </li>
               ))}
             </ul>

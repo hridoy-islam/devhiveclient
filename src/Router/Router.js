@@ -42,6 +42,7 @@ import Orders from "../Components/Orders/Orders";
 import OrderSuccess from "../Components/Orders/Components/OrderSuccess";
 import OrderError from "../Components/Orders/Components/OrderError";
 import OrderCancel from "../Components/Orders/Components/OrderCancel";
+import ServiceQuery from "../Components/Services/ServiceQuery";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/graphic-design",
         element: <Graphic />,
+      },
+      {
+        path: '/serviceQuery/:category',
+        element: <ServiceQuery />
       },
       {
         path: "/digital-marketing",
@@ -159,7 +164,7 @@ const router = createBrowserRouter([
         element: <Services />,
       },
       {
-        path: "/services/:slug",
+        path: "/services/slug/:id",
         element: <ServiceDetails />,
       },
       {
