@@ -13,9 +13,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useGetSingleServiceQuery } from '../features/api/Services/ServicesApi';
 
 const ServiceDetails = () => {
+    const { id } = useParams();
+    const { data } = useGetSingleServiceQuery(id);
+
+
     const sliders = [1, 2]
     const [packages, setPackages] = useState('basic');
     let content;

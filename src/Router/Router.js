@@ -36,6 +36,8 @@ import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
 import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 import Admin from "../Components/Admin/Admin";
 import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
+import ServiceQuery from "../Components/Services/ServiceQuery";
+
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/graphic-design",
         element: <Graphic />,
+      },
+      {
+        path: '/serviceQuery/:category',
+        element: <ServiceQuery />
       },
       {
         path: "/digital-marketing",
@@ -108,7 +114,7 @@ const router = createBrowserRouter([
         element: <Services />,
       },
       {
-        path: "/services/:slug",
+        path: "/services/slug/:id",
         element: <ServiceDetails />,
       },
       {

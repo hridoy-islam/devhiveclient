@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./MarketPlace.css";
 
 const MarketPlace = () => {
+  
   return (
     <div className="container mx-auto my-10">
       <h2 className="md:text-4xl text-3xl text-center font-bold text-left text-primary">

@@ -1,30 +1,31 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
-const Checkout = ({ data }) => {
-  const [cardError, setCardError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [processing, setProcessing] = useState(false);
-  const [transactionId, setTransactionId] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
+
+const CheckoutForm = ({ data }) => {
+  // const [cardError, setCardError] = useState("");
+  // const [success, setSuccess] = useState("");
+  // const [processing, setProcessing] = useState(false);
+  // const [transactionId, setTransactionId] = useState("");
+  // const [clientSecret, setClientSecret] = useState("");
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const { price, name, email, id } = data || {};
+  // const { price, name, email, id } = data || {};
 
-  useEffect(() => {
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+  // useEffect(() => {
+  //   fetch("/create-payment-intent", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
 
-      body: JSON.stringify({ price }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, [price]);
+  //     body: JSON.stringify({ price }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setClientSecret(data.clientSecret));
+  // }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,71 +33,71 @@ const Checkout = ({ data }) => {
       return;
     }
 
-    const card = elements.getElement(CardElement);
+    // const card = elements.getElement(CardElement);
 
-    if (card == null) {
-      return;
-    }
+    // if (card == null) {
+    //   return;
+    // }
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card,
-    });
+    // const { error, paymentMethod } = await stripe.createPaymentMethod({
+    //   type: "card",
+    //   card,
+    // });
 
-    if (error) {
-      console.log("[error]", error);
-      setCardError(error.message);
-    } else {
-      // console.log('[PaymentMethod]', paymentMethod);
-      setCardError("");
-    }
+    // if (error) {
+    //   console.log("[error]", error);
+    //   setCardError(error.message);
+    // } else {
+    //   // console.log('[PaymentMethod]', paymentMethod);
+    //   setCardError("");
+    // }
 
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: card,
-          billing_details: {
-            name: name,
-            email: email,
-          },
-        },
-      });
-    setSuccess("");
-    setProcessing(true);
-    if (confirmError) {
-      setCardError(confirmError.message);
-      return;
-    }
-    if (paymentIntent.status === "succeeded") {
-      setSuccess("congrats! Your Payment completed");
-      setTransactionId(paymentIntent.id);
-      // stor payment info in database:-
-      const payment = {
-        price,
-        email,
-        paymentIntent: paymentIntent.id,
-        bookingId: id,
-      };
-      fetch("/payments", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(payment),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.insertedId) {
-            setSuccess("congrats! Your Payment completed");
-            setTransactionId(paymentIntent.id);
-            alert("data store by database");
-          }
-        });
-    }
+    // const { paymentIntent, error: confirmError } =
+    //   await stripe.confirmCardPayment(clientSecret, {
+    //     payment_method: {
+    //       card: card,
+    //       billing_details: {
+    //         name: name,
+    //         email: email,
+    //       },
+    //     },
+    //   });
+    // setSuccess("");
+    // setProcessing(true);
+    // if (confirmError) {
+    //   setCardError(confirmError.message);
+    //   return;
+    // }
+    // if (paymentIntent.status === "succeeded") {
+    //   setSuccess("congrats! Your Payment completed");
+    //   setTransactionId(paymentIntent.id);
+    //   // stor payment info in database:-
+    //   const payment = {
+    //     price,
+    //     email,
+    //     paymentIntent: paymentIntent.id,
+    //     bookingId: id,
+    //   };
+    //   fetch("/payments", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(payment),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       if (data.insertedId) {
+    //         setSuccess("congrats! Your Payment completed");
+    //         setTransactionId(paymentIntent.id);
+    //         alert("data store by database");
+    //       }
+    //     });
+    // }
 
-    setProcessing(false);
-    console.log("paymentIntent", paymentIntent);
+    // setProcessing(false);
+    // console.log("paymentIntent", paymentIntent);
   };
 
   return (
@@ -129,7 +130,32 @@ const Checkout = ({ data }) => {
           </div>
         </div>
 
-        <div className="bg-white py-6 md:py-12">
+        {/* payment from (start) */}
+
+        <form className="border py-20 px-2 my-6" onSubmit={handleSubmit}>
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: '16px',
+                  color: '#424770',
+                  '::placeholder': {
+                    color: '#aab7c4',
+                  },
+                },
+                invalid: {
+                  color: '#9e2146',
+                },
+              },
+            }}
+          />
+          <button type="submit" disabled={!stripe}>
+            Pay
+          </button>
+        </form>
+
+
+        {/* <div className="bg-white py-6 md:py-12">
           <div className="mx-auto max-w-lg px-4 lg:px-8">
             <form className="grid grid-cols-6 gap-4 border p-6 border-gray-200 shadow-sm">
               <fieldset className="col-span-6">
@@ -191,52 +217,13 @@ const Checkout = ({ data }) => {
               </div>
             </form>
           </div>
-        </div>
+        </div> */}
 
-        <br />
-        <div>
-          <h1 className="text-2xl mb-8 font-semibold ">payment</h1>
-          <form onSubmit={handleSubmit}>
-            <CardElement
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
-                  },
-                },
-              }}
-            />
-            <button
-              className="btn btn-sm btn-info mt-4"
-              type="submit"
-              disabled={!stripe || !clientSecret || processing}
-            >
-              Pay
-            </button>
-          </form>
-          <p className="text-red-500">{cardError}</p>
-          <div className="text-error mt-2">
-            {success && (
-              <div>
-                <p className="text-green-500">{success}</p>
-                <p>
-                  Your transactionId:{" "}
-                  <span className="font-bold text-black"> {transactionId}</span>{" "}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
+
+
       </div>
     </section>
   );
 };
 
-export default Checkout;
+export default CheckoutForm;
