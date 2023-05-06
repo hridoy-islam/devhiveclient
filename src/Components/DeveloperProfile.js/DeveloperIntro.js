@@ -1,34 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useLoaderData } from "react-router-dom";
 
 const DeveloperIntro = () => {
+  // const developerProfile = useLoaderData();
+  const userData = useSelector((state) => state.login.userData);
+  // const {about} = developerProfile;
+  // console.log(developerProfile)
   return (
     <div>
-      <div class="p-16">
-        <div class="p-8 bg-white shadow mt-24">
+      <div class="p-16 flex ">
+        <div class="w-4/12 mx-auto p-8 bg-white shadow text-center">
           {" "}
-          <div class="grid grid-cols-1 md:grid-cols-3">
+          <div>
             {" "}
-            <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+            <div class="">
               {" "}
-              <div>
-                {" "}
-                <p class="font-bold text-gray-700 text-xl">22</p>{" "}
-                <p class="text-gray-400">Friends</p>{" "}
-              </div>{" "}
-              <div>
-                {" "}
-                <p class="font-bold text-gray-700 text-xl">10</p>{" "}
-                <p class="text-gray-400">Photos</p>{" "}
-              </div>{" "}
-              <div>
-                {" "}
-                <p class="font-bold text-gray-700 text-xl">89</p>{" "}
-                <p class="text-gray-400">Comments</p>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div class="relative">
-              {" "}
-              <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
+              <div class="w-32 h-32 bg-indigo-100 mx-auto rounded-full shadow-xl inset-x-0 flex items-center justify-center text-indigo-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-24 w-24"
@@ -43,42 +31,43 @@ const DeveloperIntro = () => {
                   />
                 </svg>{" "}
               </div>{" "}
-            </div>{" "}
-            <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-              <button class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                {" "}
-                Connect
-              </button>{" "}
-              <button class="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                {" "}
-                Message
-              </button>{" "}
-            </div>{" "}
+            </div>{" "}  
           </div>{" "}
-          <div class="mt-20 text-center border-b pb-12">
+          <div class="mt-8 border-b pb-12">
             {" "}
-            <h1 class="text-4xl font-medium text-gray-700">
-              Jessica Jones, <span class="font-light text-gray-500">27</span>
-            </h1>{" "}
-            <p class="font-light text-gray-600 mt-3">Bucharest, Romania</p>{" "}
-            <p class="mt-8 text-gray-500">
-              Solution Manager - Creative Tim Officer
-            </p>{" "}
-            <p class="mt-2 text-gray-500">University of Computer Science</p>{" "}
+            <h1 class="text-2xl font-semibold text-gray-600">
+              Jessica Jones
+            </h1>
+            <h1 class="text-lg font-medium text-gray-300">
+              @jones_jessica
+            </h1>
+            <p class="font-bold text-md text-gray-600 mt-2">I build websites</p>{" "}
           </div>{" "}
-          <div class="mt-12 flex flex-col justify-center">
-            {" "}
-            <p class="text-gray-600 text-center font-light lg:px-16">
-              An artist of considerable range, Ryan — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure. An artist of considerable range.
+            <div>
+              <p class="mt-8 text-left font-semibold text-2xl text-gray-600">Skill:</p>
+              <div class="mt-3 ml-6 text-left font-medium text-lg text-gray-500 grid lg:grid-cols-2 ">
+                <p className="block">Web Design</p>
+                <p className="block">Javascript</p>
+                <p className="block">React</p>
+                <p className="block">NextJs</p>
+              </div>
+            </div>
+        </div>
+        <div class="w-8/12 mt-6 flex flex-col lg:px-16">
+            <p className="font-semibold text-2xl pb-6 ">Description</p>
+            <p class="text-gray-600 font-medium text-md mb-2">
+            Hi! I'm a web designer and developer with over 12 years of experience and have completed over 150 projects using HTML, CSS, JavaScript, WordPress, and Drupal.
             </p>{" "}
-            <button class="text-indigo-500 py-2 px-4  font-medium mt-4">
-              {" "}
-              Show more
-            </button>{" "}
-          </div>
+            {/* <p class="text-gray-600 font-medium text-md mb-2">
+            I've got a master's degree in National Academy of graphic arts in Kiev (graphic design faculty).
+            </p>
+            <p class="text-gray-600 font-medium text-md mb-2">
+            13+ years work experience in IT-companies & advertising agencies
+            </p>
+            <p class="text-gray-600 font-medium text-md mb-2">
+            Artistic education and great work experience as illustrator
+            </p> */}
+            
         </div>
       </div>
     </div>
