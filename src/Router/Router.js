@@ -184,7 +184,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/developer-profile",
+        path: "/developer-profile/:user_id",
+        loader: ({params}) => fetch(`https://devhiveserver.vercel.app/developer/singledeveloper/${params.user_id}`),
         element: (
           <PrivateRoute>
             <DeveloperProfile />
