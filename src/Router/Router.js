@@ -36,8 +36,13 @@ import DeveloperProfile from "../Pages/DeveloperProfile/DeveloperProfile";
 import DeveloperRegister from "../Pages/DeveloperProfile/DeveloperRegister";
 import Admin from "../Components/Admin/Admin";
 import AdminRoute from "../Components/Auth/AdminRoute/AdminRoute";
+import SslCommerz from "../Components/PaymentFile/SslCommerz/SslCommerz";
+import SingleOrder from "../Components/Orders/SingleOrder";
+import Orders from "../Components/Orders/Orders";
+import OrderSuccess from "../Components/Orders/Components/OrderSuccess";
+import OrderError from "../Components/Orders/Components/OrderError";
+import OrderCancel from "../Components/Orders/Components/OrderCancel";
 import ServiceQuery from "../Components/Services/ServiceQuery";
-
 
 const router = createBrowserRouter([
   {
@@ -88,7 +93,52 @@ const router = createBrowserRouter([
         path: "/checkout",
         element: (
           <PrivateRoute>
-            <Payment />
+            <SslCommerz />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/success",
+        element: (
+          <PrivateRoute>
+            <OrderSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/fail",
+        element: (
+          <PrivateRoute>
+            <OrderError />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/cancel",
+        element: (
+          <PrivateRoute>
+            <OrderCancel />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/track-orders",
+        element: (
+          <PrivateRoute>
+            <Orders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/track-orders/:id",
+        loader: ({ params }) => {
+          return fetch(
+            `https://devhiveserver.vercel.app/order/transaction/${params.id}`
+          );
+        },
+        element: (
+          <PrivateRoute>
+            <SingleOrder />
           </PrivateRoute>
         ),
       },
