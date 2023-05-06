@@ -5,6 +5,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://devhiveserver.vercel.app/' }),
   endpoints: (builder) => ({
      
+    
   }),
 })
 
