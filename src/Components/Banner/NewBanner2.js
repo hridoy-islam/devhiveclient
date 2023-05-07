@@ -52,10 +52,13 @@ const NewBanner2 = () => {
               </div>
             </div>
             <p className="py-2 text-gray-500 leading-relaxed">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              quam, eaque pariatur commodi sunt magni cumque maiores blanditiis
-              sit et consequuntur minus quo, ab labore veniam doloribus quos
-              repudiandae possimus?
+              Welcome to our Devhive website. This is one kind of service
+              website for the newcomer who has an idea of working with customer
+              services. On this website can a user create an account and update
+              and upload all of his/her data easily. The main aspect of the
+              website is to give service to customers and get tasks from
+              clients. This website was created for newcomers who can understand
+              easily and operate. I hope they will love it.
             </p>
             {/* :::Button & Social media */}
             <div className="mt-10 flex flex-col sm:flex-row items-center">
