@@ -49,6 +49,9 @@ export default function DeveloperRegister() {
     } catch (error) {
       console.log(error);
     }
+  }, []);
+
+  useEffect(() => {
     if (profile.length > 0) {
       navigate(from, { replace: true });
     }
