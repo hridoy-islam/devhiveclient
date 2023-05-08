@@ -76,7 +76,7 @@ export default function DeveloperRegister() {
       displayName: userData.displayName,
       photoURL: userData.photoURL,
     };
-    fetch("http://localhost:5000/developer", {
+    fetch("https://devhiveserver.vercel.app/developer", {
       method: "POST",
       headers: {
         "content-type": "application/json",

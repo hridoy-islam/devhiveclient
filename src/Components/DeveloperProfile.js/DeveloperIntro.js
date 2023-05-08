@@ -12,8 +12,8 @@ const DeveloperIntro = ({profile}) => {
   
   return (
     <div>
-      <div class="p-16 flex ">
-        <div class="w-4/12 mx-auto p-8 bg-gray shadow text-center">
+      <div class="p-16 lg:flex md:flex">
+        <div class="lg:w-4/12 md:w-4/12 mx-auto p-8 bg-gray shadow text-center">
           {" "}
           <div>
             {" "}
@@ -33,6 +33,7 @@ const DeveloperIntro = ({profile}) => {
               {profile[0]?.username}
             </h1>
             <p class="font-bold text-md text-gray-600 mt-2">{profile[0]?.title}</p>{" "}
+            <button className='btn btn-primary mt-4'>Contact Me</button>
           </div>{" "}
             <div>
               <p class="mt-8 text-left font-semibold text-2xl text-gray-600">Language:</p>
@@ -41,21 +42,11 @@ const DeveloperIntro = ({profile}) => {
               </div>
             </div>
         </div>
-        <div class="w-8/12 mt-6 flex flex-col lg:px-16">
+        <div class="lg:w-8/12 md:w-8/12 mt-6 flex flex-col lg:px-16 md:pl-6">
             <p className="font-semibold text-2xl pb-6 ">Description</p>
             <p class="text-gray-600 font-medium text-md mb-2">
             {profile[0]?.about}
             </p>{" "}
-            {/* <p class="text-gray-600 font-medium text-md mb-2">
-            I've got a master's degree in National Academy of graphic arts in Kiev (graphic design faculty).
-            </p>
-            <p class="text-gray-600 font-medium text-md mb-2">
-            13+ years work experience in IT-companies & advertising agencies
-            </p>
-            <p class="text-gray-600 font-medium text-md mb-2">
-            Artistic education and great work experience as illustrator
-            </p> */}
-            
         </div>
       </div>
     </div>
