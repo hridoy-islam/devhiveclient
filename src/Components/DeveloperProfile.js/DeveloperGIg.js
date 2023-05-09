@@ -14,8 +14,8 @@ const DeveloperGIg = ({serviceData}) => {
               <div className="mt-6">
                 <ul className="grid grid-cols-2 gap-10">
                   {serviceData.map(product => (
-                    <li key={product.id} className="col-span-full border rounded-2xl p-6 sm:col-span-2 lg:col-span-1 group relative">
-                      <a href={product.href} className="w-full h-full flex flex-col">
+                    <li key={product?.id} className="col-span-full border rounded-2xl p-6 sm:col-span-2 lg:col-span-1 group relative">
+                      <a href={product?.href} className="w-full h-full flex flex-col">
                         {/* ::Container */}
                         <div className="relative">
                           {/* :::Picture container */}
