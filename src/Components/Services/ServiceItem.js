@@ -59,4 +59,4 @@ const ServiceItem = ({ data }) => {
     );
 };
 
-export default ServiceItem;
+export default React.memo(ServiceItem);
