@@ -5,7 +5,6 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const DeveloperProfile = () => {
   const profile = useLoaderData([]);
-  console.log(profile);
   let location = useLocation();
   const from = location.state?.from?.pathname || "/developer-register";
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ const DeveloperProfile = () => {
           config
         );
         setServiceData(data);
-        console.log(data);
+        // console.log(data);
       };
       user();
     } catch (error) {
