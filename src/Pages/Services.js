@@ -2,11 +2,14 @@ import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md"
 import { useGetServiceQuery } from '../features/api/Services/ServicesApi';
 import ServiceItem from '../Components/Services/ServiceItem';
 import { FaVideo } from "react-icons/fa";
+import { useState } from "react";
 
 
 const Services = () => {
 
     const { data: serviceData } = useGetServiceQuery();
+    const [price, setPrice] = useState('');
+    console.log(price);
 
     return (
         <div className='container mx-auto'>
@@ -28,25 +31,17 @@ const Services = () => {
 
                         </select>
                     </div>
+
                     <div className='mr-10'>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option selected>Seller Details</option>
-                            <option>New Seller</option>
-                            <option>Top Seller</option>
-                            <option>Level Two</option>
+                        <select onClick={(e) => setPrice(e.target.value)} className="select select-bordered w-full max-w-xs">
+                            <option selected disabled>Budget</option>
+                            <option value='50'>$5 - $50</option>
+                            <option value='200'>$50 - $200</option>
+                            <option value='1000'>$200 - $1000</option>
 
                         </select>
                     </div>
-                    <div className='mr-10'>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option selected>Budget</option>
-                            <option>$5 - $50</option>
-                            <option>$50 - $200</option>
-                            <option>$200 - $1000</option>
-
-                        </select>
-                    </div>
-                    <div className='mr-10'>
+                    {/* <div className='mr-10'>
                         <select className="select select-bordered w-full max-w-xs">
                             <option selected>Delivery Time</option>
                             <option>Express 24H</option>
@@ -54,7 +49,17 @@ const Services = () => {
                             <option>Anytime</option>
 
                         </select>
-                    </div>
+                    </div> */}
+
+                    {/* <div className='mr-10'>
+                        <select className="select select-bordered w-full max-w-xs">
+                            <option selected>Seller Details</option>
+                            <option>New Seller</option>
+                            <option>Top Seller</option>
+                            <option>Level Two</option>
+
+                        </select>
+                    </div> */}
 
 
 
