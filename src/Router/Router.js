@@ -44,6 +44,7 @@ import OrderError from "../Components/Orders/Components/OrderError";
 import OrderCancel from "../Components/Orders/Components/OrderCancel";
 import ServiceQuery from "../Components/Services/ServiceQuery";
 import CreateService from "../Pages/CreateService";
+import DeveloperOrder from "../Components/DeveloperProfile.js/DeveloperOrder";
 
 const router = createBrowserRouter([
   {
@@ -91,7 +92,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
+        loader: ({ params }) => {
+          return fetch(
+            `https://devhiveserver.vercel.app/service/single/${params.id}`
+          );
+        },
         element: (
           <PrivateRoute>
             <SslCommerz />
@@ -127,6 +133,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Orders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-orders",
+        element: (
+          <PrivateRoute>
+            <DeveloperOrder />
           </PrivateRoute>
         ),
       },
