@@ -124,6 +124,7 @@ export default function CreateService() {
         config
       );
       console.log(response);
+      navigate(`/developer-profile/${localStorage.getItem("user_id")}`);
     } catch (error) {
       console.log(error);
     }
