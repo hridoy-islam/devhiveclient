@@ -14,10 +14,34 @@ const DeveloperProfile = () => {
       navigate(from, { replace: true });
     }
   }, [profile]);
+  const [serviceData, setServiceData] = useState([]);
+  useEffect(() => {
+    try {
+      const user = async () => {
+        const user = localStorage.getItem("jwt");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user}`,
+          },
+        };
+        const { data } = await axios.get(
+          `https://devhiveserver.vercel.app/service/developer/${localStorage.getItem(
+            "user_id"
+          )}`,
 
+          config
+        );
+        setServiceData(data);
+        console.log(data);
+      };
+      user();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <div>
-      <DeveloperIntro profile={profile}></DeveloperIntro>
+      <DeveloperIntro serviceData={serviceData} profile={profile}></DeveloperIntro>
     </div>
   );
 };
