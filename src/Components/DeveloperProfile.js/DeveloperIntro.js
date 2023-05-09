@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 import DeveloperChat from "../../Pages/DeveloperProfile/DeveloperChat";
+import DeveloperGIg from "./DeveloperGIg";
 
-const DeveloperIntro = ({ profile }) => {
+const DeveloperIntro = ({ profile,serviceData }) => {
   const userData = useSelector((state) => state.login.userData);
-  console.log(profile);
 
   // const {photoURL, displayName, username, title, language, about } = profile[0];
   const developerId = profile[0]?.userId;
@@ -53,10 +53,15 @@ const DeveloperIntro = ({ profile }) => {
           </div>
         </div>
         <div class="lg:w-8/12 md:w-8/12 mt-6 flex flex-col lg:px-16 md:pl-6">
+          <div>
           <p className="font-semibold text-2xl pb-6 ">Description</p>
           <p class="text-gray-600 font-medium text-md mb-2">
             {profile[0]?.about}
           </p>{" "}
+          </div>
+          <div>
+            <DeveloperGIg serviceData={serviceData}></DeveloperGIg>
+          </div>
         </div>
       </div>
     </div>
