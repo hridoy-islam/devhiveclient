@@ -93,6 +93,7 @@ export default function CreateService() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const slugTitle = services.slugTitle;
+    const price = services.price;
     const developerInfo = profile[0];
     const aboutService = services.aboutService;
     const serviceDetails = services.serviceDetails;
@@ -102,6 +103,7 @@ export default function CreateService() {
     const serviceImage = imgUrl;
     const serviceData = {
       slugTitle,
+      price,
       developerInfo,
       aboutService,
       serviceDetails,
@@ -158,6 +160,27 @@ export default function CreateService() {
                     autoComplete="slugTitle"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Completed wordpress website"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="slugPrice"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Slug Price
+              </label>
+              <div className="mt-2">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                  <input
+                    type="number"
+                    name="price"
+                    onBlur={handleEventBlur}
+                    id="slugPrice"
+                    autoComplete="slugPrice"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="ট 99"
                   />
                 </div>
               </div>
@@ -304,6 +327,7 @@ export default function CreateService() {
               !services.serviceDetails ||
               !services.aboutService ||
               !services.slugTitle ||
+              !services.price ||
               selectedFeature.length == 0 ||
               selected.length == 0 ||
               !selectedCategory
