@@ -43,6 +43,7 @@ import OrderSuccess from "../Components/Orders/Components/OrderSuccess";
 import OrderError from "../Components/Orders/Components/OrderError";
 import OrderCancel from "../Components/Orders/Components/OrderCancel";
 import ServiceQuery from "../Components/Services/ServiceQuery";
+import CreateService from "../Pages/CreateService";
 
 const router = createBrowserRouter([
   {
@@ -62,8 +63,8 @@ const router = createBrowserRouter([
         element: <Graphic />,
       },
       {
-        path: '/serviceQuery/:category',
-        element: <ServiceQuery />
+        path: "/serviceQuery/:category",
+        element: <ServiceQuery />,
       },
       {
         path: "/digital-marketing",
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
         path: "/create-service",
         element: (
           <PrivateRoute>
-            <CreateServiseForm />
+            <CreateService />
           </PrivateRoute>
         ),
       },
@@ -185,7 +186,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/developer-profile/:user_id",
-        loader: ({params}) => fetch(`https://devhiveserver.vercel.app/developer/singledeveloper/${params.user_id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://devhiveserver.vercel.app/developer/singledeveloper/${params.user_id}`
+          ),
         element: (
           <PrivateRoute>
             <DeveloperProfile />
