@@ -30,7 +30,7 @@ const ServiceItem = ({ data }) => {
               <h3 className="text-left font-bold">
                 {developerInfo?.displayName}
               </h3>
-              <h2 className="font-medium">{developerInfo?.title}</h2>
+              <h2 className="font-medium">{category?.name}</h2>
             </div>
           </div>
           <div>

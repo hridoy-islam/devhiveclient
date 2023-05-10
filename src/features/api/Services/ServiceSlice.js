@@ -3,17 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    filterPrice: ''
+    services: [],
+   
 }
 
-
 const servicePrice = createSlice({
-    name: "filter",
+    name: "filterIng",
     initialState,
     reducers: {
         FilterPrice: (state, action) => {
-            state.filterPrice = action.payload
+            state.services = action.payload
         }
+
     }
 })
 
