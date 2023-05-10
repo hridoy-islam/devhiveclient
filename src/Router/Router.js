@@ -91,7 +91,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element: (
           <PrivateRoute>
             <SslCommerz />

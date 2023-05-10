@@ -1,11 +1,15 @@
-import React from 'react';
-import { useGetQueryServiceQuery } from '../../features/api/Services/ServicesApi';
+import React, { useEffect, useState } from 'react';
+// import { useGetQueryServiceQuery } from '../../features/api/Services/ServicesApi';
 import { Link, useParams } from 'react-router-dom';
 import ServiceQueryItem from './ServiceQueryItem';
+import { useGetQueryServiceQuery } from '../../features/api/Services/ServicesApi';
 
 const ServiceQuery = () => {
     const { category } = useParams();
+    
+    console.log(category);
     const { data: service } = useGetQueryServiceQuery(category);
+    console.log(service);
    
 
     return (

@@ -18,8 +18,9 @@ import { useGetSingleServiceQuery } from '../features/api/Services/ServicesApi';
 
 const ServiceDetails = () => {
     const { id } = useParams();
-    const { data } = useGetSingleServiceQuery(id);
-
+    const { data: serviceDetails } = useGetSingleServiceQuery(id);
+    console.log(serviceDetails);
+    const { _id, slugTitle, price, technology, developerInfo, serviceImage, aboutService, features } = serviceDetails || {};
 
     const sliders = [1, 2]
     const [packages, setPackages] = useState('basic');
@@ -29,7 +30,7 @@ const ServiceDetails = () => {
             <div className='p-6'>
                 <div className='flex justify-between'>
                     <h2 className='font-semibold text-xl'>basic or start ups</h2>
-                    <h3 className='font-semibold text-2xl'>$80</h3>
+                    <h3 className='font-semibold text-2xl'>${price}</h3>
                 </div>
                 <p className='py-6 text-md font-medium'>Responsive up to 3 pages including slider, contact form, social links, google map, color branded.</p>
                 <div className='flex'>
@@ -39,7 +40,7 @@ const ServiceDetails = () => {
                 <div>
                     <h3 className='font-semibold text-md pt-2'>What's Included</h3>
                 </div>
-                <Link to="/checkout"><button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ($80)</button></Link>
+                <Link to={`/checkout/${_id}`}><button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ${price}</button></Link>
             </div>
     }
     if (packages === 'standard') {
@@ -82,10 +83,10 @@ const ServiceDetails = () => {
     return (
         <div className='container mx-auto flex my-10'>
             <div className='w-8/12 pl-8'>
-                <h3 className='text-3xl font-semibold text-left pr-52'>I will design or redesign a wordpress website for your business</h3>
+                <h3 className='text-3xl font-semibold text-left pr-52'>{slugTitle}</h3>
                 <div className='flex items-start lg:flex-row flex-col pt-4 '>
-                    <img className='w-8 mr-3 rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/1e44b2f69e5274ec43ddb15d05ada643-1633124675183/cfaf097c-b750-46b6-9fce-1e6e77937477.jpeg" alt="fiver_img" />
-                    <h4 className='text-md text-left font-medium mr-3 flex  items-start'>stevestephen493</h4>
+                    <img className='w-8 mr-3 rounded-full' src={developerInfo?.photoURL} alt="fiver_img" />
+                    <h4 className='text-md text-left font-medium mr-3 flex  items-start'>{developerInfo?.displayName}</h4>
                     <h4 className='text-md text-left font-medium flex border-r-2 border-slate-300 pr-3  items-start'>Level 1 Seller</h4>
                     <div className='rating pl-4'>
                         <span className='text-2xl base-400 text-warning'><AiFillStar></AiFillStar></span>
@@ -110,23 +111,21 @@ const ServiceDetails = () => {
                         onSlideChange={() => console.log('slide change')}
                     >
                         <SwiperSlide >
-                            <img className='p-6 bg-[#e5e7eb] w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
+                            <img className='p-6 bg-[#e5e7eb] w-full mx-auto h-full border-b-indigo-500 py-3' src={serviceImage?.img1} alt='' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img className='p-6 bg-[#e5e7eb] base-300 w-full mx-auto h-full border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
+                            <img className='p-6 bg-[#e5e7eb] base-300 w-full mx-auto h-full border-b-indigo-500 py-3' src={serviceImage?.img2} alt='' />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img className='p-6 bg-[#e5e7eb] w-full  mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/227511651/original/fb71669876dfcc66368bc36a2de8d49735801bf6/design-your-wordpress-website-using-divi.jpg" alt="" />
+                            <img className='p-6 bg-[#e5e7eb] w-full  mx-auto border-b-indigo-500 py-3' src={serviceImage?.img3} alt='' />
                         </SwiperSlide>
-                        <SwiperSlide>
-                            <img className='p-6 bg-[#e5e7eb] w-full mx-auto border-b-indigo-500 py-3' src="https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a07eabb0b917e47bef1dff6fdca99b32-1675744614/Screenshot%202023-02-06%20at%2011.36.07%20PM/design-your-wordpress-website-using-divi.png" alt="" />
-                        </SwiperSlide>
+
 
                     </Swiper>
                 </div>
                 <div className='mt-10'>
                     <h2 className='text-xl font-bold'>About this gig</h2>
-                    <p className='pr-52 py-6 text-md font-medium'>I help people unleash their big ideas online. From individuals just getting started to businesses looking to refresh their online presence, I gotcha.</p>
+                    <p className='pr-52 py-6 text-md font-medium'>{aboutService}</p>
                     <h3 className='text-lg font-bold pb-2'>Services we provide:</h3>
                     <ul className='pl-10 font-medium list-disc pb-6'>
                         <li>Business WordPress websites</li>
@@ -143,19 +142,12 @@ const ServiceDetails = () => {
                     </ul>
                     <h3 className='text-lg font-bold pb-2'>Tools/Options:</h3>
                     <ul className='pl-10 font-medium list-disc pb-6'>
-                        <li>WordPress</li>
-                        <li>Divi</li>
-                        <li>Elementor</li>
-                        <li>WordPress</li>
-                        <li>Gutenburg</li>
+                        {technology?.map(technologyData => <li>{technologyData}</li>)}
                     </ul>
                     <h3 className='text-lg font-bold pb-2'>Features:</h3>
                     <ul className='pl-10 font-medium list-disc pb-6'>
-                        <li>Mobile-Friendly</li>
-                        <li>Custom Design (no pre-built templates)</li>
-                        <li>User-friendly UI/UX design</li>
-                        <li>Speed optimized</li>
-                        <li>Social media integration</li>
+                        {features?.map(featuresData => <li>{featuresData}</li>)}
+
                     </ul>
                     <h3 className='text-lg font-bold pb-2'>Why Me?</h3>
                     <ul className='pl-10 font-medium list-disc pb-6'>
@@ -169,10 +161,10 @@ const ServiceDetails = () => {
                     <h2 className='text-xl font-bold pt-10 pb-6'>About the seller</h2>
                     <div className='flex items-start lg:flex-row pt-4 '>
                         <div>
-                            <img className='w-36 mr-6 rounded-full' src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1e44b2f69e5274ec43ddb15d05ada643-1633124675183/cfaf097c-b750-46b6-9fce-1e6e77937477.jpeg" alt="fiver_img" />
+                            <img className='w-36 mr-6 rounded-full' src={developerInfo?.photoURL} alt="fiver_img" />
                         </div>
                         <div className='flex flex-col'>
-                            <h4 className='text-lg text-left font-medium mr-3  '>stevestephen493</h4>
+                            <h4 className='text-lg text-left font-medium mr-3  '>{developerInfo?.displayName}</h4>
                             <h4 className='text-lg text-left font-medium pr-3 '>I build websites</h4>
                             <div className='rating pb-2 flex items-center'>
                                 <span className='text-sm base-400 text-warning'><AiFillStar></AiFillStar></span>

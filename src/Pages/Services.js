@@ -1,13 +1,15 @@
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
-import { useGetServiceQuery } from '../features/api/Services/ServicesApi';
+import { useGetServiceQuery, useSortingServicePriceQuery } from '../features/api/Services/ServicesApi';
 import ServiceItem from '../Components/Services/ServiceItem';
 import { FaVideo } from "react-icons/fa";
+import { useState } from "react";
 
 
 const Services = () => {
-
+    const [price, setPrice] = useState('');
+    console.log(price);
     const { data: serviceData } = useGetServiceQuery();
-
+    
     return (
         <div className='container mx-auto'>
             <div>
@@ -28,7 +30,7 @@ const Services = () => {
 
                         </select>
                     </div>
-                    <div className='mr-10'>
+                    {/* <div className='mr-10'>
                         <select className="select select-bordered w-full max-w-xs">
                             <option selected>Seller Details</option>
                             <option>New Seller</option>
@@ -36,17 +38,17 @@ const Services = () => {
                             <option>Level Two</option>
 
                         </select>
-                    </div>
-                    <div className='mr-10'>
+                    </div> */}
+                    <div onClick={(e) => setPrice(e.target.value)} className='mr-10'>
                         <select className="select select-bordered w-full max-w-xs">
-                            <option selected>Budget</option>
-                            <option>$5 - $50</option>
-                            <option>$50 - $200</option>
-                            <option>$200 - $1000</option>
+                            <option selected disabled>Budget</option>
+                            <option value='50'>$5 - $50</option>
+                            <option value='200'>$50 - $200</option>
+                            <option value='1000'>$200 - $1000</option>
 
                         </select>
                     </div>
-                    <div className='mr-10'>
+                    {/* <div className='mr-10'>
                         <select className="select select-bordered w-full max-w-xs">
                             <option selected>Delivery Time</option>
                             <option>Express 24H</option>
@@ -54,15 +56,15 @@ const Services = () => {
                             <option>Anytime</option>
 
                         </select>
-                    </div>
+                    </div> */}
 
 
 
                 </div>
             </div>
-            <div className='mt-10 mb-10 grid lg:grid-cols-4 grid-cols gap-6 '>
+            <div className='mt-10 mb-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 grid-cols gap-6 '>
                 {
-                    serviceData?.map(data => <ServiceItem key={data._id} data={data}></ServiceItem>)
+                    serviceData?.map((data) => (<ServiceItem key={data._id} data={data}></ServiceItem>))
                 }
             </div>
             <div className="btn-group my-10 mb-10 flex justify-center">
