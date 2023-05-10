@@ -9,7 +9,7 @@ import useChat from "../../../hooks/useChat";
 // ..
 AOS.init();
 const HeaderDrawer = () => {
-  const user_id = localStorage.getItem("user_id")
+  const user_id = localStorage.getItem("user_id");
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const userData = useSelector((state) => state.login.userData);
   const [categories, setCategories] = useState([]);
@@ -145,7 +145,7 @@ const HeaderDrawer = () => {
                     className="flex items-center min-w-max p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
                   >
                     <NavLink
-                      to={category.route}
+                      to={`/serviceQuery/${category?.name}`}
                       className={({ isActive }) =>
                         isActive
                           ? "flex Active hover:font-bold items-center p-2 text-base font-normal text-info rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
