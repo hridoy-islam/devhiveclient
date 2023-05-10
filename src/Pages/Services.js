@@ -3,21 +3,31 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import {
+  useGetQueryPriceQuery,
   useGetServiceQuery,
   useSortingServicePriceQuery,
 } from "../features/api/Services/ServicesApi";
 import ServiceItem from "../Components/Services/ServiceItem";
 import { FaVideo } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FilterPrice, getPrice } from "../features/api/Services/ServiceSlice";
 
+
 const Services = () => {
-
-  const [price, setPrice] = useState("");
-
-  const { data: serviceData } = useGetServiceQuery();
+  const [service, setService] = useState('https://devhiveserver.vercel.app/service');
+  const [serviceLoad, setServiceLoad] = useState([]);
   
+  useEffect(() => {
+    fetch(service)
+    .then(res => res.json())
+    .then(data => setServiceLoad(data))
+  }, [service, setService]);
+  
+  // const [price, setPrice] = useState("");
+  // const { data: serviceData } = useGetServiceQuery();
+  // const { data: queryPrice } = useGetQueryPriceQuery(price);
+  // console.log(queryPrice);
 
   return (
     <div className="container mx-auto">
@@ -38,45 +48,29 @@ const Services = () => {
         </div>
         <div className="mt-8 flex">
           <div className="mr-10">
-            <select className="select select-bordered w-full max-w-xs">
-              <option selected>Service Option</option>
-              <option>Web Design</option>
-              <option>Graphic Design</option>
-              <option>UI Design</option>
+            <select onClick={(e) => setService(e.target.value)} className="select select-bordered w-full max-w-xs">
+              <option selected disabled>Service Option</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Programming & Tech'>Web Design</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Graphics & Design'>Graphic Design</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Digital Marketing'>Digital Marketing</option>
             </select>
           </div>
-          {/* <div className='mr-10'>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option selected>Seller Details</option>
-                            <option>New Seller</option>
-                            <option>Top Seller</option>
-                            <option>Level Two</option>
 
-                        </select>
-                    </div> */}
-          <div onClick={(e) => setPrice(e.target.value)} className="mr-10">
-            <select className="select select-bordered w-full max-w-xs">
+          <div className="mr-10">
+            <select onClick={(e) => setService(e.target.value)} className="select select-bordered w-full max-w-xs">
               <option selected disabled>
                 Budget
               </option>
-              <option value="50">$5 - $50</option>
-              <option value="200">$50 - $200</option>
-              <option value="1000">$200 - $1000</option>
+              <option value='https://devhiveserver.vercel.app/service/filterPrice/50'>$5 - $50</option>
+              <option value="https://devhiveserver.vercel.app/service/filterPrice/200">$50 - $200</option>
+              <option value="https://devhiveserver.vercel.app/service/filterPrice/1000">$200 - $1000</option>
             </select>
           </div>
-          {/* <div className='mr-10'>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option selected>Delivery Time</option>
-                            <option>Express 24H</option>
-                            <option>up to 5 Days</option>
-                            <option>Anytime</option>
 
-                        </select>
-                    </div> */}
         </div>
       </div>
       <div className="mt-10 mb-10 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 grid-cols gap-6 ">
-        {serviceData?.map((data) => (
+        {serviceLoad?.map((data) => (
           <ServiceItem key={data._id} data={data}></ServiceItem>
         ))}
       </div>
