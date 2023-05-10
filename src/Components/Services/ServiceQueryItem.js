@@ -5,6 +5,8 @@ const ServiceQueryItem = ({ service }) => {
     console.log(service);
     const { _id, slugTitle, developerInfo, serviceImage, price, category } = service || {};
 
+
+    
     return (
         <Link to={`/services/slug/${_id}`}>
             <div className='mx-20 my-6'>
