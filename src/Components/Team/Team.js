@@ -41,6 +41,18 @@ const Team = () => {
       linkedinURL: "#link",
       youtubeURL: "#link",
     },
+    {
+      firstname: "Mohsin",
+      lastname: "Ahmed",
+      role: "Web Developer",
+      picture: "https://i.ibb.co/n8Rbt7G/tusharXL.png",
+      description:
+        "I'm Mohsin Ahmed. A MERN Stack Developer from Bangladesh. I love to write clean, efficient codes & learn new technologies. I am looking for a challenging role in a reputable organization to utilize my development skills for the growth of the organization as well as to enhance my knowledge about new and emerging trends in the sector.",
+      facebookURL: "https://www.facebook.com/tushar.phb6",
+      twitterURL: "#link",
+      linkedinURL: "#link",
+      youtubeURL: "#link",
+    },
   ];
 
   const [member, setMember] = useState(0);
