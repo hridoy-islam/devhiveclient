@@ -17,7 +17,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useGetSingleServiceQuery } from '../features/api/Services/ServicesApi';
 
 
-
 const ServiceDetails = () => {
     const { id } = useParams();
     const { data: serviceDetails } = useGetSingleServiceQuery(id);
