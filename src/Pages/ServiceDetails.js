@@ -43,8 +43,6 @@ const ServiceDetails = () => {
                 <Link to={`/checkout/${_id}`}><button className='w-full text-center rounded-lg bg-primary text-[white] border mx-auto p-2 mt-6 text-lg font-medium'>Continue ${price}</button></Link>
             </div>
     }
-
-    
     if (packages === 'standard') {
         content =
             <div className='p-6'>
