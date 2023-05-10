@@ -53,6 +53,19 @@ const Team = () => {
       linkedinURL: "#link",
       youtubeURL: "#link",
     },
+    {
+      firstname: "Emam",
+      lastname: "Hossain",
+      role: "Designer",
+      picture:
+        "https://scontent.fcgp4-1.fna.fbcdn.net/v/t39.30808-6/325469564_1218521815423634_4369816397652619085_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEg0JaB-AgeUx28SqLLh24VJ-9zYvdrIVIn73Ni92shUoLm7ns4WZZJuoxig0y3VuNy9cyNoxNEZy7RZb2-v_9Z&_nc_ohc=Oof74UDypCMAX_hgdYZ&_nc_zt=23&_nc_ht=scontent.fcgp4-1.fna&oh=00_AfCh2sEL0OSFQn0cFqGhbi5QBWItC_LvjxbIe6CIyIChag&oe=645FCDBA",
+      description:
+        "Harum iusto exercitationem assumenda quas nostrum perspiciatis quos iste sit reprehenderit, libero quae aperiam sapiente delectus, porro tempore minus repellendus ratione distinctio!",
+      facebookURL: "https://web.facebook.com/profile.php?id=100015326133227",
+      twitterURL: "#link",
+      linkedinURL: "https://www.linkedin.com/in/emam-hossain-632123234",
+      youtubeURL: "#link",
+    },
   ];
 
   const [member, setMember] = useState(0);
@@ -70,7 +83,7 @@ const Team = () => {
 
       <div className="mx-auto px-4 w-full max-w-5xl grid grid-cols-2 gap-y-4 sm:gap-y-10">
         {/* :PICTURES CONTAINER */}
-        <div className="col-span-full lg:col-span-1 flex flex-col sm:flex-row justify-center items-center">
+        <div className="col-span-full lg:col-span-1 flex flex-col sm:flex-row justify-center items-start">
           {/* ::Team members */}
           <ul className="mb-4 sm:mb-0 px-4 flex sm:flex-col justify-center items-center space-x-3 sm:space-x-0 sm:space-y-3">
             {people.map((person, index) => (
@@ -96,7 +109,7 @@ const Team = () => {
             <img
               src={people[member].picture}
               alt=""
-              className="w-full min-w-[300px] max-w-xs object-cover"
+              className="w-[300px]  h-[300px]  object-cover"
             />
           </div>
         </div>
