@@ -15,7 +15,7 @@ import { FilterPrice, getPrice } from "../features/api/Services/ServiceSlice";
 
 
 const Services = () => {
-  const [service, setService] = useState('http://localhost:5000/service');
+  const [service, setService] = useState('https://devhiveserver.vercel.app/service');
   const [serviceLoad, setServiceLoad] = useState([]);
   
   useEffect(() => {
@@ -50,9 +50,9 @@ const Services = () => {
           <div className="mr-10">
             <select onClick={(e) => setService(e.target.value)} className="select select-bordered w-full max-w-xs">
               <option selected disabled>Service Option</option>
-              <option value='http://localhost:5000/service/query/Programming & Tech'>Web Design</option>
-              <option value='http://localhost:5000/service/query/Graphics & Design'>Graphic Design</option>
-              <option value='http://localhost:5000/service/query/Digital Marketing'>Digital Marketing</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Programming & Tech'>Web Design</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Graphics & Design'>Graphic Design</option>
+              <option value='https://devhiveserver.vercel.app/service/query/Digital Marketing'>Digital Marketing</option>
             </select>
           </div>
 
@@ -61,9 +61,9 @@ const Services = () => {
               <option selected disabled>
                 Budget
               </option>
-              <option value='http://localhost:5000/service/filterPrice/50'>$5 - $50</option>
-              <option value="http://localhost:5000/service/filterPrice/200">$50 - $200</option>
-              <option value="http://localhost:5000/service/filterPrice/1000">$200 - $1000</option>
+              <option value='https://devhiveserver.vercel.app/service/filterPrice/50'>$5 - $50</option>
+              <option value="https://devhiveserver.vercel.app/service/filterPrice/200">$50 - $200</option>
+              <option value="https://devhiveserver.vercel.app/service/filterPrice/1000">$200 - $1000</option>
             </select>
           </div>
 
