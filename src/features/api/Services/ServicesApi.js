@@ -6,12 +6,17 @@ const ServiceApi = apiSlice.injectEndpoints({
             query: () => '/service'
         }),
         getSingleService: builder.query({
-            query: (id) => `/service/${id}`
+            query: (id) => `/service/single/${id}`
         }),
         getQueryService: builder.query({
             query: (data) => `/service/${data}`
         })
+        
     })
 });
 
-export const { useGetServiceQuery, useGetSingleServiceQuery, useGetQueryServiceQuery } = ServiceApi;
+export const { useGetServiceQuery,
+    useGetSingleServiceQuery,
+    useGetQueryServiceQuery,
+    useSortingServicePriceQuery
+} = ServiceApi;

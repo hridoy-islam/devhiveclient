@@ -2,9 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Reviews from "../../Reviews/Reviews";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useGetSingleServiceQuery } from "../../../features/api/Services/ServicesApi";
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 
 const SslCommerz = () => {
+  const { id } = useParams();
+  console.log(id);
+  const { data } = useGetSingleServiceQuery(id);
   const userData = useSelector((state) => state.login.userData);
   const serviceInfo = useLoaderData([]);
   console.log(serviceInfo);
@@ -55,7 +60,7 @@ const SslCommerz = () => {
             <div className="flow-root">
               <div className="flex items-center gap-4 py-4">
                 <img
-                  src={serviceInfo?.serviceImage?.img1}
+                  src={data?.serviceImage?.img1}
                   alt=""
                   className="h-16 w-16 rounded object-cover"
                 />
@@ -64,8 +69,9 @@ const SslCommerz = () => {
                   <h2 className="font-medium text-gray-900">
                     {serviceInfo?.slugTitle}
                   </h2>
+                  <p>{data?.serviceInfo?.title}</p>
                   <p className="text-2xl font-medium tracking-tight text-gray-900">
-                    Price: {serviceInfo?.price}
+                    ${data?.price}
                   </p>
                 </div>
               </div>
@@ -221,10 +227,10 @@ const SslCommerz = () => {
               </div>
               <div class="mt-4">
                 <button
-                  class="px-4 py-1 btn btn-primary w-full text-white font-light tracking-wider bg-gray-900 rounded"
+                  class="px-4 py-1 btn font-bold btn-primary w-full text-white  tracking-wider bg-gray-900 rounded"
                   type="submit"
                 >
-                  Pay Now ট{serviceInfo?.price}
+                  Pay Now ${data?.price}
                 </button>
               </div>
             </form>
