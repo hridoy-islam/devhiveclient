@@ -13,7 +13,7 @@ const ServiceQueryItem = ({ service }) => {
                     <div class="hidden sm:block sm:basis-56">
                         <img
                             alt="Guitar"
-                            src={serviceImage}
+                            src={serviceImage?.img1}
                             class="aspect-square h-full w-full object-cover"
                         />
                     </div>

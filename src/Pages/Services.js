@@ -9,11 +9,15 @@ import {
 import ServiceItem from "../Components/Services/ServiceItem";
 import { FaVideo } from "react-icons/fa";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FilterPrice, getPrice } from "../features/api/Services/ServiceSlice";
 
 const Services = () => {
+
   const [price, setPrice] = useState("");
-  console.log(price);
+
   const { data: serviceData } = useGetServiceQuery();
+  
 
   return (
     <div className="container mx-auto">

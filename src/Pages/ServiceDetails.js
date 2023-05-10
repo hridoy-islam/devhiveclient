@@ -82,7 +82,7 @@ const ServiceDetails = () => {
     }
 
     return (
-        <div className='container mx-auto flex my-10'>
+        <div className='container mx-auto flex sm:grid-cols-1 my-10 '>
             <div className='w-8/12 pl-8'>
                 <h3 className='text-3xl font-semibold text-left pr-52'>{slugTitle}</h3>
                 <div className='flex items-start lg:flex-row flex-col pt-4 '>
@@ -176,7 +176,10 @@ const ServiceDetails = () => {
                                 <h3 className='font-light text-warning pl-1'>5</h3>
                                 <h3 className='font-light '>(15)</h3>
                             </div>
-                            <button className='btn btn-primary'>Contact Me</button>
+                            <div className='grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2'>
+                                <Link to='/chat' className='btn btn-primary btn-sm'>Contact Me</Link>
+                                <Link to='/user-profile' className='btn btn-primary btn-sm'>About Me</Link>
+                            </div>
                         </div>
                     </div>
                     <div className='border border-[#9ca3af] mt-6 w-10/12'>
@@ -362,12 +365,13 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-4/12 border-2 border-[#dadbdd] h-max'>
-                <div>
+            {/* payment from  */}
+            <div className='w-4/12 border-2 border-[#dadbdd] h-max mt-20 '>
+                {/* <div>
                     <button onClick={() => setPackages('basic')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 border-r-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Basic</button>
                     <button onClick={() => setPackages('standard')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 border-r-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Standard</button>
                     <button onClick={() => setPackages('premium')} className='p-4 text-primary font-semibold text-xl w-4/12  border-b-2 bg-[#dadbdd] border-primary focus:bg-[white]'>Premium</button>
-                </div>
+                </div> */}
                 <div>
                     <h3>{content}</h3>
                 </div>

@@ -9,7 +9,7 @@ const ServiceApi = apiSlice.injectEndpoints({
             query: (id) => `/service/single/${id}`
         }),
         getQueryService: builder.query({
-            query: (data) => `/service/${data}`
+            query: (data) => `/service/query/${data}`
         })
         
     })
