@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 const ServiceQueryItem = ({ service }) => {
     console.log(service);
-    const { _id, slugTitle, developerInfo, serviceImage, price } = service || {};
+    const { _id, slugTitle, developerInfo, serviceImage, price, category } = service || {};
 
+
+    
     return (
         <Link to={`/services/slug/${_id}`}>
             <div className='mx-20 my-6'>
@@ -38,7 +40,7 @@ const ServiceQueryItem = ({ service }) => {
                                     </div>
                                     <div className='pl-4'>
                                         <h3 className='text-left font-bold'>{developerInfo?.username}</h3>
-                                        <h2 className='font-medium'>{developerInfo?.title}</h2>
+                                        <h2 className='font-medium'>{category?.name}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +55,7 @@ const ServiceQueryItem = ({ service }) => {
                                 </div>
                                 <div className='flex'>
                                     <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
-                                    <h3 className='text-2xl font-semibold'>$29</h3>
+                                    <h3 className='text-2xl font-semibold'>${price}</h3>
                                 </div>
                             </div>
                         </div>
