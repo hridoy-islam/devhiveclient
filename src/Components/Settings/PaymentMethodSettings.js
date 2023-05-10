@@ -2,11 +2,14 @@ import React from "react";
 
 const PaymentMethodSettings = () => {
   return (
-    <div className="bg-accent-focus w-full lg:w-[750px]">
+    <div
+    data-aos-duration="3000"
+      data-aos="fade-left"
+     className="blue-gray" >
       <section>
         <h1 class="sr-only">Checkout</h1>
 
-        <div class="mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
+        <div class=" w-11/12 mx-auto grid max-w-screen-2xl grid-cols-1 md:grid-cols-2">
           <div class="flex justify-center py-12 md:py-24">
             <div class="mx-auto max-w-lg px-4 lg:px-8">
               <form class="grid grid-cols-6 gap-4">
@@ -22,6 +25,7 @@ const PaymentMethodSettings = () => {
                     type="text"
                     id="FirstName"
                     class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                    placeholder="First Name"
                   />
                 </div>
 
@@ -29,6 +33,7 @@ const PaymentMethodSettings = () => {
                   <label
                     for="LastName"
                     class="block text-xs font-medium text-gray-700"
+                   
                   >
                     Last Name
                   </label>
@@ -37,6 +42,7 @@ const PaymentMethodSettings = () => {
                     type="text"
                     id="LastName"
                     class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                    placeholder="Last Name"
                   />
                 </div>
 
@@ -52,6 +58,7 @@ const PaymentMethodSettings = () => {
                     type="email"
                     id="Email"
                     class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                    placeholder="Email"
                   />
                 </div>
 
@@ -67,6 +74,7 @@ const PaymentMethodSettings = () => {
                     type="tel"
                     id="Phone"
                     class="mt-1 w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                    placeholder="Mobile Number"
                   />
                 </div>
 
