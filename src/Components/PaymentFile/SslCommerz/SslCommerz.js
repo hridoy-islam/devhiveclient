@@ -65,7 +65,7 @@ const SslCommerz = () => {
                     {serviceInfo?.slugTitle}
                   </h2>
                   <p className="text-2xl font-medium tracking-tight text-gray-900">
-                    {serviceInfo?.price}
+                    Price: {serviceInfo?.price}
                   </p>
                 </div>
               </div>
@@ -119,7 +119,7 @@ const SslCommerz = () => {
                   class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                   id="cus_phone"
                   name="cus_phone"
-                  defaultValue={userData?.displayName}
+                  defaultValue="+880"
                   type="text"
                   required=""
                   placeholder="Your Phone"
