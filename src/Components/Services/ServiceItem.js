@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServiceItem = ({ data }) => {
-  console.log(data);
   const { _id, slugTitle, category, developerInfo, price, serviceImage } = data;
 
   return (
