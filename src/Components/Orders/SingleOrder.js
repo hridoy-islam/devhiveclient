@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   Link,
@@ -16,11 +16,16 @@ const SingleOrder = () => {
   const from = location.state?.from?.pathname || "/track-orders";
   const navigate = useNavigate();
   // if there is no data at orderDetail, then navigate
+  let [service, setService] = useState(null) 
   useEffect(() => {
+    fetch(`https://devhiveserver.vercel.app/service/single/${orderDetail?.serviceId}`)
+    .then(response => response.json())
+    .then(data => setService(data))
     if (orderDetail == null) {
       navigate(from, { replace: true });
     }
   }, [orderDetail]);
+  // console.log(service)
   return (
     <div>
       {/* <!-- component --> */}
@@ -54,56 +59,45 @@ const SingleOrder = () => {
                 <div class="pb-4 md:pb-8 w-full md:w-40">
                   <img
                     class="w-full hidden md:block"
-                    src="https://i.ibb.co/84qQR4p/Rectangle-10.png"
-                    alt="dress"
-                  />
-                  <img
-                    class="w-full md:hidden"
-                    src="https://i.ibb.co/L039qbN/Rectangle-10.png"
-                    alt="dress"
+                    src={service?.serviceImage?.img1}
+                    alt="Product-Img"
                   />
                 </div>
                 <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
                   <div class="w-full flex flex-col justify-start items-start space-y-8">
                     <h3 class="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">
-                      Premium Quaility Dress
+                      {orderDetail?.product_category}
                     </h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
-                      <p class="text-sm dark:text-white leading-none text-gray-800">
-                        <span class="dark:text-gray-400 text-gray-300">
-                          Style:{" "}
+                      <p class="text-md dark:text-white leading-none text-gray-800">
+                        <span class="dark:text-gray-400 text-md font-semibold text-gray-300">
+                          Product :{" "}
                         </span>{" "}
-                        Italic Minimal Design
+                        {orderDetail?.product_name}
                       </p>
-                      <p class="text-sm dark:text-white leading-none text-gray-800">
-                        <span class="dark:text-gray-400 text-gray-300">
-                          Size:{" "}
+                      <p class="text-md dark:text-white leading-none text-gray-800">
+                        <span class="dark:text-gray-400 text-md font-semibold text-gray-300">
+                        Shipping Method :{" "}
                         </span>{" "}
-                        Small
-                      </p>
-                      <p class="text-sm dark:text-white leading-none text-gray-800">
-                        <span class="dark:text-gray-400 text-gray-300">
-                          Color:{" "}
-                        </span>{" "}
-                        Light Blue
+                        {orderDetail?.shipping_method}
                       </p>
                     </div>
                   </div>
                   <div class="flex justify-between space-x-8 items-start w-full">
-                    <p class="text-base dark:text-white xl:text-lg leading-6">
+                    {/* <p class="text-base dark:text-white xl:text-lg leading-6">
                       $36.00{" "}
                       <span class="text-red-300 line-through"> $45.00</span>
-                    </p>
+                    </p> */}
                     <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">
-                      01
+                     {orderDetail?.Length}
                     </p>
                     <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
-                      $36.00
+                     $ {orderDetail?.total_amount}
                     </p>
                   </div>
                 </div>
               </div>
-              <div class="mt-6 md:mt-0 flex justify-start flex-col md:flex-row items-start md:items-center space-y-4 md:space-x-6 xl:space-x-8 w-full">
+              {/* <div class="mt-6 md:mt-0 flex justify-start flex-col md:flex-row items-start md:items-center space-y-4 md:space-x-6 xl:space-x-8 w-full">
                 <div class="w-full md:w-40">
                   <img
                     class="w-full hidden md:block"
@@ -155,7 +149,7 @@ const SingleOrder = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div class="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
               <div class="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">
@@ -298,7 +292,7 @@ const SingleOrder = () => {
                       {orderDetail?.cus_country}
                     </p>
                   </div>
-                  <div class="flex justify-center md:justify-start items-center md:items-start flex-col space-y-4">
+                  {/* <div class="flex justify-center md:justify-start items-center md:items-start flex-col space-y-4">
                     <p class="text-base dark:text-white font-semibold leading-4 text-center md:text-left text-gray-800">
                       Billing Address
                     </p>
@@ -309,7 +303,7 @@ const SingleOrder = () => {
                       <br />
                       {orderDetail?.cus_country}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
                 <Link
                   to="/settings/account"
