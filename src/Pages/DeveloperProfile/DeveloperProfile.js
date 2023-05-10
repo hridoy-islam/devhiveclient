@@ -24,9 +24,7 @@ const DeveloperProfile = () => {
           },
         };
         const { data } = await axios.get(
-          `https://devhiveserver.vercel.app/service/developer/${localStorage.getItem(
-            "user_id"
-          )}`,
+          `https://devhiveserver.vercel.app/service/developer/${profile[0]?.userId}`,
 
           config
         );
@@ -40,7 +38,10 @@ const DeveloperProfile = () => {
   }, []);
   return (
     <div>
-      <DeveloperIntro serviceData={serviceData} profile={profile}></DeveloperIntro>
+      <DeveloperIntro
+        serviceData={serviceData}
+        profile={profile}
+      ></DeveloperIntro>
     </div>
   );
 };

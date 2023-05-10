@@ -20,7 +20,7 @@ const Home = () => {
       {/* <Services /> */}
       <Info />
       <MarketPlace />
-      <Team />
+      {/* <Team /> */}
       <FiverrBusiness />
       <Newsletter />
     </div>

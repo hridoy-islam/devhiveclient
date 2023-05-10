@@ -3,29 +3,29 @@ import React, { useState } from "react";
 const Team = () => {
   const people = [
     {
-      firstname: "Tonyo",
-      lastname: "Delapena",
-      role: "Boss",
+      firstname: "Shahriar",
+      lastname: "Hasan",
+      role: "Team Leader, Project Lead, Developer",
       picture:
-        "https://fancytailwind.com/static/profile8-34d5f5980ca5030c155a2ffbb50b5802.jpg",
+        "https://media.licdn.com/dms/image/C4D03AQGQ5Ea1MQ1XHw/profile-displayphoto-shrink_800_800/0/1630823098356?e=2147483647&v=beta&t=wSIG5g0V1ddOzDRArQEEuJg2T5clxXXbMbqnHlivGJs",
       description:
-        "Harum iusto exercitationem assumenda quas nostrum perspiciatis quos iste sit reprehenderit, libero quae aperiam sapiente delectus, porro tempore minus repellendus ratione distinctio!",
-      facebookURL: "#link",
+        "A full-stack developer who focuses on writing clean, standard code that adheres to best practices, and who is also a lifelong learner who is continually investigating new technologies and solutions to different programming challenges in order to advance.",
+      facebookURL: "https://facebook.com/H4549",
       twitterURL: "#link",
-      linkedinURL: "#link",
+      linkedinURL: "https://www.linkedin.com/in/hasanshahriar32",
       youtubeURL: "#link",
     },
     {
-      firstname: "Laetitia",
-      lastname: "Librals",
-      role: "Designer",
+      firstname: "Mushfik",
+      lastname: "Ahmed",
+      role: "Web Developer",
       picture:
-        "https://fancytailwind.com/static/profile14-e9ac6c7d68a78a1cbbf29458acacc95a.jpg",
+        "https://lh3.googleusercontent.com/a/AGNmyxYH5S7HaTVUowPO4-Jo-i_ahzEOBRa_CMk7bAyV=s96-c",
       description:
-        "Harum iusto exercitationem assumenda quas nostrum perspiciatis quos iste sit reprehenderit, libero quae aperiam sapiente delectus, porro tempore minus repellendus ratione distinctio!",
-      facebookURL: "#link",
-      twitterURL: "#link",
-      linkedinURL: "#link",
+        "I’m a professional front-end developer with more than 3 years of experience. I would like to do coding, programming, learning new things, and fixing coding problems.I’ve worked with the latest technologies HTML5, CSS3, Bootstrap5, Tailwind, Javascript, React, Express, MongoDb, NodeJs, and Responsive can assure you the best ever output with the experience.",
+      facebookURL: "https://www.facebook.com/ahmed.mushfik16381",
+      twitterURL: "https://twitter.com/ahmedmushfik7",
+      linkedinURL: "https://www.linkedin.com/in/mushfik-ahmed-975041212/",
       youtubeURL: "#link",
     },
   ];
@@ -71,7 +71,7 @@ const Team = () => {
             <img
               src={people[member].picture}
               alt=""
-              className="w-full max-w-xs object-cover"
+              className="w-full min-w-[300px] max-w-xs object-cover"
             />
           </div>
         </div>
