@@ -2,7 +2,10 @@ import React from "react";
 
 const NotificationSettings = () => {
   return (
-    <div className="bg-base-100 w-full lg:w-[750px]">
+    <div
+    data-aos-duration="3000"
+      data-aos="fade-left"
+     className="bg-base-100 w-full lg:w-[750px]">
       <div className="border-b border-gray-900/10 pb-12">
         <h2 className="text-base font-semibold leading-7 text-gray-900">
           Notifications
