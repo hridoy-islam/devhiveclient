@@ -28,6 +28,19 @@ const Team = () => {
       linkedinURL: "https://www.linkedin.com/in/mushfik-ahmed-975041212/",
       youtubeURL: "#link",
     },
+    {
+      firstname: "pronoy",
+      lastname: "Banik",
+      role: "Frontend developer",
+      picture:
+        "https://scontent.fdac13-1.fna.fbcdn.net/v/t39.30808-6/318568829_1732891993764012_1417244172090117694_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7DqjKLCPZp8AX8E4R33&_nc_ht=scontent.fdac13-1.fna&oh=00_AfCza8qwH-YJA3R_22kwx8vjiLwkSVDeW2ahMdzycTEujw&oe=6461A12A",
+      description:
+        "I have completed diploma in computer science and i am react developer",
+      facebookURL: "https://m.facebook.com/pronoy.banik.7",
+      twitterURL: "#link",
+      linkedinURL: "#link",
+      youtubeURL: "#link",
+    },
   ];
 
   const [member, setMember] = useState(0);
