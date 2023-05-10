@@ -121,6 +121,10 @@ export default function Orders() {
                       <h3 className="text-md font-semibold ">Address : {order?.cus_add1}, {order?.cus_city}, {order?.cus_country}</h3>
                     </div>
                   </div>
+                  <div className="text-right">
+                    <button className="mt-4 py-2 px-2 rounded-md mr-4 bg-primary text-sm text-[white] font-semibold tracking-wide hover:bg-gray-300 hover:text-gray-800">View Orders</button>
+                    <button className="mt-4 py-2 px-2 rounded-md mr-4 bg-secondary text-sm text-[white] font-semibold tracking-wide hover:bg-gray-300 hover:text-gray-800">Orders Details</button>
+                  </div>
                 </div>
               ))}
             </div>
