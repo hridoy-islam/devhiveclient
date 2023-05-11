@@ -18,7 +18,7 @@ const Home = () => {
       {/* <NewBanner2 /> */}
       {isLoggedIn ? <HomeBanner /> : <HeroBanner />}
       <ProductCategory />
-      <ServiceSlider/>
+      <ServiceSlider />
       {/* <Services /> */}
       <Info />
       <MarketPlace />
