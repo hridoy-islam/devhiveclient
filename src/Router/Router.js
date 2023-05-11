@@ -43,6 +43,8 @@ import OrderSuccess from "../Components/Orders/Components/OrderSuccess";
 import OrderError from "../Components/Orders/Components/OrderError";
 import OrderCancel from "../Components/Orders/Components/OrderCancel";
 import ServiceQuery from "../Components/Services/ServiceQuery";
+import CreateService from "../Pages/CreateService";
+import DeveloperOrder from "../Components/DeveloperProfile.js/DeveloperOrder";
 
 const router = createBrowserRouter([
   {
@@ -62,8 +64,8 @@ const router = createBrowserRouter([
         element: <Graphic />,
       },
       {
-        path: '/serviceQuery/:category',
-        element: <ServiceQuery />
+        path: "/serviceQuery/:category",
+        element: <ServiceQuery />,
       },
       {
         path: "/digital-marketing",
@@ -85,12 +87,17 @@ const router = createBrowserRouter([
         path: "/create-service",
         element: (
           <PrivateRoute>
-            <CreateServiseForm />
+            <CreateService />
           </PrivateRoute>
         ),
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
+        loader: ({ params }) => {
+          return fetch(
+            `https://devhiveserver.vercel.app/service/single/${params.id}`
+          );
+        },
         element: (
           <PrivateRoute>
             <SslCommerz />
@@ -126,6 +133,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Orders />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-orders",
+        element: (
+          <PrivateRoute>
+            <DeveloperOrder />
           </PrivateRoute>
         ),
       },
@@ -184,7 +199,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/developer-profile",
+        path: "/developer-profile/:user_id",
+        loader: ({ params }) =>
+          fetch(
+            `https://devhiveserver.vercel.app/developer/singledeveloper/${params.user_id}`
+          ),
         element: (
           <PrivateRoute>
             <DeveloperProfile />

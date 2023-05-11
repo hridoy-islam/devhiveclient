@@ -71,7 +71,7 @@ const Header = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                
+
                 <svg
                   aria-hidden="true"
                   class="hidden w-6 h-6"
@@ -254,7 +254,7 @@ const Header = () => {
                 </NavLink>
               )}
               {/* developer start */}
-              {/* {isLoggedIn && (
+              {isLoggedIn && (
                 <div
                   title="developer section"
                   className="dropdown mt-1 dropdown-end"
@@ -293,7 +293,7 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-              )} */}
+              )}
               {/* developer end  */}
               {/* admin start */}
               {isLoggedIn && (

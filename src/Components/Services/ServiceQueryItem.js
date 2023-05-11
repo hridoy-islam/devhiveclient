@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 
 const ServiceQueryItem = ({ service }) => {
     console.log(service);
-    const { _id, slugTitle, developerinfo, serviceImage } = service || {};
+    const { _id, slugTitle, developerInfo, serviceImage, price, category } = service || {};
+
+
+    
     return (
         <Link to={`/services/slug/${_id}`}>
             <div className='mx-20 my-6'>
@@ -12,7 +15,7 @@ const ServiceQueryItem = ({ service }) => {
                     <div class="hidden sm:block sm:basis-56">
                         <img
                             alt="Guitar"
-                            src={serviceImage}
+                            src={serviceImage?.img1}
                             class="aspect-square h-full w-full object-cover"
                         />
                     </div>
@@ -30,14 +33,14 @@ const ServiceQueryItem = ({ service }) => {
                                     <div className="avatar-group -space-x-6">
                                         <div className="avatar ">
                                             <div className="w-12">
-                                                <img src={developerinfo?.photoURL} alt='' />
+                                                <img src={developerInfo?.photoURL} alt='' />
                                             </div>
                                         </div>
 
                                     </div>
                                     <div className='pl-4'>
-                                        <h3 className='text-left font-bold'>{developerinfo?.username}</h3>
-                                        <h2 className='font-medium'>{developerinfo?.title}</h2>
+                                        <h3 className='text-left font-bold'>{developerInfo?.username}</h3>
+                                        <h2 className='font-medium'>{category?.name}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +55,7 @@ const ServiceQueryItem = ({ service }) => {
                                 </div>
                                 <div className='flex'>
                                     <h2 className='text-sm flex items-center font-medium pt-1 pr-1' >STARTING AT</h2>
-                                    <h3 className='text-2xl font-semibold'>$5</h3>
+                                    <h3 className='text-2xl font-semibold'>${price}</h3>
                                 </div>
                             </div>
                         </div>

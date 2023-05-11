@@ -1,6 +1,4 @@
 import React from "react";
-import { useContext } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import { ToastContainer, toast } from "react-toastify";
 import { deleteUser, getAuth, updateProfile } from "firebase/auth";
@@ -62,132 +60,101 @@ const AccountSettings = () => {
     <div
       data-aos-duration="3000"
       data-aos="fade-left"
-      class="bg-white dark:bg-accent-focus w-full lg:w-[750px]"
+      className="bg-white dark:bg-accent-focus w-full lg:w-[750px]"
     >
       <ToastContainer />
-      <section class="">
-        <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
-          <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+      <section className="">
+        <div className="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             Update profile
           </h2>
           <form onSubmit={userUpdate} action="#">
-            <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
-              <div class="sm:col-span-2">
-                <label
-                  for="name"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Profile Name
-                </label>
+            <div >
+              <div className="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="input input-bordered w-full"
                   defaultValue={user?.displayName}
-                  placeholder="Type profile name"
-                />
-              </div>
-              <div class="sm:col-span-2">
-                <label
-                  for="image"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Profile Image Link
-                </label>
-                <input
-                  type="text"
-                  name="image"
-                  id="image"
-                  class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  defaultValue={user?.photoURL}
-                  placeholder="Insert image link"
-                />
-              </div>
-              <div class="sm:col-span-2">
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  disabled
-                  class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  defaultValue={user?.email}
-                  placeholder="Type email"
-                  //   required=""
-                />
-              </div>
-              {/* <div class="w-full">
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  disabled
-                  class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  //   value=""
-                  placeholder="Password"
-                  required=""
-                />
-              </div>
-              <div class="w-full">
-                <label
-                  for="confirm"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Confirm password
-                </label>
-                <input
-                  type="password"
-                  disabled
-                  name="confirm"
-                  id="confirm"
-                  class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  //   value=""
-                  placeholder="Confirm password"
-                  required=""
-                />
-              </div> */}
 
-              {/* <div class="sm:col-span-2">
-                <label
-                  for="description"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Bio
-                </label>
-                <textarea
-                  id="description"
-                  rows="8"
-                  class="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Write your bio here..."
-                ></textarea>
-              </div> */}
-            </div>
-            <div class="flex items-center space-x-4">
+                />
+
+              </div>
+              <div >
+                <div className="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                  <dt className="text-sm font-medium leading-6 text-gray-900">Email</dt>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="input input-bordered w-full"
+                    defaultValue={user?.email}
+                    placeholder="me*****5@gmail.com"
+                  />
+
+                </div>
+
+                
+                <div className="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                  <label
+                    for="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    ONLINE STATUS
+                    <p>When online, your Gigs are visible under the Online search filter.</p>
+                  </label>
+                  <div class="sm:col-span-3">
+                    <label for="country" class="block text-sm font-medium leading-6 text-gray-900">GO OFFLINE FOR..</label>
+                    <div class="mt-2">
+                      <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option>1 Day</option>
+                        <option>1 Hour</option>
+                        <option>6 Hours</option>
+                        <option>12 Hours</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
               <button
                 type="submit"
-                class="text-white btn btn-info bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="text-white btn btn-info bg-primary-700  absolute right-28 bottom-10"
               >
                 Update profile
               </button>
+
+              
+              <div className="divider"></div> 
+              
+              <div >
+              <div className=" sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0">
+                <dt className="text-sm font-medium leading-6 text-gray-900">ACCOUNT DEACTIVATION</dt>
+             <oi>
+              <p>What happens when you deactivate your account?</p>
+
+             <li>Your profile and Gigs won't be shown on Fiverr anymore. </li>
+             <li>Active orders will be cancelled. </li>
+             <li>You won't be able to re-activate your Gigs.</li>
+
+             </oi>
+
+              </div>
+
+            </div>
+
+
+            <div className="flex items-center space-x-4">
+             
               <button
                 onClick={deleteAccount}
                 type="button"
-                class="text-error inline-flex items-center hover:text-white border border-error hover:bg-error-content focus:ring-4 focus:outline-none focus:error font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:error-content dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+                className="text-error inline-flex items-center hover:text-white border border-error hover:bg-error-content focus:ring-4 focus:outline-none focus:error font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:error-content dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 absolute right-28  rig"
               >
                 <svg
-                  class="w-5 h-5 mr-1 -ml-1"
+                  className="w-5 h-5 mr-1 -ml-1"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -200,6 +167,7 @@ const AccountSettings = () => {
                 </svg>
                 Delete account
               </button>
+            </div>
             </div>
           </form>
         </div>

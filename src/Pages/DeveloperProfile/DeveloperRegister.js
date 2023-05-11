@@ -13,13 +13,53 @@
   ```
 */
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 export default function DeveloperRegister() {
-  
+  let location = useLocation();
+  const from =
+    location.state?.from?.pathname ||
+    `/developer-profile/${localStorage.getItem("user_id")}`;
+  const [profile, setProfile] = useState([]);
+  const navigate = useNavigate();
+  console.log(profile);
+  useEffect(() => {
+    try {
+      const user = async () => {
+        const user = localStorage.getItem("jwt");
+        const config = {
+          headers: {
+            Authorization: `Bearer ${user}`,
+          },
+        };
+        const { data } = await axios.get(
+          `https://devhiveserver.vercel.app/developer/singledeveloper/${localStorage.getItem(
+            "user_id"
+          )}`,
+
+          config
+        );
+        setProfile(data);
+        // console.log(data);
+      };
+      user();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (profile.length > 0) {
+      navigate(from, { replace: true });
+    }
+  }, [profile]);
+  console.log(profile);
+
   const userData = useSelector((state) => state.login.userData);
-  console.log(userData)
+  // console.log(userData);
   const handleSubmit = (e) => {
     e.preventDefault();
     //send data to the datrabase
@@ -27,7 +67,7 @@ export default function DeveloperRegister() {
     const username = form.username.value;
     const title = form.title.value;
     const about = form.about.value;
-    const language = form.language.value
+    const language = form.language.value;
     form.reset();
     const user = {
       username,
@@ -37,26 +77,25 @@ export default function DeveloperRegister() {
       userUid: userData.uid,
       userId: localStorage.getItem("user_id"),
       displayName: userData.displayName,
-      photoURL: userData.photoURL
+      photoURL: userData.photoURL,
     };
-    fetch('http://localhost:5000/developer', {
-                 method: 'POST',
-                 headers: {
-                'content-type': 'application/json'
-            },
-                body: JSON.stringify(user)
-            })
-            .then(res => res.json())
-            .then(data => {console.log(data)
-            })
-            .catch((err) => console.error(err));
+    fetch("https://devhiveserver.vercel.app/developer", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.error(err));
     // if registerSuccess, then navigate to developer-profile
     <Navigate to="/developer-profile"></Navigate>;
   };
   return (
-    <form 
-      onSubmit={handleSubmit}
-      className="Container w-1/2 my-3 mx-auto">
+    <form onSubmit={handleSubmit} className="Container w-1/2 my-3 mx-auto">
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -163,9 +202,7 @@ export default function DeveloperRegister() {
         >
           Cancel
         </button>
-        <button
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
+        <button className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
           Save
         </button>
       </div>

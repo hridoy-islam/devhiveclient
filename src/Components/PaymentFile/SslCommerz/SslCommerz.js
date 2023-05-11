@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Reviews from "../../Reviews/Reviews";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useGetSingleServiceQuery } from "../../../features/api/Services/ServicesApi";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
 
 const SslCommerz = () => {
+  const { id } = useParams();
+  console.log(id);
+  const { data } = useGetSingleServiceQuery(id);
   const userData = useSelector((state) => state.login.userData);
+  const serviceInfo = useLoaderData([]);
+  console.log(serviceInfo);
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/services";
+  const navigate = useNavigate();
+  // if there is no data at orderDetail, then navigate
+  useEffect(() => {
+    if (serviceInfo == null) {
+      navigate(from, { replace: true });
+    }
+  }, [serviceInfo]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -43,17 +60,18 @@ const SslCommerz = () => {
             <div className="flow-root">
               <div className="flex items-center gap-4 py-4">
                 <img
-                  src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+                  src={data?.serviceImage?.img1}
                   alt=""
                   className="h-16 w-16 rounded object-cover"
                 />
 
                 <div>
                   <h2 className="font-medium text-gray-900">
-                    Create Your Website Within 3 Days
+                    {serviceInfo?.slugTitle}
                   </h2>
+                  <p>{data?.serviceInfo?.title}</p>
                   <p className="text-2xl font-medium tracking-tight text-gray-900">
-                    ট99.99
+                    ${data?.price}
                   </p>
                 </div>
               </div>
@@ -90,6 +108,14 @@ const SslCommerz = () => {
                   type="text"
                   required=""
                 />
+                <input
+                  class="hidden"
+                  id="serviceId"
+                  name="serviceId"
+                  value={serviceInfo?._id}
+                  type="text"
+                  required=""
+                />
               </div>
               <div class="">
                 <label class="block text-sm text-gray-00" for="cus_phone">
@@ -99,7 +125,7 @@ const SslCommerz = () => {
                   class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                   id="cus_phone"
                   name="cus_phone"
-                  defaultValue={userData?.displayName}
+                  defaultValue="+880"
                   type="text"
                   required=""
                   placeholder="Your Phone"
@@ -201,10 +227,10 @@ const SslCommerz = () => {
               </div>
               <div class="mt-4">
                 <button
-                  class="px-4 py-1 btn btn-primary w-full text-white font-light tracking-wider bg-gray-900 rounded"
+                  class="px-4 py-1 btn font-bold btn-primary w-full text-white  tracking-wider bg-gray-900 rounded"
                   type="submit"
                 >
-                  Pay Now ট99.99
+                  Pay Now ${data?.price}
                 </button>
               </div>
             </form>
